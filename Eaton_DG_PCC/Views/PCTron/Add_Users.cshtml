@@ -1,0 +1,399 @@
+﻿@model Tuple<List<Eaton_DG_PCC.Model.Role_Info>, List<Eaton_DG_PCC.Model.Depart_Info>>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <link href="~/Css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="~/Css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="messages_zh.min.js"></script>
+
+
+    <style>
+        .tbl-txt {
+            font-size: 14px;
+        }
+
+            .tbl-txt input {
+                padding: 0 5px;
+                height: 22px;
+                line-height: 22px;
+                margin-bottom: 6px;
+            }
+
+        .pw-strength {
+            clear: both;
+            position: relative;
+            top: 8px;
+            width: 180px;
+        }
+
+        .pw-bar {
+            background: url(images/pwd-1.png) no-repeat;
+            position: relative;
+            top: 1px;
+            height: 14px;
+            overflow: hidden;
+            width: 179px;
+        }
+
+        .pw-bar-on {
+            background: url(images/pwd-2.png) no-repeat;
+            width: 0px;
+            height: 14px;
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            transition: width .5s ease-in;
+            -moz-transition: width .5s ease-in;
+            -webkit-transition: width .5s ease-in;
+            -o-transition: width .5s ease-in;
+        }
+
+        .pw-weak .pw-defule {
+            width: 0px;
+        }
+
+        .pw-weak .pw-bar-on {
+            width: 60px;
+        }
+
+        .pw-medium .pw-bar-on {
+            width: 120px;
+        }
+
+        .pw-strong .pw-bar-on {
+            width: 179px;
+        }
+
+        .pw-txt {
+            padding-top: 2px;
+            width: 180px;
+            overflow: hidden;
+        }
+
+            .pw-txt span {
+                color: #707070;
+                float: left;
+                font-size: 12px;
+                text-align: center;
+                width: 58px;
+            }
+    </style>
+    <script>
+$.validator.setDefaults({
+    submitHandler: function() {
+
+
+        var model = [];
+        var subModel = [];
+            //var param0 = $("input[name='gj']").val();
+        var username = $("input[name='username']").val();
+            var password = $("input[name='password']").val();
+            var role = $("select[name='role']").val();
+            var name = $("input[name='name']").val();
+            var email = $("input[name='email']").val();
+            var phone = $("input[name='phone']").val();
+            var depart = $("select[name='depart']").val();
+            model.push({ UserName: username, Password: password, RoleNum: role, RealName: name, Email: email, Phone: phone, DepartNum: depart });
+
+        $.ajax({
+            url: '/PCTron/Add_Users',
+            data: JSON.stringify(model),
+            type: 'POST',
+            contentType: 'application/json;charset=utf-8',
+            async: false,
+            success: function (data) {
+                //window.location.href = "/RequestStatus/RequestDetail?requestID=" + data.RequestID;
+                //if (data == "Success") { alert("Add ok"); } else { alert("Add no"); }
+                //alert("Add ok");
+                if (data == "Success") {
+                    swal("Add successfully！", "You added a new user。", "success")
+                    //history.go(-1);
+                    //alert("删除成功！");
+                    //window.location = "/PCTron";
+                    setTimeout(function () {
+                        //window.location.href = window.location.href;
+                        window.location.href = '@Url.Action("Role_Manage", "PCTron")';
+                    }, 3000)
+
+                } else { alert("Add failure！"); }
+            }
+        });
+
+
+
+    }
+});
+$().ready(function() {
+   $('#password').keyup(function () {
+        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+
+        if (false == enoughRegex.test($(this).val())) {
+            $('#level').removeClass('pw-weak');
+            $('#level').removeClass('pw-medium');
+            $('#level').removeClass('pw-strong');
+            $('#level').addClass('pw-defule');
+             //密码小于六位的时候，密码强度图片都为灰色
+        }
+        else if (strongRegex.test($(this).val())) {
+            $('#level').removeClass('pw-weak');
+            $('#level').removeClass('pw-medium');
+            $('#level').removeClass('pw-strong');
+            $('#level').addClass('pw-strong');
+             //密码为八位及以上并且字母数字特殊字符三项都包括,强度最强
+        }
+        else if (mediumRegex.test($(this).val())) {
+            $('#level').removeClass('pw-weak');
+            $('#level').removeClass('pw-medium');
+            $('#level').removeClass('pw-strong');
+            $('#level').addClass('pw-medium');
+             //密码为七位及以上并且字母、数字、特殊字符三项中有两项，强度是中等
+        }
+        else {
+            $('#level').removeClass('pw-weak');
+            $('#level').removeClass('pw-medium');
+            $('#level').removeClass('pw-strong');
+            $('#level').addClass('pw-weak');
+             //如果密码为6为及以下，就算字母、数字、特殊字符三项都包括，强度也是弱的
+        }
+        return true;
+    });
+	// 自定义校验规则
+   $.validator.addMethod("passwordCheck",function(value, element){
+       var returnVal = false;
+       //只能数字
+       //var chrnum = /^[0-9]*$/;
+       //return this.optional(element) || (chrnum.test(value));},"必须填入数字");
+       //校验密码：5-20位字母,数字或下划线组合,首字符必须为字母
+        var chrnum = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;
+        return this.optional(element) || (chrnum.test(value));
+   }, "5-20-bit letters, numbers or underscores, the first character must be a letter");
+
+// 在键盘按下并释放及提交后验证提交表单
+  $("#signupForm").validate({
+	    rules: {
+
+	      username: {
+	        required: true,
+	        minlength: 2
+	      },
+	      password: {
+	        required: true,
+			passwordCheck:true,
+	        minlength: 5
+	      },
+	      confirm_password: {
+	        required: true,
+	        minlength: 5,
+	        equalTo: "#password"
+	      }
+	    },
+	    messages: {
+
+	      username: {
+	          required: "Please input user name",
+	          minlength: "More than two usernames are required"
+	      },
+	      password: {
+	          required: "Please input password",
+	          minlength: "Password length should not be less than 5 letters"
+	      },
+	      confirm_password: {
+	          required: "Please input password",
+	        minlength: "Password length should not be less than 5 letters",
+	        equalTo: "Inconsistent passwords"
+	      }
+	    }
+	});
+});
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+        @*<form action="@Url.Action("Edit")" method="post">*@
+        <div class="row">
+            <div class="col-sm-8">
+
+
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm" action="@Url.Action("Add_Users")" method="post">
+                        <fieldset>
+                            <legend>Add</legend>
+                            <div class="form-group">
+                                @*<label class="col-sm-3 control-label">ID：</label>*@
+                                <div class="col-sm-8">
+                                    <input id="name" name="Add_User" type="hidden" disabled="disabled" value="@ViewBag.ID" />
+                                    <input id="name" name="Add_User" type="hidden" value="@ViewBag.ID" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">UserName：</label>
+                                <div class="col-sm-8">
+                                    <input id="username" name="username" type="text" value="" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Password：</label>
+                                <div class="col-sm-8">
+                                    @*@Html.TextAreaFor(model => model.Answer, new { @class = "whatever-class", @cols = 111, @rows = 10 })*@
+                                    <input id="password" name="password" type="password" value="" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Confirm Password：</label>
+                                <div class="col-sm-8">
+                                    <input id="confirm_password" name="confirm_password" type="password" value="" />
+                                    @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Role：</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <select name="role" class="chosen-select" style="width:160px; height:30px;" tabindex="2">
+                                            @for (int i = 0; i < @Model.Item1.Count; i++)
+                                            {
+                                                <option value=@Model.Item1[i].RoleNum hassubinfo="true">@Model.Item1[i].RoleName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Real Name：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="name" type="text" value="" />
+                                    @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="email" type="text" value="" />
+                                    @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Telephone：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="phone" type="text" value="" />
+                                    @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Department：</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <select name="depart" class="chosen-select" style="width:160px; height:30px;" tabindex="2">
+                                            @for (int i = 0; i < @Model.Item2.Count; i++)
+                                            {
+
+                                                <option value=@Model.Item2[i].DepartNum hassubinfo="true">@Model.Item2[i].DepartName</option>
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-8 col-sm-offset-3">
+                                    <button class="btn btn-primary saveStatus" id="saving" type="submit">Add and Save</button>
+                                    @*<button class="btn btn-white" type="submit">重置</button>*@
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*</form>*@
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<script src="~/scripts/jquery.min.js?v=2.1.4"></script>*@
+    <script src="~/scripts/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+                //swal({ title: "太帅了", text: "小手一抖就打开了一个框", type: "success" });
+            $(".saveStatus").click(function () {
+                if (ViewBag.saveStatus==1){
+                swal({
+                    title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                })
+                } else if (ViewBag.saveStatus == 0) {
+                    swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "no"
+                    })
+                }
+
+
+                //swal({
+                //        title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                //    })
+            });
+        });
+    </script>
+
+    <script>
+            function success() {
+
+
+
+                swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                    })
+            };
+
+
+    </script>
+
+</body>
+</html>

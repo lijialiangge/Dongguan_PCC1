@@ -1,0 +1,646 @@
+﻿@*@model IEnumerable<Eaton_DG_PCC.Models.saiyuan>*@
+@model Eaton_DG_PCC.Models.saiyuan
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+</head>
+
+
+<body class="gray-bg">
+
+ 
+
+
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">Hourly</span>
+                        <h5>UPH</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">12345</h1>
+                        <div class="stat-percent font-bold text-success">
+                            @*12345 <i class="fa fa-bolt"></i>*@
+                        </div>
+                        <small>Total output</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">Yearly</span>
+                        <h5>NG unit</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">@ViewData["uid"]</h1>
+                        <input id="tests" type="hidden" name="tests" value="@ViewData["uid"]" />
+                        <div class="stat-percent font-bold text-info">
+                            0.0067% <i class="fa fa-level-up"></i>
+                        </div>
+                        <small>NG rate</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">Compared to the month</span>
+                        <h5>Good unit</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">106,120</h1>
+                        <div class="stat-percent font-bold text-navy">
+                            6.8% <i class="fa fa-level-up"></i>
+                        </div>
+                        <small>Increase and decrease rate</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-danger pull-right">This month the cumulative</span>
+                        <h5>Alerts</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">256</h1>
+                        <div class="stat-percent font-bold  text-danger">
+                            3% <i class="fa fa-level-down"></i>
+                        </div>
+                        <small>Compared to the month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+
+
+                    <div class="ibox-title">
+                        <h5>Yield histogram</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="graph_flot.html#">Options 1</a>
+                                </li>
+                                <li>
+                                    <a href="graph_flot.html#">Options 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="flot-chart">
+                                    @*<div class="flot-chart-content" id="flot-dashboard-chart"></div>*@
+                                    <div class="echarts" id="echarts-bar-chart"></div>
+                                </div>
+                            </div>
+                            @*<div class="ibox-title">
+                                    <div class="echarts" id="echarts-bar-chart"></div>
+                                </div>*@
+                            <div class="col-sm-3">
+                                <ul class="stat-list">
+                                    <li>
+                                        <h2 class="no-margins">968,608</h2>
+                                        <small>Total output</small>
+                                        <div class="stat-percent">
+                                            100% <i class="fa fa-level-up text-navy"></i>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 100%;" class="progress-bar"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">97,550</h2>
+                                        <small>Monthly maximum yield</small>
+                                        <div class="stat-percent">
+                                            10.75% <i class="fa fa-level-down text-navy"></i>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 10.75%;" class="progress-bar"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">80718</h2>
+                                        <small>Average monthly output</small>
+                                        <div class="stat-percent">
+                                            8.63% <i class="fa fa-bolt text-navy"></i>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 8.63%;" class="progress-bar"></div>
+                                        </div>
+                                    </li>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="ibox-content">
+                    <div class="ibox-title">
+                        <h5>Internet State</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="graph_flot.html#">Options 1</a>
+                                </li>
+                                <li>
+                                    <a href="graph_flot.html#">Options 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-line-chart-moving"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-8">
+                @*<div class="row">
+                    <div class="col-sm-12">
+
+                            <div class="ibox-title">
+                                <h5>设备状态</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">*@
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <table class="table table-hover margin bottom">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10%" class="text-center">No.</th>
+                                            <th>Device</th>
+                                            <th class="text-center">Work hours(h)</th>
+                                            <th class="text-center">Working state</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td>
+                                                COff0015G1
+                                                </small>
+                                            </td>
+                                            <td class="text-center small">2014</td>
+                                            <td class="text-center">
+                                                <span class="label label-primary">ON</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+                                            <td>
+                                                COff0015G2
+                                            </td>
+                                            <td class="text-center small">205</td>
+                                            <td class="text-center">
+                                                <span class="label label-primary">ON</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">3</td>
+                                            <td>
+                                                COff0015G3
+                                            </td>
+                                            <td class="text-center small">1564</td>
+                                            <td class="text-center">
+                                                <span class="label label-warning">OFF</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">4</td>
+                                            <td>COff0015G4</td>
+                                            <td class="text-center small">2615</td>
+                                            <td class="text-center">
+                                                <span class="label label-primary">ON</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">5</td>
+                                            <td>COff0015G5</td>
+                                            <td class="text-center small">705</td>
+                                            <td class="text-center">
+                                                <span class="label label-primary">ON</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">6</td>
+                                            <td>COff0015G6</td>
+                                            <td class="text-center small">1086</td>
+                                            <td class="text-center">
+                                                <span class="label label-warning">OFF</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">76</td>
+                                            <td>COff0015G6</td>
+                                            <td class="text-center small">986</td>
+                                            <td class="text-center">
+                                                <span class="label label-warning">OFF</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Impeller and generator speed</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            <a href="graph_flot.html#">Options 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="graph_flot.html#">Options 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="echarts" id="echarts-gauge-chart"></div>
+                            </div>
+                        </div>
+                        @*</div>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+
+
+            <div class="col-sm-4">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Specific gravity map</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="graph_flot.html#">Options 1</a>
+                        </li>
+                        <li>
+                            <a href="graph_flot.html#">Options 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="echarts" id="echarts-pie-chart"></div>
+            </div>
+    </div>
+            </div>
+                    <div class="col-sm-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>User project list</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <table class="table table-hover no-margins">
+                                    <thead>
+                                        <tr>
+                                            <th>State</th>
+                                            <th>Date</th>
+                                            <th>User</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <small>In production...</small>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 11:20</td>
+                                            <td>Andy</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 24%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="label label-warning">cancel</span>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 10:40</td>
+                                            <td>Felix</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 66%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <small>In production...</small>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 01:30</td>
+                                            <td>Jeff</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 54%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <small>In production...</small>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 02:20</td>
+                                            <td>Jason</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 12%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <small>In production...</small>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 09:40</td>
+                                            <td>Andy</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 22%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="label label-primary">Has been completed</span>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 04:10</td>
+                                            <td>Bob</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 66%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <small>In production...</small>
+                                            </td>
+                                            <td><i class="fa fa-clock-o"></i> 12:08</td>
+                                            <td>Tom</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 23%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>The task list</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <ul class="todo-list m-t small-list ui-sortable">
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-check-square"></i> </a>
+                                        <span class="m-l-xs todo-completed">SM09807      10000 Pcs</span>
+                                    </li>
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-check-square"></i> </a>
+                                        <span class="m-l-xs  todo-completed">SM09607      8000 Pcs</span>
+                                    </li>
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-square-o"></i> </a>
+                                        <span class="m-l-xs">SM07807      15000 Pcs</span>
+                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 hours</small>
+                                    </li>
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-square-o"></i> </a>
+                                        <span class="m-l-xs">SM09887      20000 Pcs</span>
+                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 hours</small>
+                                    </li>
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-square-o"></i> </a>
+                                        <span class="m-l-xs">SM09888      18000 Pcs</span>
+                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 hours</small>
+                                    </li>
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-square-o"></i> </a>
+                                        <span class="m-l-xs">QT09807      10000 Pcs</span>
+                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 hours</small>
+                                    </li>
+                                    <li>
+                                        <a href="" class="check-link"><i class="fa fa-square-o"></i> </a>
+                                        <span class="m-l-xs">QT09807      20000 Pcs</span>
+                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 hours</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-sm-12">
+
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5 class="font-bold text-danger">Alarm message</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content">
+                        <div class="feed-activity-list">
+                            <div class="feed-element">
+                                <div>
+                                    <strong>COff0015G1     Protective doors open</strong>
+                                    <div class="font-bold text-danger">The protective door is opened abnormally, please check.</div>
+                                    <small class="text-muted">2018-4-11 15:28</small>
+                                </div>
+                            </div>
+                            <div class="feed-element">
+                                <div>
+                                    <strong>COff0015G1     Air inlet pressure 1 alarm</strong>
+                                    <div class="font-bold text-danger">Air inlet pressure 1 exceeds the limit, please check the pressure value at air inlet 1.</div>
+                                    <small class="text-muted">2018-4-05 13:38 </small>
+                                </div>
+                            </div>
+                            <div class="feed-element">
+                                <div>
+                                    <strong>COff0015G2     Cooling water temperature 2 alarm</strong>
+                                    <div class="font-bold text-danger">Cooling water temperature 2, abnormal water temperature, please check the temperature scale of cooling tower 2.</div>
+                                    <small class="text-muted">2018-2-16 09:36 </small>
+                                </div>
+                            </div>
+                            <div class="feed-element">
+                                <div>
+                                    <strong>COff0015G2     Hazardous gas leakage alarm 2</strong>
+                                    <div class="font-bold text-danger">When hazardous gas leakage is detected, the operators should evacuate immediately. The maintenance personnel should wear protective clothing, protective cover, etc. Please check the no. 2 gas storage area after completing the protection.</div>
+                                    <small class="text-muted">2018-2-06 17:28 </small>
+                                </div>
+                            </div>
+
+                            <div class="feed-element">
+                                <div>
+                                    <strong>COff0015G1     Heat carrier temperature 2 alarm</strong>
+                                    <div class="font-bold text-danger">Heat carrier temperature 2 alarm, please check related sensor and instrument.</div>
+                                    <small class="text-muted">2017-12-11 14:45 </small>
+                                </div>
+                            </div>
+                            <div class="feed-element">
+                                <div>
+                                    <strong>COff0015G1     Heat carrier temperature 2 alarm, please check related sensor and instrument.</strong>
+                                    <div class="font-bold text-danger">The emergency button is pressed for maintenance.</div>
+                                    <small class="text-muted">2017-11-08 08:56 </small>
+                                </div>
+                            </div>
+                            <div class="feed-element">
+                                <div>
+                                    @*<small class="pull-right">5月前</small>*@
+                                    <strong>COff0015G5     Over-limit the liquid level of heating tank </strong>
+                                    <div class="font-bold text-danger">Please check the over-limit of the heating water tank。</div>
+                                    <small class="text-muted">2017-10-21 16:39 </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+            
+
+            <script src="~/scripts/jquery.min.js"></script>
+            <script src="~/scripts/bootstrap.min.js"></script>
+            <script src="~/scripts/plugins/echarts/echarts-all.js"></script>
+            <script src="~/scripts/content.min.js"></script>
+    <script src="~/scripts/plugins/flot/jquery.flot.js"></script>
+    <script src="~/scripts/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/scripts/plugins/flot/jquery.flot.pie.js"></script>
+    @*<script src="~/scripts/demo/flottest-demo.min.js"></script>*@
+            <script src="~/scripts/demo/echartstest-demo.min.js"></script>
+    
+    <script>
+        var viewModel = {
+            id: 0,
+            name: '',
+            data: []
+        }
+
+        viewModel.name=@ViewData["name"];
+        
+    </script>
+    
+
+
+</body>
+
+
+
+
+</html>

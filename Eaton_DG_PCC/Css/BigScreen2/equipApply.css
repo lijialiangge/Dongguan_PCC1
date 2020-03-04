@@ -1,0 +1,487 @@
+
+#root{
+    background:url("../imgs/equipApplyBg.jpg") no-repeat center top;  
+    background-size: cover; 
+}
+ /* -----------------------------header------------------------- */
+header{
+    height:5.4vw;
+    display: flex;
+    justify-content: space-between;  
+}
+header .date{
+    height:3.3vw;
+    width:15vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .date .currentTime{
+    font-size: 24px;
+    font-weight: 600;
+    margin:0 10px;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(250, 250, 250, 1)), to(rgba(5, 197, 215, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    text-shadow: 0 0 45px #104ec7;
+}
+header .date .currentDate{
+    margin:5px 0;
+}
+header .date .currentDate,.currentWeek{
+    font-size: 14px;
+    font-weight: 600;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(250, 250, 250, 1)), to(rgba(5, 197, 215, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    text-shadow: 0 0 45px #104ec7;
+}
+header .site{
+    height:3.3vw;
+    display:flex;
+    align-items: center;
+    padding-right: 2vw;
+    font-weight: 600;
+   
+}
+header .site .city{
+    margin:0 0.2vw; 
+}
+header .site .city,.iconfont{
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(250, 250, 250, 1)), to(rgba(5, 197, 215, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    text-shadow: 0 0 45px #104ec7;
+}
+
+.main{
+    display:flex;
+    justify-content: space-between;
+    margin:0 0.5vw;
+}
+
+.main .left{
+    /*width:26.6vw;*/
+    width:30vw;
+}
+.main .left2{
+    width:100vw;
+}
+.main .middle{
+    width:43vw;
+    /*margin:0 0.7vw;*/
+    margin:0 0vw;
+}
+.main .right{
+    width:26.4vw;
+}
+.main .module{
+    height:2.8vw;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.main .module .title{
+    margin-left:0.5vw;
+    font-size: 18px;
+    text-shadow:blue 2px 2px 0;  
+}
+
+
+/*--------------------------Add--------------------*/
+
+
+
+.main .moduleTop5{
+    height:1.8vw;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.main .moduleTop5 .title{
+    margin-left:0.5vw;
+    font-size: 18px;
+    text-shadow:blue 2px 2px 0;  
+}
+
+.MyModule{
+    height:2.8vw;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.MyTitle{
+    margin-left:0.5vw;
+    font-size: 18px;
+    text-shadow:blue 2px 2px 0;  
+}
+.MyTitle2{
+    margin-left:0.5vw;
+    font-size: 18px;
+    text-shadow:blue 2px 2px 0;  
+}
+
+
+.MyMain{
+    display:flex;
+    justify-content: space-between;
+    margin:0 0.5vw;
+}
+
+.MyFaultCondition{
+    height:15.85vw;
+    width:50vw;
+}
+
+.MyFaultConditionRunTime{
+    height:13.30vw;
+    width:50vw;
+}
+
+
+
+
+
+
+
+.main.left.com-count-title{
+    font-size: 16px;
+    margin-left: 10px;
+
+}
+
+.com-count-title{
+    color:#00FFFF;
+    padding:20px;
+    font-size: 22px;
+}
+
+
+.main.right.com-count-title{
+    font-size: 16px;
+    margin-left: 10px;
+
+}
+.com-count-title{
+    color:#00FFFF;
+    padding:20px;
+    font-size: 22px;
+}
+
+ /* -----------------------------Monthly Output & NG ------------------------- */
+.main .left .serviceTime{
+    height:345px;
+    display: flex;
+    flex-direction: column;
+}
+#serviceTimeChart{
+    flex-grow: 1;
+}
+
+/* -----------------------------Top 5 Type Ratio------------------------- */
+.main .left .gradeRate{
+    height:327px;
+
+}
+.main .left .gradeRate2{
+    height:280px;
+
+}
+
+.main .right .gradeRate{
+    height:280px;
+
+}
+#gradeRateChart{
+    height:14vw;
+    position: relative;
+    top:0vw;
+    
+}
+
+
+/* -----------------------------Top 5 NG------------------------- */
+.main .left .topNG{
+    /*height:327px;*/
+    height:250px;
+}
+#topNGChart{
+    height:12vw;
+    position: relative;
+    top:0vw;
+    
+}
+
+/* -----------------------------Top 5 Alarm Times------------------------- */
+.main .right .Top5AlarmTimes{
+    height:250px;
+
+}
+#Top5AlarmTimesChart{
+    height:11vw;
+    position: relative;
+    top:0vw;
+    
+}
+
+
+/* -----------------------------Contrast of previous month's output------------------------- */
+.MyMain .ContrastMonthlyOutput{
+    height:15.85vw;
+    width:50vw;
+
+}
+#ContrastMonthlyOutputChart{
+    height:14vw;
+    position: relative;
+    top:0vw;
+    
+}
+
+/* -----------------------------Monthly Order Progress------------------------- */
+.main .left .faultCondition{
+    /*height:15.85vw;*/
+    height:17vw;
+}
+.main .left .faultCondition table{
+    width:90%;
+    border-collapse: collapse;
+    margin-left:1vw;
+}
+.main .left .faultCondition table tr{
+    height:1.7vw;
+}
+
+.main .left .faultCondition table tr:nth-child(odd):not(:first-child){
+    background: -webkit-linear-gradient(left,#1b2851, #040e45);
+}
+.main .left .faultCondition table tr:nth-child(odd):not(:first-child) td:first-child{
+    border-radius: 10px 0 0 10px;
+}
+.main .left .faultCondition table th{
+    color:#1bb9f9;
+    font-weight: normal;
+    font-size: 16px;
+}
+.main .left .faultCondition table th.company{
+    width:50%;
+}
+.main .left .faultCondition table th,td{
+    text-align: left;
+    font-size: 14px;
+    padding-left:5px;
+}
+.main .left .faultCondition table td:first-child{
+    color:#1bb9f9;
+    padding-left:0.4vw;
+}
+
+
+/* -----------------------------PCC-this week Order Progress------------------------- */
+.main .left2 .faultCondition{
+    height:17vw;
+}
+.main .left2 .faultCondition table{
+    width:90%;
+    border-collapse: collapse;
+    margin-left:1vw;
+}
+.main .left2 .faultCondition table tr{
+    height:1.7vw;
+}
+
+.main .left2 .faultCondition table tr:nth-child(odd):not(:first-child){
+    background: -webkit-linear-gradient(left,#1b2851, #040e45);
+}
+.main .left2 .faultCondition table tr:nth-child(odd):not(:first-child) td:first-child{
+    border-radius: 10px 0 0 10px;
+}
+.main .left2 .faultCondition table th{
+    color:#1bb9f9;
+    font-weight: normal;
+    font-size: 16px;
+}
+.main .left2 .faultCondition table th.company{
+    width:50%;
+}
+.main .left2 .faultCondition table th,td{
+    text-align: left;
+    font-size: 14px;
+    padding-left:5px;
+}
+.main .left2 .faultCondition table td:first-child{
+    color:#1bb9f9;
+    padding-left:0.4vw;
+}
+
+/* -----------------------------MAP以及统计------------------------- */
+.main .middle .map{
+    height:345px;
+    flex-direction: column;
+}
+.main .middle .mapChart{
+    height:477px;
+    flex-direction: column;
+}
+.statistics3{
+    height:0.0vw;
+    display: flex;
+    align-items: center;
+    
+}
+.statistics3>div{
+
+    width:33%;
+    text-align: center;
+    height:0vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.statistics3>div .count{
+    font-size: 30px;
+}
+.statistics3>div .count-offline{
+    color:#808080;
+    font-size: 30px;
+}
+.statistics3>div .count3{
+
+    font-size: 50px;
+}
+.statistics3>div .type{
+
+    color:#00FFFF;
+    font-size: 14px;
+}
+.statistics3>div .type-offline{
+
+    color:#808080;
+    font-size: 14px;
+}
+.statistics3>div:nth-of-type(2){
+
+    border-left:1px solid #175497;
+    border-right:1px solid #175497;
+}
+
+
+
+
+
+
+
+
+
+
+
+.main .middle .map .statistics2{
+    height:1.0vw;
+    display: flex;
+    align-items: center;
+    
+}
+.main .middle .map .statistics2>div{
+
+    width:33%;
+    text-align: center;
+    height:3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.main .middle .map .statistics2>div .count{
+
+    font-size: 24px;
+}
+.main .middle .map .statistics2>div .type{
+
+    color:#00FFFF;
+    font-size: 14px;
+}
+.main .middle .map .statistics2>div:nth-of-type(2){
+
+    border-left:1px solid #175497;
+    border-right:1px solid #175497;
+}
+
+
+
+
+.main .middle .map .statistics{
+    height:22.0vw;
+    display: flex;
+    align-items: center;
+    
+}
+.main .middle .map .statistics>div{
+
+    width:33%;
+    text-align: center;
+    height:3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.main .middle .map .statistics>div .count{
+
+    font-size: 24px;
+}
+.main .middle .map .statistics>div .type{
+
+    color:#00FFFF;
+    font-size: 14px;
+}
+.main .middle .map .statistics>div:nth-of-type(2){
+
+    border-left:1px solid #175497;
+    border-right:1px solid #175497;
+}
+/* ----------------------------- Everyday Output & NG------------------------- */
+
+#situationAnalysisChart{
+    height:273px;
+    position: relative;
+    top:0vw;
+}
+
+.main .right .rate{
+    height:16vw;
+    display: flex;
+    justify-content: space-between;
+}
+.main .right .rate>div{
+    flex-grow: 1;
+    text-align: center;
+}
+.main .right .rate>div>p{
+    height:1.5vw;
+    line-height: 1.5vw;
+    margin-top:1vw;
+}
+/* -----------------------------故障状态分布------------------------- */
+.main .right .distributeByStatus{
+    height:18vw;
+}
+.main .right .distributeByStatus2{
+    height:15.8vw;
+}
+#distributeByStatusChart{
+    height:10vw;
+}
+/* -----------------------------Device Fault Point Distribution------------------------- */
+.main .right .distributeByServer{
+    height:17vw;
+}
+#distributeByServerChart{
+    height:14vw;
+}

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Model.Record_of_Spare_Parts>
+
+@{
+    Layout = null;
+    var i = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrapper wrapper-content">
+                <div class="row animated fadeInRight">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            
+                            <div class="" id="ibox-content">
+                                <div id="vertical-timeline" class="vertical-container light-timeline">
+                                    @if (Model != null || Model.Count() != 0)
+                                    {
+                                        foreach (Eaton_DG_PCC.Model.Record_of_Spare_Parts item in Model)
+                                        {
+                                            i++;
+                                        <div class="vertical-timeline-block">
+                                            <div class="vertical-timeline-icon navy-bg">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+                                            <div class="vertical-timeline-content">
+                                                <h2>
+                                                    @item.Replace_content
+
+                                                </h2>
+
+                                                <p>
+                                                    @item.Operator   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   @item.Telephone
+                                                </p>
+                                                @*<a href="#" class="btn btn-sm btn-primary">Download the document</a>*@
+
+                                                <span class="vertical-date">
+                                                    <small>@item.Replace_Date</small>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        }
+
+                                        if (i == 0)
+                                        {
+                                                <h2>&nbsp;&nbsp;&nbsp;&nbsp; no data</h2>
+                                        }
+                                        
+
+                                    }
+                                    
+                                    
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

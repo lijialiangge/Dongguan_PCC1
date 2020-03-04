@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.saiyuan>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+</head>
+
+
+<body class="">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget red-bg p-lg text-center">
+                <div class="m-b-md">
+                    <i class="fa fa-bell fa-4x"></i>
+                    <h1 class="m-xs">There are 17 alarm messages</h1>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+
+            <div class="ibox float-e-margins">
+
+
+                <div class="ibox-content">
+                    <div class="feed-activity-list">
+
+
+
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     Protective door opens</strong>
+                                <div class="font-bold text-danger">The protective door is unusually open. Please check it.</div>
+                                <small class="text-muted">2018-4-11 15:28</small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     Air inlet pressure 1 alarm</strong>
+                                <div class="font-bold text-danger">The air inlet pressure is 1 overrun. Please check 1 pressure values at the air inlet.</div>
+                                <small class="text-muted">2018-4-05 13:38 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G2     Cooling water temperature 2 alarm</strong>
+                                <div class="font-bold text-danger">The cooling water temperature is 2 and the water temperature is abnormal. Please check the cooling tower 2# thermometer.</div>
+                                <small class="text-muted">2018-2-16 09:36 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G2     Hazardous gas leakage alarm 2</strong>
+                                <div class="font-bold text-danger">When hazardous gas leakage is detected, the operators should evacuate immediately. The maintenance personnel should wear protective clothing, protective cover, etc. Please check the no. 2 gas storage area after completing the protection.</div>
+                                <small class="text-muted">2018-2-06 17:28 </small>
+                            </div>
+                        </div>
+
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     Heat carrier temperature 2 alarm</strong>
+                                <div class="font-bold text-danger">Heat carrier temperature 2 alarm, please check related sensor and instrument.</div>
+                                <small class="text-muted">2017-12-11 14:45 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     System 1 emergency button is pressed</strong>
+                                <div class="font-bold text-danger">The emergency button is pressed for maintenance.</div>
+                                <small class="text-muted">2017-11-08 08:56 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                @*<small class="pull-right">5月前</small>*@
+                                <strong>COff0015G5     Over-limit the liquid level of heating tank </strong>
+                                <div class="font-bold text-danger">Please check the over-limit of the heating water tank.</div>
+                                <small class="text-muted">2017-10-21 16:39 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     Protective doors open</strong>
+                                <div class="font-bold text-danger">The protective door is opened abnormally, please check.</div>
+                                <small class="text-muted">2018-4-11 15:28</small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     Air inlet pressure 1 alarm</strong>
+                                <div class="font-bold text-danger">Air inlet pressure 1 exceeds the limit, please check the pressure value at air inlet 1.</div>
+                                <small class="text-muted">2018-4-05 13:38 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G2     Cooling water temperature 2 alarm</strong>
+                                <div class="font-bold text-danger">Cooling water temperature 2, abnormal water temperature, please check the temperature scale of cooling tower 2.</div>
+                                <small class="text-muted">2018-2-16 09:36 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G2     Hazardous gas leakage alarm 2</strong>
+                                <div class="font-bold text-danger">When hazardous gas leakage is detected, the operators should evacuate immediately. The maintenance personnel should wear protective clothing, protective cover, etc. Please check the no. 2 gas storage area after completing the protection.</div>
+                                <small class="text-muted">2018-2-06 17:28 </small>
+                            </div>
+                        </div>
+
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     Heat carrier temperature 2 alarm</strong>
+                                <div class="font-bold text-danger">Heat carrier temperature 2 alarm, please check related sensor and instrument.</div>
+                                <small class="text-muted">2017-12-11 14:45 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                <strong>COff0015G1     System 1 emergency button is pressed</strong>
+                                <div class="font-bold text-danger">The emergency button is pressed for maintenance.</div>
+                                <small class="text-muted">2017-11-08 08:56 </small>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div>
+                                @*<small class="pull-right">5月前</small>*@
+                                <strong>COff0015G5     Over-limit the liquid level of heating tank </strong>
+                                <div class="font-bold text-danger">Please check the over-limit of the heating water tank.</div>
+                                <small class="text-muted">2017-10-21 16:39 </small>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+
+</html>

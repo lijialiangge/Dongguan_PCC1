@@ -1,0 +1,1003 @@
+﻿@model Tuple<List<Eaton_DG_PCC.Model.Monthly_OutputAndNG>, List<Eaton_DG_PCC.Model.EveryDay_OutputAndNG>, List<Eaton_DG_PCC.Model.PCC.DayInfoHistory>>
+
+
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link rel="stylesheet" href="~/Css/BigScreen2/common.css">
+    <link rel="stylesheet" href="~/Css/BigScreen2/equipApply.css">
+    <link rel="stylesheet" href="~/Css/BigScreen/main.css">
+    <link rel="stylesheet" href="~/Css/BigScreen2/teaching.css">
+
+
+
+</head>
+<body>
+
+
+    <div id="title">
+        <header>
+            <div class="date">
+                <div class="currentTime"></div>
+                <div class="cDate">
+                    <div class="currentDate"></div>
+                    <div class="currentWeek"></div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div>
+        <div class="main">
+            <div class="left">
+                <!-- Monthly Output & NG -->
+                <div class="serviceTime my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Monthly Output&NG</span>
+                    </p>
+                    <div id="serviceTimeChart"></div>
+                </div>
+
+
+               
+
+                <!-- 故障状态分布 -->
+                <!-- Real Time Alarm -->
+                <div class="faultCondition my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Today Real-Time Alarm</span>
+                    </p>
+                    <div class="slide-title2 my-colors">
+                        <span>NO.</span>
+                        <span>Date</span>
+                        <span>Description</span>
+                    </div>
+                    <div class="slide-container-Maintenance">
+                        <ul id="test_ul" class="slide-list2 js-slide-list-Maintenance"></ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="middle">
+                <!-- Real Time Data -->
+                <div class="map my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span id="PO" class="title"></span>
+                    </p>
+                    <div class="statistics2">
+                        <div>
+                            <p class="type">Output</p>
+                        </div>
+                        <div>
+                            <p class="type">Plan Output</p>
+                        </div>
+                        <div>
+                            <p class="type">NG</p>
+                        </div>
+                    </div>
+
+                    <!-- 总数 -->
+                    <div id="zs">
+
+
+                        <!-- Output -->
+                        <div>
+                            <span>&nbsp;</span>
+                            <span id="Now_Output"></span>
+                        </div>
+                        <!-- Model -->
+                        <div>
+                            <span>&nbsp;</span>
+                            <span id="Plan_Output"></span>
+                        </div>
+                        <!-- NG -->
+                        <div>
+                            <span>&nbsp;</span>
+                            <span id="Now_NG"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="statistics">
+                        <div>
+                            <p id="FTQ" class="count"></p>
+                            <p class="type">FTQ</p>
+                        </div>
+                        <div>
+                            <p id="Now_Model" class="count"></p>
+                            <p class="type">Current Model</p>
+                        </div>
+                        <div>
+                            <p id="Equipment_utilization" class="count"></p>
+                            <p class="type">Equipment utilization</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Everyday Output & NG -->
+                <div class="situationAnalysis my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Daily Output&NG  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <span style="color:#2c9c0e"> Output &nbsp&nbsp&nbsp&nbsp </span>
+                        <span style="color:#CC0033"> Total_NG &nbsp&nbsp&nbsp&nbsp </span>
+                        <span style="color:#66cccc"> CAP_NG &nbsp&nbsp&nbsp&nbsp </span>
+                        <span style="color:#ffff33"> ESR_NG &nbsp&nbsp&nbsp&nbsp </span>
+                        <span style="color:#ffffff"> VOL_NG</span>
+                        @*<span class="title">Daily Output&NG &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CAP_Blue &nbsp&nbsp ESR_Yellow &nbsp&nbsp VOL_White</span>*@
+                    </p>
+                    <div id="situationAnalysisChart"></div>
+                </div>
+
+
+                <!-- Monthly Order Progress -->
+
+
+
+
+
+                
+
+
+
+
+            </div>
+            <div class="right">
+
+
+                <!-- Device Status -->
+                <div class="distributeByStatus my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title" id="LineID">Line ID：</span>
+                    </p>
+                    <div id="zjzt">
+
+
+                        <div id="PLCRunStatus_class" class="yz-zx _status-item yellow">
+                            <p id="PLCRunStatus_text" class="font14">Ready</p>
+                            <div class="_b1-line">
+                                <div class="_b-solid"></div>
+                            </div>
+                        </div>
+
+                        <div id="Maintain_Status_class" class="yz-whz _status-item green2">
+                            <p id="Maintain_Status_text" class="font14">Already maintained</p>
+                            <div class="_b1-line">
+                                <div class="_b-solid"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="canvas-pic-two">
+
+                        @*<div class="utilization-rate">
+
+                            <div>
+                                <p id="Today_Alarm_Times"></p>
+                                <span>Today Alarm Times</span>
+                            </div>
+                        </div>*@
+                        <div class="utilization-rate3">
+                            <div>
+                                <div id="Today_alarm_times" style="width: 200px;height:200px;margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="canvas-pic-two">
+
+                        @*<div class="utilization-rate2">
+                            <div>
+                                <p id="Today_Alarm_Time"></p>
+                                <span>Today Alarm Time</span>
+                            </div>
+                        </div>*@
+                        <div class="utilization-rate4">
+                            <div>
+                                <div id="Today_alarm_time" style="width: 200px;height:200px;margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="distributeByServer my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Current Model NG</span>
+                    </p>
+                    <div id="distributeByServerChart"></div>
+                </div>
+               
+               
+
+
+            </div>
+        </div>
+        <div class="main">
+            <div class="left2">
+                <div class="faultCondition my-bb12">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Order Progress This Week</span>
+                    </p>
+                    <div class="slide-title my-colors">
+                        <span>NO.</span>
+                        <span>Line NO.</span>
+                        <span>Date</span>
+                        <span>Batch NO.</span>
+                        <span>Model</span>
+                        <span>Plan Output</span>
+                        <span>Output</span>
+                        <span>NG</span>
+                        <span>FTQ</span>
+                        <span>CAP NG</span>
+                        <span>ESR NG</span>
+                        <span>VOL NG</span>
+                    </div>
+                    <div class="slide-container-order">
+                        <ul class="slide-list js-slide-list-order">
+
+                            @for (int i = 1; i <= Model.Item3.Count; i++)
+                            {
+                                if (((i % 2 == 1) ? 1 : 0) == 1)
+                                {
+                                    <li class="odd"><span>@i</span><span>@Model.Item3[i - 1].LineID</span><span>@Model.Item3[i - 1].UpdateTime</span><span>@Model.Item3[i - 1].ProductID</span><span>@Model.Item3[i - 1].DutMode</span><span>@Model.Item3[i - 1].DutTotalNum</span><span>@Model.Item3[i - 1].DutPassNum</span><span>@Model.Item3[i - 1].DutFailNum</span><span>@Model.Item3[i - 1].DutFailRate %</span><span>@Model.Item3[i - 1].cap</span><span>@Model.Item3[i - 1].ESR</span><span>@Model.Item3[i - 1].Voltage</span></li>
+
+                                }
+                                if (((i % 2 == 1) ? 1 : 0) == 0)
+                                {
+                                    <li class="even"><span>@i</span><span>@Model.Item3[i - 1].LineID</span><span>@Model.Item3[i - 1].UpdateTime</span><span>@Model.Item3[i - 1].ProductID</span><span>@Model.Item3[i - 1].DutMode</span><span>@Model.Item3[i - 1].DutTotalNum</span><span>@Model.Item3[i - 1].DutPassNum</span><span>@Model.Item3[i - 1].DutFailNum</span><span>@Model.Item3[i - 1].DutFailRate %</span><span>@Model.Item3[i - 1].cap</span><span>@Model.Item3[i - 1].ESR</span><span>@Model.Item3[i - 1].Voltage</span></li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/Scripts/BigScreen2/jz_all.js"></script>
+    <script src="~/Scripts/BigScreen2/jquery-2.1.0.js"></script>
+    <script src="~/Scripts/BigScreen2/echarts.min.js"></script>
+    <script src="~/Scripts/BigScreen2/china.js"></script>
+    <script src="~/Scripts/BigScreen2/utils.js"></script>
+    @*<script src="~/Scripts/BigScreen2/equipApply.js"></script>*@
+
+    @Html.Partial("~/Views/Shared/_BigScreen3JS.cshtml")
+
+
+    <script>
+        function BigScreen(DeviceId) {
+            $.ajax({
+                dataType: "json",
+                type: "post",
+                url: '/DRAQ127/DRAQ127_AllStatus',
+                data: { DeviceId },
+                success: function (data) {
+                    var obj = eval(data.data);
+
+                    //PO
+                    $("#LineID").text("Line ID：" + obj.ID);
+                    $("#PO").text("Batch NO.    " + obj.ProductID);
+                    $("#Now_Output").text(obj.DutPassNum);
+                    $("#Plan_Output").text(obj.DutTotalNum);
+                    $("#Now_NG").text(obj.DutFailNum);
+                    $("#FTQ").text(obj.DutFailRate+ "%");
+                    $("#Now_Model").text(obj.DutMode);
+                    $("#Equipment_utilization").text(obj.DeviceUseRate + "H");
+                    $("#Today_Alarm_Times").text(obj.HaltNum);
+                    $("#Today_Alarm_Time").text(obj.HaltTime);
+
+
+
+                    //设备运行状态
+                    if (obj.DevStatus == 0) {
+                        //$("#Alarm_Tip").fadeIn();
+                        $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item gray");
+                        $("#PLCRunStatus_text").text("Off");
+                    }
+                    else if (obj.DevStatus == 1) {
+                        //$("#Alarm_Tip").fadeOut();
+                        $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item green");
+                        $("#PLCRunStatus_text").text("Run");
+                    }
+                    else if (obj.DevStatus == 2) {
+                        //$("#Alarm_Tip").fadeOut();
+                        $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item red");
+                        $("#PLCRunStatus_text").text("Stop");
+                    }
+                    else if (obj.DevStatus == 3) {
+                        //$("#Alarm_Tip").fadeOut();
+                        $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item yellow");
+                        $("#PLCRunStatus_text").text("Ready");
+                    }
+                },
+                error: function (data) {
+                    //alert("系统错误");
+                }
+            })
+        };
+
+        window.setInterval(function () {
+            var DeviceId = '@ViewBag.DeviceId';
+            BigScreen(DeviceId);
+        }, 3000);
+
+
+
+
+        function Real_Alarm(DeviceId) {
+            $.ajax({
+                dataType: "json",
+                type: "post",
+                url: '/DRAQ127/Alarm_Real_Time',
+                data: { DeviceId },
+                success: function (res) {
+                    var data = [];
+                    $("#test_ul li").remove();
+                    setTimeout(tip,1000)
+                    function tip(){
+                    for (var index in res.data) {
+                        var item = res.data[index];
+                        //data.push({
+                        //    "ID": item.ID,
+                        //    "Time": jsonDateFormat(item.Time),
+                        //    'Description': item.Description,
+                        //});
+                        if (((index % 2 == 1) ? 1 : 0) == 1) {
+                            $("#test_ul").append("<li class='odd'><span>" + item.ID + "</span><span>" + jsonDateFormat(item.WarnTime) + "</span><span style='color:#FF0000'>" + item.WarnExplain + "</span></li>");
+                        }
+                        if (((index % 2 == 1) ? 1 : 0) == 0)
+                        {
+                            $("#test_ul").append("<li class='even'><span>" + item.ID + "</span><span>" + jsonDateFormat(item.WarnTime) + "</span><span style='color:#FF0000'>" + item.WarnExplain + "</span></li>");
+                        }
+                        //alert(index);
+                    }
+                    }
+                },
+                error: function (data) {
+                    //alert("系统错误");
+                }
+            })
+        };
+
+
+
+
+
+
+        function jsonDateFormat(jsonDate) {//json日期格式转换为正常格式
+            if (jsonDate != null) {
+                try {
+                    var date = new Date(parseInt(jsonDate.replace("/Date(", "").replace(")/", ""), 10));
+                    var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var seconds = date.getSeconds();
+                    var milliseconds = date.getMilliseconds();
+                    return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+                } catch (ex) {
+                    return "";
+                }
+            }
+            return "";
+        };
+
+        const myChart = echarts.init(document.getElementById("distributeByServerChart"));
+
+        function Test_leida() {
+            myChart.setOption(
+                {
+                    tooltip: {},
+                    radar: [
+                        {
+                            indicator: [
+                                { text: 'CAP NG', max: @ViewBag.MaxData2 },
+                                { text: 'ESR NG', max: @ViewBag.MaxData2 },
+                                { text: 'VOL NG', max: @ViewBag.MaxData2 }
+                            ],
+                            startAngle: 30,
+                            splitNumber: 4,
+                            shape: 'circle',
+                            name: {
+                                formatter: '{value}',
+                                textStyle: {
+                                    color: '#00FFFF'
+                                }
+                            },
+                            splitArea: {
+                                show: true,
+                                areaStyle: {
+                                    color: ['#051d64', '#041d64', '#03185f', '#021358'],
+                                    shadowColor: '#0f3ba8',
+                                    shadowBlur: 10
+                                }
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#2c8ebe',
+                                    type: 'dashed'
+                                }
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: 'transparent'
+                                }
+                            }
+                        },
+
+                    ],
+                    series: [
+                        {
+                            name: 'NG TYPE RATIO',
+                            type: 'radar',
+                            itemStyle: {
+                                color: '#1f9cf5',
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    color: 'white',
+                                }
+                            },
+                            areaStyle: {
+                                normal: {
+                                    opacity: 0.7,
+                                    color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                        {
+                                            color: '#093574',
+                                            offset: 0
+                                        },
+                                        {
+                                            color: '#093574',
+                                            offset: 1
+                                        }
+                                    ])
+                                }
+                            },
+                            data: [{value:[]}]
+                        },
+
+                    ]
+                }
+                );
+
+
+            //myChart.showLoading(); //数据加载完之前先显示一段简单的loading动画
+        }
+        function Test_leida2(){
+            var names = [];     //类别数组（实际用来盛放X轴坐标值）
+            var indicatorsss=[];
+            $.ajax({
+                type : "post",
+                async : true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                url: '/DRAQ127/DRAQ127_AllStatus2',
+                data: { DeviceId },
+                        dataType : "json",
+                        success : function(data) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    if (data.msg == 'success') {
+                        //var obj = eval(data.items);     //解析后台传来的json数据
+                        //for (var i = 0; i < obj.length; i++) {
+                        //    names.push(obj[i].name);
+                        //}
+                        //for (var i = 0; i < obj.length; i++) {
+                        //    nums.push(obj[i].num);
+                        //}
+                        var obj = eval(data.data);
+                        var obj2 = eval(data.data2);
+                        //alert(obj2);
+                        //alert(data.data2);
+
+                        names.push(obj.cap);
+                        names.push(obj.ESR);
+                        names.push(obj.Voltage);
+
+                        indicatorsss.push({ text: 'CAP NG', max: obj2});
+                        indicatorsss.push({ text: 'ESR NG', max: obj2});
+                        indicatorsss.push({ text: 'VOL NG', max: obj2 });
+
+                        //myChart.hideLoading(); //隐藏加载动画
+                        myChart.setOption({ //加载数据图表
+                            radar: [{indicator: indicatorsss}],
+                            series : [ {
+                                // 根据名字对应到相应的系列
+                                data: [{value:names}]
+                            } ]
+                        });
+                    }else{
+                        //alert("后台数据获取失败!");
+                    }
+                        },
+                error : function(errorMsg) {
+                    //请求失败时执行该函数
+                    //alert("图表请求数据失败!");
+                    //myChart.hideLoading();
+                }
+            })
+            //myChart.setOption(option);
+        };
+        //Today_Alarm_times
+        var myChart_Today_alarm_times = echarts.init(document.getElementById("Today_alarm_times"));
+
+        function Today_alarm_times() {
+            // 指定图表的配置项和数据
+            option = {
+
+                title: {
+                    text: "",
+                    textStyle: {
+                        color: "#436EEE",
+                        fontSize: 17
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: [
+                      {
+                          name: 'Today Alarm Times',
+                          icon: 'circle',
+                          textStyle: {
+                              fontSize: '15',
+                              color: '#00FFFF',  // 单独设置某一个图列的颜色
+                              //backgroundColor: '#fff' // 单独设置某一个图列的字体背景色
+                          }
+                      }]
+                },
+                //x轴显示
+                xAxis: {
+                    data: ['Standard', 'Actual'],
+                    show: true,  // 是否显示
+                    position: 'bottom',  // x轴的位置
+                    offset: 0, // x轴相对于默认位置的偏移
+                    type: 'category',   // 轴类型， 默认为 'category'
+                    //name: '月份',    // 轴名称
+                    nameLocation: 'end',  // 轴名称相对位置
+                    nameTextStyle: {   // 坐标轴名称样式
+                        color: 'white',
+                        padding: [5, 0, 0, -5]
+                    },
+                    nameGap: 1, // 坐标轴名称与轴线之间的距离
+
+                    axisLabel: {    // 坐标轴标签
+                        show: true,  // 是否显示
+                        inside: false, // 是否朝内
+                        rotate: 0, // 旋转角度
+                        margin: 5, // 刻度标签与轴线之间的距离
+                        color: 'white'  // 默认取轴线的颜色
+                    },
+
+                    // show: false
+                },
+                //   ------   y轴  ----------
+                yAxis: {
+                    show: false,  // 是否显示
+                    position: 'left', // y轴位置
+                    offset: 0, // y轴相对于默认位置的偏移
+                    type: 'value',  // 轴类型，默认为 ‘category’
+                    name: '',   // 轴名称
+                    nameLocation: 'end', // 轴名称相对位置value
+                    nameTextStyle: {    // 坐标轴名称样式
+                        color: '#fff',
+                        padding: [0, 0, 0, 0]  // 坐标轴名称相对位置
+                    },
+                    nameGap: 1, // 坐标轴名称与轴线之间的距离
+                    //nameRotate: 270,  // 坐标轴名字旋转
+
+                    axisLine: {    // 坐标轴 轴线
+                        show: false,  // 是否显示
+                        //  -----   箭头 -----
+                        symbol: ['none', 'arrow'],  // 是否显示轴线箭头
+                        symbolSize: [8, 8],  // 箭头大小
+                        symbolOffset: [0, 7], // 箭头位置
+
+                        // ----- 线 -------
+                        lineStyle: {
+                            color: 'blue',
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    axisTick: {      // 坐标轴的刻度
+                        show: true,    // 是否显示
+                        inside: true,  // 是否朝内
+                        length: 3,      // 长度
+                        lineStyle: {
+                            color: 'red',  // 默认取轴线的颜色
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    axisLabel: {      // 坐标轴的标签
+                        show: true,    // 是否显示
+                        inside: false,  // 是否朝内
+                        rotate: 0,     // 旋转角度
+                        margin: 8,     // 刻度标签与轴线之间的距离
+                        color: 'red',  // 默认轴线的颜色
+                    },
+                    splitLine: {    // gird 区域中的分割线
+                        show: true,   // 是否显示
+                        lineStyle: {
+                            color: '#666',
+                            width: 1,
+                            type: 'dashed'
+                        }
+                    },
+                    splitArea: {     // 网格区域
+                        show: false   // 是否显示，默认为false
+                    }
+                },
+                tooltip: {
+                    position: ['50%', '50%'],
+                    padding: [5, 10]
+                },
+                grid: {
+                    left: '0%'
+                },
+                series: [
+                 {
+                     name: "Today Alarm Times",
+                     type: "bar",
+                     stack: "业务",
+                     data: [10, null],
+                     barWidth: 25,
+                     label: {   // 图形上的文本标签
+                         show: true,
+                         position: 'inside', // 相对位置
+                         rotate: 0,  // 旋转角度
+                         color: '#eee'
+                     },
+                     itemStyle: {
+                         normal: { color: "#3FBB49" }
+                     }
+                 },
+                 {
+                     name: "Actual",
+                     type: "bar",
+                     stack: "业务",
+                     data: [null, 5],
+                     barWidth: 25,
+                     label: {   // 图形上的文本标签
+                         show: true,
+                         position: 'inside', // 相对位置
+                         rotate: 0,  // 旋转角度
+                         color: '#000000'
+                     },
+                     itemStyle: {
+                         normal: { color: "#FFFF33" }
+                     }
+                 }
+                ]
+            };
+            myChart_Today_alarm_times.setOption(option);
+
+        }
+
+        function Today_alarm_times_Data(DeviceId) {
+            var names = [];
+            var names2 = []; //类别数组（实际用来盛放X轴坐标值）
+            var indicatorsss = [];
+            $.ajax({
+                type: "post",
+                async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                url: '/DRAQ127/DRAQ127_AllStatus',
+                data: { DeviceId },
+                        dataType: "json",
+                        success: function(data) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    if (data.msg == 'success') {
+
+                        var obj = eval(data.data);
+                        //names.push(obj.CurrentPN_OCLNG);
+                        names.push("100");
+                        names.push(null);
+
+                        names2.push(null);
+                        names2.push(obj.HaltNum);
+                        myChart_Today_alarm_times.setOption({ //加载数据图表
+                        series: [{
+                        data: names
+                },
+                {
+                    data: names2
+                }
+                ],
+                    xAxis: {
+                        //data: ['Plan：' + obj.CurrentPN_OCLNG, 'Actual：' + obj.CurrentPN_DCRNG]
+                        data: ['Std：100', 'Actual：' + obj.HaltNum]
+                }
+                });
+                } else {
+                        //alert("后台数据获取失败!");
+                }
+                },
+                error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    //alert("图表请求数据失败!");
+                }
+            })
+            //myChart.setOption(option);
+        };
+        //Today_Alarm_times
+
+
+        //Today_alarm_time
+
+        var myChart_Today_alarm_time = echarts.init(document.getElementById("Today_alarm_time"));
+
+        function Today_alarm_time() {
+            // 指定图表的配置项和数据
+            option = {
+
+                title: {
+                    text: "",
+                    textStyle: {
+                        color: "#436EEE",
+                        fontSize: 17
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: [
+                      {
+                          name: 'Today Alarm Time(Min)',
+                          icon: 'circle',
+                          textStyle: {
+                              fontSize: '15',
+                              color: '#00FFFF',  // 单独设置某一个图列的颜色
+                              //backgroundColor: '#fff' // 单独设置某一个图列的字体背景色
+                          }
+                      }]
+                },
+                //x轴显示
+                xAxis: {
+                    data: ['Standard', 'Actual'],
+                    show: true,  // 是否显示
+                    position: 'bottom',  // x轴的位置
+                    offset: 0, // x轴相对于默认位置的偏移
+                    type: 'category',   // 轴类型， 默认为 'category'
+                    //name: '月份',    // 轴名称
+                    nameLocation: 'end',  // 轴名称相对位置
+                    nameTextStyle: {   // 坐标轴名称样式
+                        color: 'white',
+                        padding: [5, 0, 0, -5]
+                    },
+                    nameGap: 1, // 坐标轴名称与轴线之间的距离
+
+                    axisLabel: {    // 坐标轴标签
+                        show: true,  // 是否显示
+                        inside: false, // 是否朝内
+                        rotate: 0, // 旋转角度
+                        margin: 5, // 刻度标签与轴线之间的距离
+                        color: 'white'  // 默认取轴线的颜色
+                    },
+
+                    // show: false
+                },
+                //   ------   y轴  ----------
+                yAxis: {
+                    show: false,  // 是否显示
+                    position: 'left', // y轴位置
+                    offset: 0, // y轴相对于默认位置的偏移
+                    type: 'value',  // 轴类型，默认为 ‘category’
+                    name: '',   // 轴名称
+                    nameLocation: 'end', // 轴名称相对位置value
+                    nameTextStyle: {    // 坐标轴名称样式
+                        color: '#fff',
+                        padding: [0, 0, 0, 0]  // 坐标轴名称相对位置
+                    },
+                    nameGap: 1, // 坐标轴名称与轴线之间的距离
+                    //nameRotate: 270,  // 坐标轴名字旋转
+
+                    axisLine: {    // 坐标轴 轴线
+                        show: false,  // 是否显示
+                        //  -----   箭头 -----
+                        symbol: ['none', 'arrow'],  // 是否显示轴线箭头
+                        symbolSize: [8, 8],  // 箭头大小
+                        symbolOffset: [0, 7], // 箭头位置
+
+                        // ----- 线 -------
+                        lineStyle: {
+                            color: 'blue',
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    axisTick: {      // 坐标轴的刻度
+                        show: true,    // 是否显示
+                        inside: true,  // 是否朝内
+                        length: 3,      // 长度
+                        lineStyle: {
+                            color: 'red',  // 默认取轴线的颜色
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    axisLabel: {      // 坐标轴的标签
+                        show: true,    // 是否显示
+                        inside: false,  // 是否朝内
+                        rotate: 0,     // 旋转角度
+                        margin: 8,     // 刻度标签与轴线之间的距离
+                        color: 'red',  // 默认轴线的颜色
+                    },
+                    splitLine: {    // gird 区域中的分割线
+                        show: true,   // 是否显示
+                        lineStyle: {
+                            color: '#666',
+                            width: 1,
+                            type: 'dashed'
+                        }
+                    },
+                    splitArea: {     // 网格区域
+                        show: false   // 是否显示，默认为false
+                    }
+                },
+                tooltip: {
+                    position: ['50%', '50%'],
+                    padding: [5, 10]
+                },
+                grid: {
+                    left: '0%'
+                },
+                series: [
+                 {
+                     name: "Today Alarm Time(Min)",
+                     type: "bar",
+                     stack: "业务",
+                     data: [10, null],
+                     barWidth: 25,
+                     label: {   // 图形上的文本标签
+                         show: true,
+                         position: 'inside', // 相对位置
+                         rotate: 0,  // 旋转角度
+                         color: '#eee'
+                     },
+                     itemStyle: {
+                         normal: { color: "#3FBB49" }
+                     }
+                 },
+                 {
+                     name: "Actual",
+                     type: "bar",
+                     stack: "业务",
+                     data: [null, 5],
+                     barWidth: 25,
+                     label: {   // 图形上的文本标签
+                         show: true,
+                         position: 'inside', // 相对位置
+                         rotate: 0,  // 旋转角度
+                         color: '#000000'
+                     },
+                     itemStyle: {
+                         normal: { color: "#FFFF33" }
+                     }
+                 }
+                ]
+            };
+            myChart_Today_alarm_time.setOption(option);
+
+        }
+
+        function Today_alarm_time_Data(DeviceId) {
+            var names = [];
+            var names2 = []; //类别数组（实际用来盛放X轴坐标值）
+            var indicatorsss = [];
+            $.ajax({
+                type: "post",
+                async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                url: '/DRAQ127/DRAQ127_AllStatus',
+                data: { DeviceId },
+                        dataType: "json",
+                        success: function(data) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    if (data.msg == 'success') {
+
+                        var obj = eval(data.data);
+                        //names.push(obj.CurrentPN_OCLNG);
+                        names.push("30");
+                        names.push(null);
+
+                        names2.push(null);
+                        names2.push(obj.HaltTime);
+                        myChart_Today_alarm_time.setOption({ //加载数据图表
+                        series: [{
+                        data: names
+                },
+                {
+                    data: names2
+                }
+                ],
+                    xAxis: {
+                        //data: ['Plan：' + obj.CurrentPN_OCLNG, 'Actual：' + obj.CurrentPN_DCRNG]
+                        data: ['Std：30', 'Actual：' + obj.HaltTime]
+                }
+                });
+                } else {
+                        //alert("后台数据获取失败!");
+                }
+                },
+                    error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    //alert("图表请求数据失败!");
+                }
+                })
+            //myChart.setOption(option);
+                };
+
+        //Today_alarm_time
+
+        //初始化
+        var DeviceId = '@ViewBag.DeviceId';
+        Real_Alarm(DeviceId);
+        Test_leida();
+        Today_alarm_times();
+        Today_alarm_time();
+        //30秒刷新 一次实时报警
+        window.setInterval(function () {
+            var DeviceId = '@ViewBag.DeviceId';
+            Real_Alarm(DeviceId);
+        }, 33333);
+        //3秒刷新 一次雷达图数据
+        window.setInterval(function () {
+            var DeviceId = '@ViewBag.DeviceId';
+            Test_leida2();
+            Today_alarm_times_Data(DeviceId);
+            Today_alarm_time_Data(DeviceId);
+        }, 3000);
+
+
+        //每小时刷新 一次整个页面
+        function myrefresh() {
+            window.location.reload();//重新加载页面
+        }
+        setTimeout('myrefresh()', 1200000);//每小时刷新一次
+
+
+
+
+    </script>
+
+
+
+</body>
+
+
+
+</html>

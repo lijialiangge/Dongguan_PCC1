@@ -1,0 +1,692 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.datang>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ">
+
+
+        @*<div class="row">
+            <div class="col-md-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">PCS</span>
+                        <h5>当前产量</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">6200</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">PCS</span>
+                        <h5>本月累计产量</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">966682</h1>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="ibox float-e-margins ">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right progress-bar-danger">Days</span>
+                        <h5>设备安全工作天数</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins ">66</h1>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right progress-bar-danger">Status</span>
+                        <h5>设备当前状态</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">666</h1>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+        <div class="row">
+            <div class="col-lg-4">
+
+                <div class="widget-head-color-box navy-bg  text-center">
+                    <div class="m-b-md">
+                        <h2 class="font-bold no-margins">
+                            PCTron
+                        </h2>
+                    </div>
+                    <img src="~/img/PCTron1.png" class="img-circle circle-border m-b-md" alt="profile">
+                    <div>
+                        <span>Address：PHP</span>|
+                        <span>Owner：Andy</span>|
+                        <span>Telephone：18124684849</span>|
+                        <span>Status：online</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span class="label label-primary">Assembly machine</span>
+                                
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Actual</h4>
+                                
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Standard</h4>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">UPH</h4>
+                                
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="text-navy">10808</h5>
+                                
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="stats-label">10000</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">OEE</h4>
+                                
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="text-navy">95%</h5>
+                                
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="stats-label">90%</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h4 class="stats-label">Stop times</h4>
+                                
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 class="text-navy">5</h5>
+                                
+                            </div>
+                            <div class="col-xs-3">
+                                <h4 class="stats-label">Total stop time</h4>
+                                
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 class="text-navy">66</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span class="label label-primary">Test machine(Add)</span>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Actual</h4>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Standard</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">UPH</h4>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="text-navy">10808</h5>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="stats-label">10000</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">OEE</h4>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="text-navy">96%</h5>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h5 class="stats-label">90%</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h4 class="stats-label">Stop times</h4>
+
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 class="text-navy">5</h5>
+
+                            </div>
+                            <div class="col-xs-3">
+                                <h4 class="stats-label">Total stop time</h4>
+
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 class="text-navy">66</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h4 class="stats-label">NG unit</h4>
+
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 class="text-navy">5</h5>
+
+                            </div>
+                            <div class="col-xs-3">
+                                <h4 class="stats-label">NG rate</h4>
+
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 class="text-navy">66</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                @*<div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>产品比重图</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li>
+                                        <a href="graph_flot.html#">选项1</a>
+                                    </li>
+                                    <li>
+                                        <a href="graph_flot.html#">选项2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart"></div>
+                        </div>
+                    </div>
+                </div>*@
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Month output</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-line-chart"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Daily NG Rate</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-line-chart2"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+                
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="ibox-content">
+                        <div class="ibox-title">
+                            <h5>Internet Status
+                            </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart-moving"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <table class="table table-hover margin bottom">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10%" class="text-center">NO.</th>
+                                                <th>Device</th>
+                                                @*<th class="text-center">工作时长(h)</th>*@
+                                                <th class="text-center2">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td>
+                                                    Running...
+                                                </td>
+                                                @*<td class="text-center small">2014</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-primary">ON</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2</td>
+                                                <td>
+                                                    Voltage
+                                                </td>
+                                                @*<td class="text-center small">205</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-primary">220V</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3</td>
+                                                <td>
+                                                    Temperature
+                                                </td>
+                                                @*<td class="text-center small">1564</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-warning">90℃</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">4</td>
+                                                <td>Electric current</td>
+                                                @*<td class="text-center small">2615</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-primary">15mA</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">5</td>
+                                                <td>Manual</td>
+                                                @*<td class="text-center small">705</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-primary">ON</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">6</td>
+                                                <td>Scram</td>
+                                                @*<td class="text-center small">1086</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-warning">OFF</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">76</td>
+                                                <td>Lock machine</td>
+                                                @*<td class="text-center small">986</td>*@
+                                                <td class="text-center">
+                                                    <span class="label label-warning">OFF</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Meter</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="echarts" id="echarts-gauge-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+
+            </div>
+            <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+            <script src="~/scripts/plugins/echarts/echarts-all.js"></script>
+            <script src="~/scripts/demo/echarts-zhexian.min.js"></script>
+            <script src="~/scripts/demo/echarts-dongtaitu.min.js"></script>
+            @*<script src="~/scripts/demo/echartstest2-demo.min.js"></script>*@
+            <script src="~/scripts/plugins/flot/jquery.flot.js"></script>
+
+            <script src="~/scripts/plugins/chartJs/Chart.min.js"></script>
+            <script src="~/scripts/plugins/peity/jquery.peity.min.js"></script>
+            
+            <script>
+                $(document).ready(
+                    function () {
+                        var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]];
+                        var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]];
+                        var data1 = [{ label: "Data 1", data: d1, color: "#17a084" },
+                            { label: "Data 2", data: d2, color: "#127e68" }]; $.plot($("#flot-chart1"),
+                                data1, {
+                                    xaxis: { tickDecimals: 0 },
+                                    series: {
+                                        lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, },
+                                        points: { width: 0.1, show: false },
+                                    }, grid: { show: false, borderWidth: 0 }, legend: { show: false, }
+                                });
+                        var lineData = {
+                            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                            datasets: [{
+                                label: "Data", fillColor: "rgba(220,220,220,0.5)",
+                                strokeColor: "rgba(220,220,220,1)", pointColor: "rgba(220,220,220,1)",
+                                pointStrokeColor: "#fff", pointHighlightFill: "#fff", pointHighlightStroke: "rgba(220,220,220,1)",
+                                data: [65, 59, 40, 51, 36, 25, 40]
+                            }, {
+                                label: "Data", fillColor: "rgba(26,179,148,0.5)", strokeColor: "rgba(26,179,148,0.7)",
+                                pointColor: "rgba(26,179,148,1)", pointStrokeColor: "#fff", pointHighlightFill: "#fff",
+                                pointHighlightStroke: "rgba(26,179,148,1)", data: [48, 48, 60, 39, 56, 37, 30]
+                            }]
+                        };
+                        var lineOptions = {
+                            scaleShowGridLines: true, scaleGridLineColor: "rgba(0,0,0,.05)",
+                            scaleGridLineWidth: 1, bezierCurve: true, bezierCurveTension: 0.4, pointDot: true,
+                            pointDotRadius: 4, pointDotStrokeWidth: 1, pointHitDetectionRadius: 20, datasetStroke: true, datasetStrokeWidth: 2,
+                            datasetFill: true, responsive: true,
+                        };
+                        var ctx = document.getElementById("lineChart").getContext("2d");
+                        var myNewChart = new Chart(ctx).Line(lineData, lineOptions)
+                    });
+                
+                function ok() {
+                    var p = echarts.init(document.getElementById("echarts-line-chart")), a = {
+                        title: {
+                            text: ""
+                        },
+                        tooltip: {
+                            trigger: "axis"
+                        },
+                        legend: {
+                            data: ["SetCurve", "Monthly output"]
+                        },
+                        grid: {
+                            x: 80,
+                            x2: 100,
+                            y2: 20
+                        },
+                        calculable: !0,
+                        xAxis: [{
+                            type: "category",
+                            boundaryGap: !1,
+                            data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                        }],
+                        yAxis: [{
+                            type: "value",
+                            axisLabel: {
+                                formatter: "{value}"
+                            }
+                        }],
+                        series: [{
+                            name: "SetCurve",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#CC0033",
+                                    lineStyle: {
+                                        color: "#CC0033"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 0,   //设定实心点的大小
+                            data: [6666666, 6666666, 6666666, 6666666, 6666666, 6666666, 6666666, 6666666, 6666666, 6666666, 6666666, 6666666],
+
+                            //markLine : {
+                            //	data : [ {
+                            //		type : "average",
+                            //		name: "Average Value"
+                            //	} ]
+                            //}
+                        }, {
+                            name: "Monthly output",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#1ab394",
+                                    lineStyle: {
+                                        color: "#1ab394"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 3,   //设定实心点的大小
+                            //data: [6666666, 5555555, 7777777, 8888888, 6666666, 7897876, 6868688, 10999999],
+                            data: [6666666, 5555555, 7777777, 8888888, 6666666, 7897876, 6868688, 10999999, 8888888, 6666666, 7897876, 6868688],
+                            markPoint: {
+                                data: [{
+                                    type: "max",
+                                    name: "Max Value"
+                                }
+
+                                ]
+                            },
+
+                            markLine: {
+                                data: [{
+                                    type: "average",
+                                    name: "Average Value"
+                                }]
+                            }
+                        }]
+                    };
+
+
+
+                    p.setOption(a), $(window).resize(p.resize);
+                }
+
+                function ko() {
+                    var d = echarts.init(document.getElementById("echarts-line-chart2")), a = {
+                        title: {
+                            text: ""
+                        },
+                        tooltip: {
+                            trigger: "axis"
+                        },
+                        legend: {
+                            data: ["SetCurve", "Monthly NG Rate"]
+                        },
+                        grid: {
+                            x: 80,
+                            x2: 100,
+                            y2: 20
+                        },
+                        calculable: !0,
+                        xAxis: [{
+                            type: "category",
+                            boundaryGap: !1,
+                            data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                        }],
+                        yAxis: [{
+                            type: "value",
+                            axisLabel: {
+                                formatter: "{value} %"
+                            }
+                        }],
+                        series: [{
+                            name: "SetCurve",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#CC0033",
+                                    lineStyle: {
+                                        color: "#CC0033"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 0,   //设定实心点的大小
+
+                            data: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+
+                            //markLine: {
+                            //    data: [{
+                            //        type: "average",
+                            //        name: "Average Value"
+                            //    }]
+                            //}
+                        }, {
+                            name: "Monthly NG Rate",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#1ab394",
+                                    lineStyle: {
+                                        color: "#1ab394"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 3,   //设定实心点的大小
+
+                            //data: [3, 5, 7, 8, 6, 9, 2, 8, 0, 0, 0, 0],
+                            data: [3, 5, 7, 8, 6, 9, 2, 8, 1, 7, 8, 6],
+                            markPoint: {
+                                data: [{
+                                    type: "max",
+                                    name: "Max Value",
+
+                                }
+
+                                ]
+                            },
+
+                            markLine: {
+                                data: [{
+                                    type: "average",
+                                    name: "Average Value"
+                                }]
+                            }
+                        }]
+                    };
+
+                    d.setOption(a), $(window).resize(d.resize);
+                }
+                
+                var interval;
+                //先执行一次，然后再设置5秒执行一次
+                ok();
+                ko();
+                clearInterval(interval);
+                //clearInterval(interva2);
+                interval = setInterval(ok, 50000);
+                interval = setInterval(ko, 30000);
+            </script>
+    
+</body>
+
+
+
+</html>

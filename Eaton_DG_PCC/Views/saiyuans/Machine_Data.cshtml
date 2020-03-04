@@ -1,0 +1,384 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.datang>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">NEW</span>
+                        <h5>800mm Computerized high speed stranding machine</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+
+                            <a href="@Url.Action("Main","saiyuans")">
+                                <img alt="member" class="img-circle" src="~/img/PCTron1.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            The maximum speed of the spindle is 3000rpm. Automatic tension control: when the wire is twisted, the tension of the wire receiving from the bottom of the disk should be increased continuously. Make the tension of the whole winding line uniform, and adjust the tension without stopping the machine.
+                        </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">48%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 48%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                12
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                4
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                2416 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>1250mm High speed computer stranding machine</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/b.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            500 automatic high-speed copper strander is suitable for all kinds of soft and hard conductor wire (bare copper wire, enameled wire, tin-plated wire, copper-clad steel, copper-clad aluminum) and computer wire, headphone wire, electronic wire, telephone wire, network wire, PVC wire stranding, suitable for more than seven strands of copper wire stranding.
+                        </p>
+                        <div>
+                            <span>Equipment operation rate：</span>
+                            <div class="stat-percent">32%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 32%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                24
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                3
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                325 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Large drawing machine</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/c.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            Horizontal tandem structure, double motor drive, fast mold change. High performance precision helical gear transmission, high efficiency, low noise. It can guarantee the quality of wire drawing by using immersion lubrication and cooling.
+                        </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">73%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 73%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                11
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                6
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                105 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Tin machine</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/d.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            Apply to ￠3.16 ~ 7.35 ㎜ heat conductor tin plating, the machine tin plating layer, discoloration, conductor cleaning tank, storage tank, hot tin plating tank, wheeled tractor, blow dry device. Wire frame adopts 1250 ㎜ received double column line, the linear speed of 60 m/min.
+                        </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">61%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 61%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                43
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                1
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                913 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-title">
+
+                        <h5>Fine extension continuous lighter</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/e.png">
+                            </a>
+
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            The compact structure saves space, eliminates the separate annealing process, reduces the repeated transportation of wire, reduces the labor intensity of employees, shortens the number of production fault stops to improve the production efficiency, the elongation rate is uniform, the smooth finish is good, the finished product line is not easy to wet and not easy to oxidize.  
+                        </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">14%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 14%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                8
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                7
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                200 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="label label-warning pull-right">OLD</span>
+                        <h5>Single hander with cantilever</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/f.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            It is suitable for all kinds of power line, electronic line, network line, rubber cover line, control cable, data cable, communication cable, and other special cable core cable to be cabled, and complete the central and side packings at the same time.
+                        </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">25%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 25%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                25
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                4
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                105 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Middle extension continuous lighter</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/g.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            The compact structure saves space, eliminates the separate annealing process, reduces the repeated transportation of wire, reduces the labor intensity of employees, shortens the number of production fault stops to improve the production efficiency, the elongation rate is uniform, the smooth finish is good, the finished product line is not easy to wet and not easy to oxidize.
+                         </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">82%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 82%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                68
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                2
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                1400 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>1250mm Computerized high speed stranding machine</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/b.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            The fully automatic high speed copper stranding machine is suitable for all kinds of hard and soft conductor wire (bare copper wire, enameled wire, tinned wire, copper clad steel wire, copper clad aluminum wire) and computer wiring, earphone wire, electronic wire, telephone wire, network wire, PVC wire.
+                         </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">26%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 26%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold text-navy">Production order</div>
+                                16
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                8
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                100 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Fine extension continuous lighter</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="team-members">
+                            <a href="#">
+                                <img alt="member" class="img-circle" src="~/img/e.png">
+                            </a>
+
+                        </div>
+                        <h4>Equipment introduction</h4>
+                        <p>
+                            Save a space structure is compact, eliminate single annealing process, reduce the wire repeat transportation, reduce labor intensity, shorten the production Number of downtime to improve the production efficiency, uniform elongation, finish good, difficult to wet oxidation product line
+                        </p>
+                        <div>
+                            <span>Equipment operation rate:</span>
+                            <div class="stat-percent">18%</div>
+                            <div class="progress progress-mini">
+                                <div style="width: 18%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="row  m-t-sm">
+                            <div class="col-sm-4">
+                                <div class="font-bold   text-navy ">Production order</div>
+                                53
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="font-bold text-danger">Number of downtime</div>
+                                9
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <div class="font-bold">Total running time (hours)</div>
+                                140 <i class="fa fa-level-up text-navy"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+</html>

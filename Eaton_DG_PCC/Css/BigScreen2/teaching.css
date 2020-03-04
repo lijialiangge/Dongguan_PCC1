@@ -1,0 +1,285 @@
+
+.canvas-pic-two .utilization-rate{
+    position: absolute;
+    right:210px;
+    top:190px;
+    z-index: 100;
+   
+}
+.canvas-pic-two .utilization-rate div{
+    width:320px;
+    padding:10px 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    /*background: url("../imgs/teach-cornor.png") center no-repeat;*/
+
+}
+
+
+.utilization-rate p{
+    font-size: 36px;
+    font-family: myFirstFont;
+    color:#fff;
+     padding: 0; 
+    margin: 0; 
+
+}
+.utilization-rate span{
+    font-size: 16px;
+    color:#00FFFF;
+}
+ul { 
+    list-style: none; 
+} 
+.canvas-pic-two .utilization-rate2{
+    position: absolute;
+    right:50px;
+    top:190px;
+    z-index: 100;
+   
+}
+.canvas-pic-two .utilization-rate2 div{
+    width:150px;
+    padding:10px 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    /*background: url("../imgs/teach-cornor.png") center no-repeat;*/
+
+}
+.utilization-rate2 p{
+    font-size: 36px;
+    font-family: myFirstFont;
+    color:#fff;
+     padding: 0; 
+    margin: 0; 
+
+}
+.utilization-rate2 span{
+    font-size: 16px;
+    color:#00FFFF;
+}
+
+/*-------------------------*/
+.canvas-pic-two .utilization-rate3{
+    position: absolute;
+    left:8px;
+    top:150px;
+    z-index: 100;
+   
+}
+.canvas-pic-two .utilization-rate3 div{
+    width:120px;
+    padding:10px 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    /*background: url("../imgs/teach-cornor.png") center no-repeat;*/
+
+}
+.utilization-rate3 p{
+    font-size: 36px;
+    font-family: myFirstFont;
+    color:#fff;
+     padding: 0; 
+    margin: 0; 
+
+}
+.utilization-rate3 span{
+    font-size: 16px;
+    color:#00FFFF;
+}
+
+/*-------------------------*/
+.canvas-pic-two .utilization-rate4{
+    position: absolute;
+    right:100px;
+    top:150px;
+    z-index: 100;
+   
+}
+.canvas-pic-two .utilization-rate4 div{
+    width:120px;
+    padding:10px 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    /*background: url("../imgs/teach-cornor.png") center no-repeat;*/
+
+}
+.utilization-rate4 p{
+    font-size: 36px;
+    font-family: myFirstFont;
+    color:#fff;
+     padding: 0; 
+    margin: 0; 
+
+}
+.utilization-rate4 span{
+    font-size: 16px;
+    color:#00FFFF;
+}
+
+
+
+
+/*--------------------------Add--------------------*/
+/*---------six-border-----------*/
+.six-border{
+    position: relative;
+    padding:0px;
+    top:30px;
+}
+.six-border .data-type{
+    position: absolute;
+    top: 10px;
+    left: 48px;
+    color:#16aefa;
+}
+.six-border .data-type-two{
+    position: absolute;
+    bottom: 12px;
+    left: 48px;
+    color:#16aefa;
+}
+.six-border li{
+    position: relative;
+    width: 110px;
+    height:90px;
+    padding: 35px 0;
+    text-align: center;
+    font-size: 16px;
+    color:#fff;
+    display: inline-block;
+    background: url("../imgs/six-border.jpg") center no-repeat;
+    margin-left:35px;
+    box-sizing: border-box;
+}
+.six-border .top-run{
+    position: absolute;
+    top:-40px;
+    left:0;
+    width:110px;
+    text-align: center;
+    color:#00FFFF;
+    font-size: 24px;
+}
+.six-border .top-ready{
+    position: absolute;
+    top:-40px;
+    left:0;
+    width:110px;
+    text-align: center;
+    color:#ff0;
+    font-size: 24px;
+}
+.six-border .top-alarm{
+    position: absolute;
+    top:-40px;
+    left:0;
+    width:110px;
+    text-align: center;
+    color:#ff0000;
+    font-size: 24px;
+}
+.six-border .bottom11{
+    position: absolute;
+    bottom:-20px;
+    left:0;
+    width:180px;
+    text-align: center;
+}
+
+
+/*---------six-border2-----------*/
+.six-border2{
+    position: relative;
+    padding:0px;
+    top:10px;
+}
+.six-border2 .data-type{
+    position: absolute;
+    top: 10px;
+    left: 48px;
+    color:#16aefa;
+}
+.six-border2 .data-type-two{
+    position: absolute;
+    bottom: 12px;
+    left: 48px;
+    color:#16aefa;
+}
+.six-border2 li{
+    position: relative;
+    width: 110px;
+    height:90px;
+    padding: 35px 0;
+    text-align: center;
+    font-size: 16px;
+    color:#fff;
+    display: inline-block;
+    background: url("../imgs/six-border.jpg") center no-repeat;
+    margin-left:85px;
+    box-sizing: border-box;
+}
+.six-border2 .top-run{
+    position: absolute;
+    bottom:-20px;
+    left:-40px;
+    width:210px;
+    text-align: center;
+    color:#00FFFF;
+    font-size: 17px;
+}
+.six-border2 .top-ready{
+    position: absolute;
+    top:-40px;
+    left:0;
+    width:110px;
+    text-align: center;
+    color:#ff0;
+    font-size: 24px;
+}
+.six-border2 .top-alarm{
+    position: absolute;
+    bottom:-20px;
+    left:-40px;
+    width:210px;
+    text-align: center;
+    color:#ff0000;
+    font-size: 17px;
+}
+.six-border2 .bottom11{
+    position: absolute;
+    bottom:-20px;
+    left:0;
+    width:180px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+.re-all-data{
+    margin-top: 20px;
+    margin-left:216px;
+}
+.re-all-data li{
+    display: inline-block;
+    width:30px;
+    text-align:center ;
+    height: 50px;
+    line-height: 50px;
+    color:#fff;
+    font-family: myFirstFont;
+    font-size: 34px;
+    background:url("../imgs/center-data.jpg") center no-repeat;
+}
+
+.mySecurity{
+    height: 120px;
+    width:120px;
+    margin-left:228px;
+}

@@ -1,0 +1,312 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.AllStatus>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f3.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/BigScreen/echarts.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/BigScreen/dark.js"></script>
+        <link rel="stylesheet" href="~/Css/BigScreen/main.css">
+
+</head>
+<body>
+
+  
+
+
+  
+
+
+    <div id="title"></div>
+
+
+
+        
+            
+        
+      
+
+        
+
+
+
+
+    <div class="wrapper wrapper-content animated fadeInRight ">
+        
+            <div class="row blue-row2">
+            <div class="col-sm-3 my-bb1">
+                    <span class="my-color">Today output</span>
+                    <div class="slide-title">
+                        <span>NO.</span>
+                        <span>Device</span>
+                        <span>Output</span>
+                        <span>NG</span>
+                    </div>
+                    <div class="slide-container">
+                        <ul class="slide-list js-slide-list">
+                            <li class="odd"><span>1</span><span>PCTron</span><span>19868</span><span>0</span></li>
+                            <li class="even"><span>2</span><span>DRAQ75</span><span>20566</span><span>156</span></li>
+                            <li class="odd"><span>3</span><span>DRAQ127</span><span>0</span><span>0</span></li>
+                            <li class="even"><span>4</span><span>FP-1007</span><span>0</span><span>0</span></li>
+                            <li class="odd"><span>5</span><span>FP-0906</span><span>0</span><span>0</span></li>
+                            <li class="even"><span>6</span><span>FP-1107</span><span>0</span><span>0</span></li>
+                            <li class="odd"><span>7</span><span>FP-DC13G</span><span>0</span><span>0</span></li>
+                            <li class="even"><span>8</span><span>FP-DC14G</span><span>0</span><span>0</span></li>
+                            <li class="odd"><span>9</span><span>FP-HCP0805</span><span>0</span><span>0</span></li>
+                            <li class="even"><span>10</span><span>FP-HCP0704</span><span>0</span><span>0</span></li>
+                            <li class="odd"><span>11</span><span>FP-008</span><span>0</span><span>0</span></li>
+                            <li class="even"><span>12</span><span>FP-666</span><span>0</span><span>0</span></li>
+                        </ul>
+                    </div>
+            </div>
+
+
+                <div class="col-sm-9 my-bb1">
+                    <span class="my-color">运营概况</span>
+                        <div class="jz_left_top2" id="top3_center_tu">
+                    </div>
+                </div>
+               
+        </div>
+            <div class="row blue-row2">
+                <div class="col-sm-6 my-bb1" >
+                    <div>
+                        
+                        <span class="my-color">工艺流程监控</span>
+                        <div class="jz_left_top2" id="jz_left_top5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 my-bb1">
+                    <div>
+                        <span class="my-color">工艺流程监控</span>
+                        <div class="jz_left_top2" id="jz_top6_zhe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <script type="text/javascript" src="~/Scripts/BigScreen/jz_all_1.js"></script>
+
+            <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+            <script src="~/scripts/plugins/echarts/echarts-all.js"></script>
+
+
+
+            <script>
+
+                ///month output-----------------------------------------------------------------------------
+                function Monthly_output() {
+                    var p = echarts.init(document.getElementById("echarts-line-chart")), a = {
+                        title: {
+                            text: ""
+                        },
+                        tooltip: {
+                            trigger: "axis"
+                        },
+                        legend: {
+                            data: ["SetCurve", "Monthly output"]
+                        },
+                        grid: {
+                            x: 80,
+                            x2: 100,
+                            y2: 20
+                        },
+                        calculable: !0,
+                        xAxis: [{
+                            type: "category",
+                            boundaryGap: !1,
+                            data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                            //axisLabel: { //调整x轴的lable
+                            //    textStyle: {
+                            //        fontSize: 13, // 让字体变大
+
+
+                            //    }
+                            //}
+                        }],
+                        yAxis: [{
+                            type: "value",
+                            axisLabel: {
+                                formatter: "{value}"
+                            }
+                        }],
+                        series: [{
+                            name: "SetCurve",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#CC0033",
+                                    lineStyle: {
+                                        color: "#CC0033"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 0,   //设定实心点的大小
+                            data: [900000, 900000, 900000, 900000, 900000, 900000, 900000, 900000, 900000, 900000, 900000, 900000],
+
+                            //markLine : {
+                            //	data : [ {
+                            //		type : "average",
+                            //		name: "Average Value"
+                            //	} ]
+                            //}
+                        }, {
+                            name: "Monthly output",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#2c9c0e",
+                                    lineStyle: {
+                                        color: "#2c9c0e"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 3,   //设定实心点的大小
+                            data: [6666666, 5555555, 7777777, 8888888, 6666666, 7897876, 6868688, 10999999, 6666666, 7897876, 6868688, 10999999],
+                            markPoint: {
+                                data: [{
+                                    type: "max",
+                                    name: "Max Value"
+                                }
+
+                                ]
+                            },
+
+                            markLine: {
+                                data: [{
+                                    type: "average",
+                                    name: "Average Value"
+                                }]
+                            }
+                        }]
+                    };
+
+
+
+                    p.setOption(a), $(window).resize(p.resize);
+                }
+
+                function Monthly_NG() {
+                    var d = echarts.init(document.getElementById("echarts-line-chart2")), a = {
+                        title: {
+                            text: ""
+                        },
+                        tooltip: {
+                            trigger: "axis"
+                        },
+                        legend: {
+                            data: ["SetCurve", "Monthly NG"]
+                        },
+                        grid: {
+                            x: 80,
+                            x2: 100,
+                            y2: 20
+                        },
+                        calculable: !0,
+                        xAxis: [{
+                            type: "category",
+                            boundaryGap: !1,
+                            data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                        }],
+                        yAxis: [{
+                            type: "value",
+                            axisLabel: {
+                                //formatter: "{value} %"
+                                formatter: "{value}"
+                            }
+                        }],
+                        series: [{
+                            name: "SetCurve",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#CC0033",
+                                    lineStyle: {
+                                        color: "#CC0033"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 0,   //设定实心点的大小
+
+                            data: [850, 850, 850, 850, 850, 850, 850, 850, 850, 850, 850, 850],
+
+                            //markLine: {
+                            //    data: [{
+                            //        type: "average",
+                            //        name: "Average Value"
+                            //    }]
+                            //}
+                        }, {
+                            name: "Monthly NG",
+                            type: "line",
+                            itemStyle: {
+                                normal: {
+                                    color: "#2c9c0e",
+                                    lineStyle: {
+                                        color: "#2c9c0e"
+                                    }
+                                }
+                            },
+                            symbol: 'circle',     //设定为实心点
+                            symbolSize: 3,   //设定实心点的大小
+
+                            data: [300, 500, 700, 800, 600, 900, 200, 800, 110, 220, 330, 660],
+                            markPoint: {
+                                data: [{
+                                    type: "max",
+                                    name: "Max Value",
+
+                                }
+
+                                ]
+                            },
+
+                            markLine: {
+                                data: [{
+                                    type: "average",
+                                    name: "Average Value"
+                                }]
+                            }
+                        }]
+                    };
+
+                    d.setOption(a), $(window).resize(d.resize);
+                }
+
+                Monthly_output();
+                Monthly_NG();
+
+            </script>
+</body>
+
+
+
+</html>

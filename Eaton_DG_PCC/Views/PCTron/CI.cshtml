@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add CI</title>
+    <link href="~/Css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="~/Css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Add CI (You can submit software change proposals)</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <form  class="form-horizontal m-t" id="signupForm" action="@Url.Action("Add_CI")"  method="post">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Title：</label>
+                                    <div class="col-sm-8">
+                                        <textarea cols="111" name="Add_ci" rows="2"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Proposal：</label>
+                                    <div class="col-sm-8">
+                                        <textarea cols="111" name="Add_ci"  rows="10"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Submitter：</label>
+                                    <div class="col-sm-8">
+                                        <input id="name"  name="Add_ci"  type="text" value=""  />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-3">
+                                        <button class="btn btn-primary saveStatus" id="saving" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/plugins/sweetalert/sweetalert.min.js"></script>
+   
+    <script>
+        $(document).ready(function () {
+
+                //swal({ title: "太帅了", text: "小手一抖就打开了一个框", type: "success" });
+            $(".saveStatus").click(function () {
+                if (ViewBag.saveStatus==1){
+                swal({
+                    title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                })
+                } else if (ViewBag.saveStatus == 0) {
+                    swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "no"
+                    })
+                }
+            });
+        });
+    </script>
+
+    <script>
+            function success() {
+
+
+
+                swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                    })
+            };
+        
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1220 @@
+﻿@model Tuple<Eaton_DG_PCC.Models.AllStatus, List<Eaton_DG_PCC.Model.Monthly_Output_PCTron>, List<Eaton_DG_PCC.Model.Daily_Output_Model>, List<Eaton_DG_PCC.Model.Daily_NG_Model>>
+
+@*@Model.Item1 Tuple<Eaton_DG_PCC.Models.PHP_PCTron, Eaton_DG_PCC.Models.Device_List>*@
+
+@{
+    Layout = null;
+    //int Everyday_Output_BaseValues = Convert.ToInt32(ViewData["Everyday_Output_BaseValues"]);
+    //int Everyday_NG_BaseValues = Convert.ToInt32(ViewData["Everyday_NG_BaseValues"]);
+    //int Monthly_Output_BaseValues = Convert.ToInt32(ViewData["Monthly_Output_BaseValues"]);
+    //int Monthly_NG_BaseValues = Convert.ToInt32(ViewData["Monthly_NG_BaseValues"]);
+
+    //int Test_Everyday_Output_BaseValues = Convert.ToInt32(ViewData["Test_Everyday_Output_BaseValues"]);
+    //int Test_Everyday_NG_BaseValues = Convert.ToInt32(ViewData["Test_Everyday_NG_BaseValues"]);
+    //int Test_Monthly_Output_BaseValues = Convert.ToInt32(ViewData["Test_Monthly_Output_BaseValues"]);
+    //int Test_Monthly_NG_BaseValues = Convert.ToInt32(ViewData["Test_Monthly_NG_BaseValues"]);
+
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f3.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../modules/layui/css/layui.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+
+    <link rel="stylesheet" href="~/Css/layui/layui.css" />
+    <link rel="stylesheet" href="~/Css/layui/admin.css" />
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content2 animated fadeInRight ">
+        @if(@Model.Item1.Alarm_count>0){
+        <div class="row">
+            <marquee direction="left" behavior="scroll" scrollamount="3" scrolldelay="100">
+                报警提醒：XXXXXXXXXXXXXXXX
+                </marquee>
+        </div>
+        }
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="widget-head-color-box navy-bg  text-center">
+                    <div class="m-b-md">
+                        <br />
+                        <h2 id="DeviceName" class="font-bold no-margins">
+                            @Model.Item1.DeviceId
+                        </h2>
+                    </div>
+                    <img src="~/img/@Model.Item1.ImageUrl" class="img-circle circle-border m-b-md" alt="profile">
+                    <div>
+                        <span>Address：@Model.Item1.Address</span> |
+                        <span>Owner：@Model.Item1.Owner</span>
+
+                    </div>
+
+
+
+                    <div class="row">
+
+
+
+                        <div class="col-xs-8">
+                            <strong>Test Machine：</strong>
+                        </div>
+                        <div class="col-xs-4">
+                            @if (Model != null)
+                            {
+                                if (@Model.Item1.NetworkStatus.ToString() == "1")
+                                {
+                                    if (@Model.Item1.PLCRunStatus.ToString() == "1")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.PLCRunStatus.ToString() == "2")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.PLCRunStatus.ToString() == "3")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/yellow_20X18.gif">
+                                    }
+                                }
+                                else
+                                {
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                }
+                            }
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-1">
+                <div class="widget navy-bg text-center">
+                    <div class="m-b-md">
+                        <i class="fa fa-shield fa-4x"></i>
+                        <h3 class="m-xs">@Model.Item1.Total_run_time  Day</h3>
+
+
+                    </div>
+                </div>
+
+                @if (@Model.Item1.Alarm_count.ToString() == "0")
+                {
+                    <div class="widget2 navy-bg text-center">
+                        <div class="m-b-md">
+                            <i class="fa fa-bell fa-4x"></i>
+                            <h3 class="m-xs">@Model.Item1.Alarm_count</h3>
+
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                    <a href="@Url.Action("Alert_info_"+@Model.Item1.DeviceId, "PCTron", new { DeviceId =@Model.Item1.DeviceId })">
+
+                        <div class="widget2 red-bg text-center">
+
+                            <div class="m-b-md">
+                                <div>
+
+                                </div>
+                                <i class="fa fa-bell fa-4x"></i>
+
+                                <h3 class="m-xs">@Model.Item1.Alarm_count</h3>
+
+
+                            </div>
+
+                        </div>
+                    </a>
+                }
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="col-lg-4">
+                <div class="ibox2 float-e-margins">
+                    <div class="ibox-title">
+                        <h5 class="label-primary">Machine</h5>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span class="label label-success"></span>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Actual</h4>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Standard</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">UPH</h4>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h3 class="text-navy">@Model.Item1.UPH</h3>
+                                @*<span class="label label-primary">@Model.Item1.UPH</span>*@
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">@Model.Item1.Test_UPH_Baseline</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Yesterday OEE</h4>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <h3 class="text-navy">@Model.Item1.OEE%</h3>
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">@Model.Item1.Test_OEE_Baseline</h4>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Test Machine Maintain</h4>
+
+                            </div>
+                            <div class="col-xs-8">
+                                @if (@Model.Item1.Maintain_Status == "0")
+                                {<h4 class="text-danger">Maintenance has expired</h4>}
+                                else if (@Model.Item1.Maintain_Status == "1")
+                                {<h4 class="text-navy">Already maintained</h4>
+                                }
+                                else if (@Model.Item1.Maintain_Status == "2")
+                                {<h4 class="text-success">Maintenance in advance</h4> }
+                                @*  <span class="label label-primary">@Model.Item1.Today_Total_output</span>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="ibox-content2">
+                        <div class="row">
+
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Total alarm time</h4>
+
+                            </div>
+                            <div class="col-xs-2">
+                                <h3 class="text-navy">@Model.Item1.Total_alarm_stop_time H</h3>
+                                @*<span class="label label-primary">@Model.Item1.Total_alarm_stop_time H</span>*@
+                            </div>
+
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Total alarm times</h4>
+
+                            </div>
+                            <div class="col-xs-2">
+                                <h3 class="text-navy">@Model.Item1.Total_alarm_stop_times</h3>
+                                @*<span class="label label-primary">@Model.Item1.Total_alarm_stop_times</span>*@
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-4">
+                <div class="ibox2 float-e-margins">
+                    <div class="ibox-title">
+                        <div class="row">
+                            <div class="layui-btn-right">
+                                <button onclick="window.location.href='@Url.Action(ViewBag.DeviceId, "PCTron", new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary layui-btn-this">Main</button>
+                                <button onclick="window.location.href='@Url.Action("History", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">History</button>
+                                <button onclick="window.location.href='@Url.Action("Alarm", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">Alarm</button>
+                                @*<button onclick="window.location.href='@Url.Action("Order", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">Order</button>
+                                    <button onclick="window.location.href='@Url.Action("Daily_Output", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">Daily Output</button>
+                                    <button onclick="window.location.href='@Url.Action("Monthly_Output", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">Monthly Output</button>*@
+                                <button onclick="window.open('@Url.Action("BigScreen", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })')" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">BigScreen</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <h4 class="stats-label">PO</h4>
+                            </div>
+                            <div class="col-sm-5">
+                                <h4 class="text-navy text-center">59988237</h4>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="stats-label">Plan Output</h4>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="text-navy text-center">17500</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <h4 class="stats-label">PN</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">A127-820</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">PN/NO.</h4>
+                            </div>
+                            <div class="col-xs-1">
+                                <h4 class="text-navy text-center">20</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">Marking</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="text-navy text-center">DRA12782019PH19D</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">DCR/High</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">99.0000</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">DCR/Low</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">9.7778</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">DCR/Range</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">9.8889</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">Total/Reel</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">50</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">Current/Reel</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">48</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="stats-label">Qty/Reel</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h4 class="text-navy text-center">8889</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Today Stop Time</h4>
+                            </div>
+                            <div class="col-xs-2">
+                                <h3 class="text-navy">156 H</h3>
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="stats-label">Today Stop Times</h4>
+
+                            </div>
+                            <div class="col-xs-2">
+                                <h3 class="text-navy">89</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox2 float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-primary">Daily Output & NG</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="test_dailys_output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/plugins/echarts/echarts-all.js"></script>
+    <script src="~/scripts/demo/echarts-zhexian.min.js"></script>
+    <script src="~/scripts/demo/echarts-dongtaitu3.min.js"></script>
+    @*<script src="~/scripts/demo/echartstest2-demo.min.js"></script>*@
+    <script src="~/scripts/plugins/flot/jquery.flot.js"></script>
+
+    <script src="~/scripts/plugins/chartJs/Chart.min.js"></script>
+    <script src="~/scripts/plugins/peity/jquery.peity.min.js"></script>
+
+    <script>
+        $(document).ready(
+            function () {
+                var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]];
+                var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]];
+                var data1 = [{ label: "Data 1", data: d1, color: "#17a084" },
+                    { label: "Data 2", data: d2, color: "#127e68" }]; $.plot($("#flot-chart1"),
+                        data1, {
+                            xaxis: { tickDecimals: 0 },
+                            series: {
+                                lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, },
+                                points: { width: 0.1, show: false },
+                            }, grid: { show: false, borderWidth: 0 }, legend: { show: false, }
+                        });
+                var lineData = {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                    datasets: [{
+                        label: "Data", fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)", pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff", pointHighlightFill: "#fff", pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 40, 51, 36, 25, 40]
+                    }, {
+                        label: "Data", fillColor: "rgba(26,179,148,0.5)", strokeColor: "rgba(26,179,148,0.7)",
+                        pointColor: "rgba(26,179,148,1)", pointStrokeColor: "#fff", pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(26,179,148,1)", data: [48, 48, 60, 39, 56, 37, 30]
+                    }]
+                };
+                var lineOptions = {
+                    scaleShowGridLines: true, scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleGridLineWidth: 1, bezierCurve: true, bezierCurveTension: 0.4, pointDot: true,
+                    pointDotRadius: 4, pointDotStrokeWidth: 1, pointHitDetectionRadius: 20, datasetStroke: true, datasetStrokeWidth: 2,
+                    datasetFill: true, responsive: true,
+                };
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(lineData, lineOptions)
+            });
+
+
+
+
+
+
+
+
+
+        ////DRAQ75
+        //Everyday_Output();
+        //Monthly_output();
+
+
+
+
+
+
+
+
+
+
+        function myrefresh() {
+            window.location.reload();//重新加载页面
+        }
+        setTimeout('myrefresh()', 600000);//每十分钟刷新一次
+        //setTimeout('myrefresh()', 60000); //每分钟刷新一次
+    </script>
+
+
+
+    <script>
+        !function () {
+            var i = screen.width / 750;
+            document.write('<meta name="viewport"content="width=750,initial-scale=' + i + ",maximum-scale=" + i + ", minimum-scale=" + i + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+        }();
+        //plus.screen.lockOrientation("landscape");//锁定横屏 左右旋转 默认不会还原
+    </script>
+
+
+    <script>
+        function Detailed(DeviceId) {
+            $.ajax({
+                dataType: "json",
+                type: "post",
+                url: '/rj/Update_Equipment_Component_Status1',
+                data: { DeviceId},
+                        success: function (data) {
+                            var obj = eval(data.data);
+
+
+
+
+
+
+
+
+
+
+                            //设备名称
+                            $("#DeviceName").text(obj.DeviceId);
+
+                            //地址
+                            $("#Address").text("地址：" + obj.Address);
+
+                            //网络
+
+                            if (obj.NetworkStatus == "1") {
+                                $("#NetworkStatus").attr("src", "/img/green_20X17.gif");
+                                $("#NetworkStatus").removeClass().addClass("layui-badge-dot layui-bg-green ml6");
+                            }
+                            else {
+                                $("#NetworkStatus").removeClass().addClass("layui-badge-dot ml6");
+                            }
+
+                            //自动
+
+                            switch (obj.Auto) {
+                                case 'true':
+                                    $("#Auto").removeClass().addClass("layui-badge-dot ml6");
+                                    break;
+                                case 'false':
+                                    $("#Auto").removeClass().addClass("layui-badge-dot layui-bg-green ml6");
+                                    break;
+                            }
+
+
+                            //启动
+
+
+                            if (obj.Start_complete == "true") {
+                                $("#Start_complete").removeClass().addClass("layui-badge-dot layui-bg-green ml6");
+                            }
+                            else if (obj.Start_led_glitter == "true" || obj.Start_led_glitter1 == "true") {
+                                $("#Start_complete").removeClass().addClass("layui-badge-dot layui-bg-yellow ml6");
+                            }
+                            else {
+                                $("#Start_complete").removeClass().addClass("layui-badge-dot ml6");
+                            }
+
+
+
+
+                            //镀膜
+                            if (obj.Process_led_glitter == "true" && obj.In_process == "true") {
+                                $("#Process_led_glitter").removeClass().addClass("layui-badge-dot layui-bg-green ml6");
+                            }
+                            else {
+                                $("#Process_led_glitter").removeClass().addClass("layui-badge-dot ml6");
+                            }
+
+                            //待机
+                            if (obj.Idle_led_hold == "true" && obj.In_idle == "true") {
+                                $("#Idle_led_hold").removeClass().addClass("layui-badge-dot layui-bg-green ml6");
+                            }
+                            else {
+                                $("#Idle_led_hold").removeClass().addClass("layui-badge-dot ml6");
+                            }
+
+                            //清洗
+                            if (obj.Clean_led_glitter == "true" && obj.In_clean == "true") {
+                                $("#Clean_led_glitter").removeClass().addClass("layui-badge-dot layui-bg-green ml6");
+                            }
+                            else {
+                                $("#Clean_led_glitter").removeClass().addClass("layui-badge-dot ml6");
+                            }
+
+
+
+
+
+                            //抽真空
+
+                            if (obj.Vacuum_pumping == "0") {
+                                $("#Vacuum_pumping").attr("style", "width:0%");
+                                $("#Vacuum_pumping").removeClass().addClass("layui-progress-bar layui-progress-start");
+
+                            } else if (obj.Vacuum_pumping == "1") {
+                                $("#Vacuum_pumping").attr("style", "width:100%");
+                                $("#Vacuum_pumping").removeClass().addClass("layui-progress-bar layui-bg-orange layui-progress-start");
+                            }
+                            else if (obj.Vacuum_pumping == "2") {
+                                $("#Vacuum_pumping").attr("style", "width:100%");
+                                $("#Vacuum_pumping").removeClass().addClass("layui-progress-bar layui-progress-start");
+                            }
+
+                            //预处理1
+                            $("#Preprocessing1").attr("style", "width:" + obj.Preprocessing1 + "%");
+                            //镀膜1
+                            $("#Coating1").attr("style", "width:" + obj.Coating1 + "%");
+                            //预处理2
+                            $("#Preprocessing2").attr("style", "width:" + obj.Preprocessing2 + "%");
+                            //镀膜2
+                            $("#Coating2").attr("style", "width:" + obj.Coating2 + "%");
+                            //预处理3
+                            $("#Preprocessing3").attr("style", "width:" + obj.Preprocessing3 + "%");
+                            //镀膜3
+                            $("#Coating3").attr("style", "width:" + obj.Coating3 + "%");
+                            //排气
+                            if (obj.Exhaust == "0") {
+                                $("#Exhaust").attr("style", "width:0%");
+                                $("#Exhaust").removeClass().addClass("layui-progress-bar");
+
+                            }
+                            else if (obj.Exhaust == "1") {
+                                $("#Exhaust").attr("style", "width:100%");
+                                $("#Exhaust").removeClass().addClass("layui-progress-bar layui-bg-orange ");
+                            }
+                            else if (obj.Exhaust == "2") {
+                                $("#Exhaust").attr("style", "width:100%");
+                                $("#Exhaust").removeClass().addClass("layui-progress-bar");
+                            }
+                            //开腔门
+                            $("#Open_door").attr("style", "width:" + obj.Open_door + "%");
+                            //完成
+                            if (obj.Done == "true") {
+                                $("#Done").attr("style", "width:100%");
+
+                            }
+                            else if (obj.Done == "false") {
+                                $("#Done").attr("style", "width:0%");
+                            }
+                            //真空计阀
+                            switch (obj.Vacuum_gauge_valve) {
+                                case 'true':
+                                    $("#Vacuum_gauge_valve_Status").text("启动");
+                                    $("#Vacuum_gauge_valve").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-lword");
+                                    break;
+                                case 'false':
+                                    $("#Vacuum_gauge_valve_Status").text("停止");
+                                    $("#Vacuum_gauge_valve").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-red");
+                                    break;
+                            }
+                            switch (obj.Vacuum_gauge_valve_i) {
+                                case 'true':
+                                    $("#Vacuum_gauge_valve_i").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Vacuum_gauge_valve_i").removeClass().addClass("layui-badge-dot layui-bg-red ml12");
+                                    break;
+                            }
+
+
+
+                            //角阀
+
+
+                            switch (obj.Device_angle_valve) {
+                                case 'true':
+                                    $("#Device_angle_valve_Status").text("启动");
+                                    $("#Device_angle_valve").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-lword");
+                                    break;
+                                case 'false':
+                                    $("#Device_angle_valve_Status").text("停止");
+                                    $("#Device_angle_valve").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-red");
+                                    break;
+                            }
+                            switch (obj.Device_angle_valve_i) {
+                                case 'true':
+                                    $("#Device_angle_valve_i").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Device_angle_valve_i").removeClass().addClass("layui-badge-dot layui-bg-red ml12");
+                                    break;
+                            }
+
+
+                            //GV
+
+                            $("#GV_voltage_control_pressure").text(obj.GV_voltage_control_pressure);
+                            $("#GV_voltage_control_position").text(obj.GV_voltage_control_position);
+                            switch (obj.GV_voltage_control) {
+                                case 'true':
+                                    $("#GV_voltage_control_color_voltage_control_color").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-left");
+                                    $("#GV_voltage_control_color_bit_control_color").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-primary layui-btn-right");
+
+                                    break;
+                                case 'false':
+                                    $("#GV_voltage_control_color_voltage_control_color").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-primary layui-btn-left");
+                                    $("#GV_voltage_control_color_bit_control_color").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-right");
+                                    break;
+                            }
+
+
+
+                            //罗茨泵
+                            switch (obj.Roots_pump) {
+                                case 'true':
+                                    $("#Roots_pump_Status").text("启动");
+                                    $("#Roots_pump").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-lword");
+                                    break;
+                                case 'false':
+                                    $("#Roots_pump_Status").text("停止");
+                                    $("#Roots_pump").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-red");
+                                    break;
+                            }
+                            switch (obj.Roots_pump_i) {
+                                case 'true':
+                                    $("#Roots_pump_i").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Roots_pump_i").removeClass().addClass("layui-badge-dot layui-bg-red ml12");
+                                    break;
+                            }
+
+
+                            //干泵
+
+                            switch (obj.Dry_pump) {
+                                case 'true':
+
+                                    $("#Dry_pump").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-lword");
+                                    break;
+                                case 'false':
+                                    $("#Dry_pump").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-red");
+                                    break;
+                            }
+
+
+
+                            if (obj.Dry_pump_i == "true") {
+                                $("#Dry_pump_i_status").text("运行");
+                                $("#Dry_pump_i_img").removeClass().addClass("layui-badge-dot layui-bg-green");
+                            }
+                            else if (obj.Dry_pump_alarm == "true") {
+                                $("#Dry_pump_i_status").text("故障");
+                                $("#Dry_pump_i_img").removeClass().addClass("layui-badge-dot layui-bg-yellow ml6");
+                            }
+                            else {
+                                $("#Dry_pump_i_status").text("停止");
+                                $("#Dry_pump_i_img").removeClass().addClass("layui-badge-dot layui-bg-red ml12");
+                            }
+
+
+                            //排气阀
+
+
+                            switch (obj.Exhaust_valve) {
+                                case 'true':
+                                    $("#Exhaust_valve_Status").text("开阀");
+                                    $("#Exhaust_valve").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-green layui-btn-lword");
+                                    break;
+                                case 'false':
+                                    $("#Exhaust_valve_Status").text("关阀");
+                                    $("#Exhaust_valve").removeClass().addClass("layui-btn layui-btn-radius layui-btn-devices layui-btn-red");
+                                    break;
+                            }
+                            switch (obj.Exhaust_valve_open) {
+                                case 'true':
+                                    $("#Exhaust_valve_open").attr("src", "/img/green_20X17.gif");
+                                    $("#Exhaust_valve_open").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Exhaust_valve_open").removeClass().addClass("layui-badge-dot layui-bg-red ml12");
+                                    break;
+                            }
+
+
+
+                            //o2
+                            switch (obj.O2_valve) {
+                                case 'true':
+
+                                    $("#O2_valve").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#O2_valve").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            $("#O2_set").text(obj.O2_set);
+                            $("#O2_feedback").text(obj.O2_feedback);
+                            //He
+
+
+                            switch (obj.He_valve) {
+                                case 'true':
+                                    $("#He_valve").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#He_valve").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            $("#He_set").text(obj.He_set);
+                            $("#He_feedback").text(obj.He_feedback);
+
+                            //清洗
+
+
+                            $("#Pirani_data").text(obj.Pirani_data);
+                            $("#CDG_feedback").text(obj.CDG_feedback);
+                            //伺服
+
+
+
+                            switch (obj.Servo_ready) {
+                                case 'true':
+                                    $("#Servo_ready").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Servo_ready").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            switch (obj.Servo_alarm) {
+                                case 'true':
+                                    $("#Servo_alarm").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Servo_alarm").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+                            switch (obj.Servo_break_off) {
+                                case 'true':
+                                    $("#Servo_break_off").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Servo_break_off").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            $("#Servo_speed").text(obj.Servo_speed);
+
+
+                            //空气吹扫
+
+
+
+                            switch (obj.Air_purge_auto_manual) {
+                                case 'true':
+                                    $("#Air_name").text("自动");
+                                    break;
+                                case 'false':
+                                    $("#Air_name").text("手动");
+                                    break;
+                            }
+
+                            $("#Air_purge_time").text(obj.Air_purge_time + " S");
+                            $("#Air_purge_times").text(obj.Air_purge_times);
+
+                            //变频
+                            $("#Frequency_conversion_frequency").text(obj.Frequency_conversion_frequency);
+
+
+
+                            if (obj.Frequency_conversion_positive_rotation == "true") {
+                                $("#Positive_rotation").text("正转");
+                                $("#Positive_rotation_color").removeClass().addClass("layui-badge-dot layui-bg-green");
+
+                            }
+                            else if (obj.Frequency_conversion_reversal == "true") {
+                                $("#Positive_rotation").text("反转");
+                                $("#Positive_rotation_color").attr("src", "/img/yellow_20X18.gif");
+                                $("#Positive_rotation_color").removeClass().addClass("layui-badge-dot layui-bg-yellow ml6");
+                            }
+                            else {
+                                $("#Positive_rotation").text("停止");
+                                $("#Positive_rotation_color").removeClass().addClass("layui-badge-dot");
+
+                            }
+
+
+
+
+
+                            switch (obj.Frequency_conversion_alarm) {
+                                case 'true':
+                                    $("#Frequency_conversion_alarm").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Frequency_conversion_alarm").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            switch (obj.Frequency_conversion_ready) {
+                                case 'true':
+                                    $("#Frequency_conversion_ready").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Frequency_conversion_ready").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+
+                            //射频
+                            $("#Radio_frequency_transmitting_power").text(obj.Radio_frequency_transmitting_power);
+                            $("#Radio_frequency_reverse_power").text(obj.Radio_frequency_reverse_power);
+                            $("#Radio_frequency_c_load_position").text(obj.Radio_frequency_c_load_position);
+                            $("#Radio_frequency_c_time_position").text(obj.Radio_frequency_c_time_position);
+
+
+
+                            //限位P1/上料位
+                            switch (obj.Limit_P1) {
+                                case 'true':
+                                    $("#Limit_P1").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Limit_P1").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //限位P2
+                            switch (obj.Limit_P2) {
+                                case 'true':
+                                    $("#Limit_P2").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Limit_P2").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //限位P3
+                            switch (obj.Limit_P3) {
+                                case 'true':
+                                    $("#Limit_P3").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Limit_P3").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //限位P4/工作位
+                            switch (obj.Limit_P4) {
+                                case 'true':
+                                    $("#Limit_P4").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Limit_P4").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //腔体常压
+                            switch (obj.Chamber_atmospheric_pressure) {
+                                case 'true':
+                                    $("#Chamber_atmospheric_pressure").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Chamber_atmospheric_pressure").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //手动温度
+                            switch (obj.Manual_temperature) {
+                                case 'true':
+                                    $("#Manual_temperature").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Manual_temperature").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //入口阀
+                            switch (obj.Inlet_valve) {
+                                case 'true':
+                                    $("#Inlet_valve").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Inlet_valve").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //轴流风机
+
+                            switch (obj.Logistics_fan) {
+                                case 'true':
+                                    $("#Logistics_fan").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Logistics_fan").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //P2-3
+
+                            switch (obj.P2_3) {
+                                case 'true':
+                                    $("#P2-3").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#P2-3").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //GM1
+
+                            switch (obj.GM1) {
+                                case 'true':
+                                    $("#GM1").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#GM1").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //GM2
+
+                            switch (obj.GM2) {
+                                case 'true':
+                                    $("#GM2").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#GM2").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //腔体充气阀
+
+                            switch (obj.Cavity_inflatable_valve) {
+                                case 'true':
+                                    $("#Cavity_inflatable_valve").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Cavity_inflatable_valve").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //温度就绪
+
+                            switch (obj.Temperature_readiness) {
+                                case 'true':
+                                    $("#Temperature_readiness").removeClass().addClass("layui-badge-dot layui-bg-green");
+                                    break;
+                                case 'false':
+                                    $("#Temperature_readiness").removeClass().addClass("layui-badge-dot");
+                                    break;
+                            }
+
+                            //工艺
+                            $("#Temperature_v1_1").text("V1-1温度 " + obj.Temperature_v1_1 + "℃");
+                            $("#Temperature_v2_1").text("V2-1温度 " + obj.Temperature_v2_1 + "℃");
+                            $("#Temperature_v3_1").text("V3-1温度 " + obj.Temperature_v3_1 + "℃");
+                            $("#Temperature_v4_1").text("V4-1温度 " + obj.Temperature_v4_1 + "℃");
+                            $("#Cylinder_temperature_1").text("筒体1温度 " + obj.Cylinder_temperature_1 + "℃");
+                            $("#Cylinder_temperature_2").text("筒体1温度 " + obj.Cylinder_temperature_2 + "℃");
+
+
+                            $("#Temperature_v5_1").text("V5-1温度 " + obj.Temperature_v5_1 + "℃");
+                            $("#Temperature_v6_1").text("V6-1温度 " + obj.Temperature_v6_1 + "℃");
+                            $("#Temperature_v7_1").text("V7-1温度 " + obj.Temperature_v7_1 + "℃");
+                            $("#Temperature_v8_1").text("V8-1温度 " + obj.Temperature_v8_1 + "℃");
+                            $("#Cylinder_temperature_3").text("筒体3温度 " + obj.Cylinder_temperature_3 + "℃");
+                            $("#Cylinder_temperature_4").text("筒体4温度 " + obj.Cylinder_temperature_4 + "℃");
+
+
+                            $("#Temperature_v1_2").text("V1-2温度 " + obj.Temperature_v1_2 + "℃");
+                            $("#Temperature_v2_2").text("V2-2温度 " + obj.Temperature_v2_2 + "℃");
+                            $("#Temperature_v3_2").text("V3-2温度 " + obj.Temperature_v3_2 + "℃");
+                            $("#Temperature_v4_2").text("V4-2温度 " + obj.Temperature_v4_2 + "℃");
+                            $("#Barrel_top_temperature").text("筒顶温度 " + obj.Barrel_top_temperature + "℃");
+                            $("#Bottom_temperature").text("筒底温度 " + obj.Bottom_temperature + "℃");
+
+
+                            $("#Temperature_v5_2").text("V5-2温度 " + obj.Temperature_v5_2 + "℃");
+                            $("#Temperature_v6_2").text("V6-2温度 " + obj.Temperature_v6_2 + "℃");
+                            $("#Temperature_v7_2").text("V7-2温度 " + obj.Temperature_v7_2 + "℃");
+                            $("#Temperature_v8_2").text("V8-2温度 " + obj.Temperature_v8_2 + "℃");
+                            $("#Horizontal_channel").text("水平通道 " + obj.Horizontal_channel + "℃");
+                            $("#Lower_channel").text("下部通道 " + obj.Lower_channel + "℃");
+
+
+                            $("#Technology_Doser1").text("Doser1温度 " + obj.Technology_Doser1 + "℃");
+                            $("#Technology_Doser2").text("Doser2温度 " + obj.Technology_Doser2 + "℃");
+                            $("#Technology_Doser3").text("Doser3温度 " + obj.Technology_Doser3 + "℃");
+                            $("#Technology_Doser4").text("Doser4温度 " + obj.Technology_Doser4 + "℃");
+                            $("#Vacuum_gauge").text("真空计 " + obj.Vacuum_gauge + "℃");
+                            $("#Technology_angle_valve").text("角阀 " + obj.Technology_angle_valve + "℃");
+
+                            $("#Technology_Doser5").text("Doser5温度 " + obj.Technology_Doser5 + "℃");
+                            $("#Technology_Doser6").text("Doser6温度 " + obj.Technology_Doser6 + "℃");
+                            $("#Technology_Doser7").text("Doser7温度 " + obj.Technology_Doser7 + "℃");
+                            $("#Technology_Doser8").text("Doser8温度 " + obj.Technology_Doser8 + "℃");
+                            $("#Post_pumping_temperature").text("泵后温度 " + obj.Post_pumping_temperature + "℃");
+                            $("#Dry_pump_temperature").text("干泵温度 " + obj.Dry_pump_temperature + "℃");
+
+
+                            $("#Cleaning_time_setting").text("清洗时间设定(S) " + obj.Cleaning_time_setting);
+                            $("#Minimum_vacuum_time").text("最小抽真空时间 " + obj.Minimum_vacuum_time);
+                            $("#Clean_time").text("清洗时间 " + obj.Clean_time + " S");
+                            $("#Clean_times").text("清洗次数 " + obj.Clean_times);
+                            $("#Clean_power1").text("清洗功率 " + obj.Clean_power);
+
+
+                            $("#Process_time").text("工序时间 " + obj.Process_time + " S");
+                            $("#Process_batch").text("工序批次 " + obj.Process_batch);
+                            $("#Clean_power2").text("镀膜次数 " + obj.Clean_power);
+                            $("#Clean_power3").text("液位压力 " + obj.Clean_power);
+
+                            $("#Vacuum_time_1").text(obj.Vacuum_time_1);
+                            $("#Vacuum_time_2").text(obj.Vacuum_time_2);
+
+                            $("#Volatilization_detection_1").text(obj.Volatilization_detection_1);
+                            $("#Volatilization_detection_2").text(obj.Volatilization_detection_2);
+                            $("#Volatilization_detection_3").text(obj.Volatilization_detection_3 + " S");
+
+                            $("#Pretreatment_time_1").text(obj.Pretreatment_time_1);
+                            $("#Pretreatment_time_2").text(obj.Pretreatment_time_2);
+                            $("#Pretreatment_time_3").text(obj.Pretreatment_time_3);
+                            $("#Pretreatment_time_4").text(obj.Pretreatment_time_4);
+                            $("#Pretreatment_time_5").text(obj.Pretreatment_time_5);
+                            $("#Pretreatment_time_6").text(obj.Pretreatment_time_6);
+
+                            $("#Pretreatment_monomer_1").text(obj.Pretreatment_monomer_1);
+                            $("#Pretreatment_monomer_2").text(obj.Pretreatment_monomer_2);
+                            $("#Pretreatment_monomer_3").text(obj.Pretreatment_monomer_3);
+                            $("#Pretreatment_monomer_4").text(obj.Pretreatment_monomer_4);
+                            $("#Pretreatment_monomer_5").text(obj.Pretreatment_monomer_5);
+                            $("#Pretreatment_monomer_6").text(obj.Pretreatment_monomer_6);
+
+
+                            $("#Coating_to_fight_1").text(obj.Coating_to_fight_1);
+                            $("#Coating_to_fight_2").text(obj.Coating_to_fight_2);
+                            $("#Coating_to_fight_3").text(obj.Coating_to_fight_3);
+                            $("#Coating_to_fight_4").text(obj.Coating_to_fight_4);
+                            $("#Coating_to_fight_5").text(obj.Coating_to_fight_5);
+                            $("#Coating_to_fight_6").text(obj.Coating_to_fight_6);
+
+                            $("#Coating_time_1").text(obj.Coating_time_1);
+                            $("#Coating_time_2").text(obj.Coating_time_2);
+                            $("#Coating_time_3").text(obj.Coating_time_3);
+                            $("#Coating_time_4").text(obj.Coating_time_4);
+                            $("#Coating_time_5").text(obj.Coating_time_5);
+                            $("#Coating_time_6").text(obj.Coating_time_6);
+
+                            $("#Coated_monomer_1").text(obj.Coated_monomer_1);
+                            $("#Coated_monomer_2").text(obj.Coated_monomer_2);
+                            $("#Coated_monomer_3").text(obj.Coated_monomer_3);
+                            $("#Coated_monomer_4").text(obj.Coated_monomer_4);
+                            $("#Coated_monomer_5").text(obj.Coated_monomer_5);
+                            $("#Coated_monomer_6").text(obj.Coated_monomer_6);
+
+
+                            $("#Film_clean_time_1").text(obj.Film_clean_time_1);
+                            $("#Film_clean_time_2").text(obj.Film_clean_time_2);
+                            $("#Film_clean_time_3").text(obj.Film_clean_time_3);
+
+
+
+
+
+
+
+                        },
+                error: function (data) {
+                    //alert("系统错误");
+                }
+            })
+        };
+        //window.setTimeout(function () {
+        //    Detailed('device1');
+        //}, 3000);
+        //setInterval(Detailed(), 3000);
+        window.setInterval(function () {
+            var id = '@ViewBag.DeviceId';
+            Detailed(id);
+        }, 3000);
+    </script>
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/_Device_Info_DRAQ127.cshtml")
+</body>
+
+
+
+</html>

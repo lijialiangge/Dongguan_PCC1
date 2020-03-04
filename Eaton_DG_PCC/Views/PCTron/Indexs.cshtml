@@ -1,0 +1,237 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.AllStatus>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+
+</head>
+
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span><img alt="image" 
+                                       src="~/img/Eaton.gif"/></span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                                <span class="clear">
+                                    <span class="block m-t-xs"><strong class="font-bold">@ViewData["name"].ToString()</strong></span>
+                                    @if (@ViewData["role"].ToString() == "Admin,Edit,Select") {
+                                    <span class="text-muted text-xs block">Super Admin<b class="caret"></b></span>
+                                    }else if (@ViewData["role"].ToString() == "Edit,Select") {
+                                    <span class="text-muted text-xs block">Admin<b class="caret"></b></span>
+                                    }
+                                    else if (@ViewData["role"].ToString() == "Select") {
+                                    <span class="text-muted text-xs block">Guest<b class="caret"></b></span>
+                                    }
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+
+                               
+                                <li>
+                                    <a href="@Url.Action("LogOff", "PCTron", new { username =@ViewData["name"].ToString() })">Exit</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            AME+
+                        </div>
+                    </li>
+
+                        
+                    <li>
+                        <a class="J_menuItem" href="@Url.Action("Device_List", "PCTron")">
+                            <i class="fa fa-home"></i>
+                            <span  >Device Info</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                      
+                    </li>
+
+
+                    @*<li>
+                        <a class="J_menuItem" href="@Url.Action("Maintenance_info", "PCTron")">
+                            <i class="fa fa fa-thumbs-up"></i>
+                            <span  >Maintenance info</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                       
+                    </li>
+
+                    <li>
+                            <a class="J_menuItem" href="@Url.Action("Spare_Parts_List", "PCTron")"><i class="fa fa-university"></i> <span>Spare Parts</span><span class="fa arrow"></span></a>
+
+                        </li>
+
+                    <li>
+                        <a class="J_menuItem" href="@Url.Action("FAQ", "PCTron")"><i class="fa fa-question-circle"></i> <span >FAQ</span><span class="fa arrow"></span></a>
+                       
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("BigScreen4", "PCTron")">
+                            <i class="fa fa-bar-chart-o"></i> <span class="nav-label">Overall situation</span><span class="fa arrow"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Privilege management</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="@Url.Action("Role_Manage", "PCTron")">Role management</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="@Url.Action("CI", "PCTron")"><i class="fa fa-question"></i> <span>CI</span><span class="fa arrow"></span></a>
+                    </li>
+                    <li class="J_tabCloseAll">
+                        
+                        <a>
+                        <i class="fa fa-remove"></i><span class="nav-label">Close all tabs</span>
+                        </a>
+                    </li>*@
+
+                    
+
+
+
+
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+           
+
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">Index</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight">
+                    <i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">
+                        closing<span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive">
+                            <a>Locate the current TAB</a>
+                        </li>
+                        <li class="J_tabCloseAll">
+                            <a>Close all tabs</a>
+                        </li>
+                        <li class="J_tabCloseOther">
+                            <a>Close the other tabs</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="@Url.Action("LogOff", "PCTron", new { username =@ViewData["name"].ToString() })" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> Exit</a>
+            </div>
+            <!--默认加载页面-->
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/PCTron/Device_List" frameborder="0" data-id="index_v1.html" seamless></iframe>
+            </div>
+            
+
+        </div>
+        <!--右侧部分结束-->
+
+
+    </div>
+
+
+
+
+
+
+    <script src="~/scripts/jquery.min.js"></script>
+
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/scripts/plugins/layer/layer.min.js"></script>
+    <script src="~/scripts/hplus.min.js"></script>
+    <script src="~/scripts/contabs.min.js"></script>
+    <script src="~/scripts/plugins/pace/pace.min.js">
+    </script>
+
+
+    <script>
+       !function(){
+           var i = screen.width / 750;
+           document.write('<meta name="viewport"content="width=750,initial-scale='+i+",maximum-scale="+i+", minimum-scale="+i+',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+       }();
+       //plus.screen.lockOrientation("landscape");//锁定横屏 左右旋转 默认不会还原
+       
+
+
+
+       //function select_NetworkStatus() {
+       //    $.ajax({
+       //        dataType: "json",
+       //        type: "post",
+       //        url: '/DRAQ127/DRAQ127_AllStatus_NetworkStatus',
+       //        data: {},
+       //        success: function (data) {
+       //            if(data.msg==1){
+       //                alert("ok");
+       //            }
+       //           // alert("ok");
+       //        },
+       //        error: function (data) {
+       //            //alert("系统错误");
+       //        }
+       //    })
+       //};
+
+       //window.setInterval(function () {
+       //    select_NetworkStatus();
+       //}, 3000);
+
+    </script>
+
+
+</body>
+
+
+</html>

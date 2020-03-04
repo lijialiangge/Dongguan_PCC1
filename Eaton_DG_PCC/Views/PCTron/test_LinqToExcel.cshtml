@@ -1,0 +1,25 @@
+﻿@model Tuple<List<Eaton_DG_PCC.Model.test>>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test_LinqToExcel</title>
+</head>
+<body>
+    <div> 
+        @foreach (var item in Model.Item1)
+        {
+           <div>
+                <h3>@item.devcieid</h3>
+               <h5>@item.AlarmName</h5>
+           </div>
+        }
+        
+    </div>
+</body>
+</html>

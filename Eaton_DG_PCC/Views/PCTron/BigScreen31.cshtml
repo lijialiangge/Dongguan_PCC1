@@ -1,0 +1,238 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.AllStatus>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f3.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Css/BigScreen2/common.css">
+    <link rel="stylesheet" href="~/Css/BigScreen2/equipApply.css">
+    <link rel="stylesheet" href="~/Css/BigScreen/main.css">
+
+
+</head>
+<body>
+
+  
+    <div id="title">
+        <header>
+            <div class="date">
+                <div class="currentTime"></div>
+                <div class="cDate">
+                    <div class="currentDate"></div>
+                    <div class="currentWeek"></div>
+                </div>
+            </div>
+        </header>
+        </div>
+    <div>
+        <div class="wrapper wrapper-content animated fadeInRight ">
+            
+            <div class="row blue-row2">
+                <!-- PCTron monthly output -->
+                <div class="col-sm-4  my-bb1">
+                        <div class="main ">
+                            <div class="left">
+                                <div class="serviceTime">
+                                    <p class="module">
+                                        <span class="iconfont">&#xe73e;</span>
+                                        <span class="title">PCTron Monthly Output</span>
+                                    </p>
+                                    <div id="serviceTimeChart"></div>
+                                </div>
+                            </div>
+                            </div>
+                </div>
+                    <!-- 中国地图 -->
+                    <div class="col-sm-3">
+                        <div class="map my-bb1">
+                            <div id="mapChart"></div>
+                            <div class="statistics">
+                                <div>
+                                    <p class="count">2214</p>
+                                    <p class="type">故障数</p>
+                                </div>
+                                <div>
+                                    <p class="count">349</p>
+                                    <p class="type">维修次数</p>
+                                </div>
+                                <div>
+                                    <p class="count">75</p>
+                                    <p class="type">平均报修响应时间</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 故障状态分布 -->
+                    <div class="col-sm-3">
+                        <div class="distributeByStatus my-bb1">
+                            <p class="module">
+                                <span class="iconfont">&#xe73e;</span>
+                                <span class="title">故障状态分布</span>
+                            </p>
+                            <div id="distributeByStatusChart"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            <div class="row blue-row2">
+                <!-- Top 5 Type Ratio -->
+                <div class="col-sm-3">
+                    <div class="gradeRate my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Top 5 Type Ratio</span>
+                        </p>
+                        <div id="gradeRateChart"></div>
+                    </div>
+                    </div>
+
+
+                <!-- 各行政区故障情况分析 -->
+                <div class="col-sm-6">
+                    <div class="situationAnalysis my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">各行政区故障情况分析</span>
+                        </p>
+                        <div id="situationAnalysisChart"></div>
+                    </div>
+                </div>
+
+
+                <!-- PCTron monthly output -->
+                @*<div class="col-sm-3">
+                    <div class="serviceTime my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">PCTron Monthly NG</span>
+                        </p>
+                        <div id="serviceTimeChart"></div>
+                    </div>
+                </div>*@
+
+                </div>
+
+
+
+
+
+                
+            <div class="row blue-row2">
+                <!-- 排行榜Ranking List -->
+                <div class="col-sm-3">
+                    <div class="faultCondition my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Ranking List</span>
+                        </p>
+                        <div class="slide-title my-colors">
+                            <span>NO.</span>
+                            <span>Device</span>
+                            <span>Output</span>
+                            <span>NG</span>
+                        </div>
+                        <div class="slide-container">
+                            <ul class="slide-list js-slide-list">
+                                @*<li class="odd"><span>1</span><span>PCTron</span><span>29868</span><span>0</span></li>
+                        <li class="even"><span>2</span><span>DRAQ75</span><span>20566</span><span>156</span></li>
+                        <li class="odd"><span>3</span><span>DRAQ127</span><span>0</span><span>0</span></li>
+                        <li class="even"><span>4</span><span>FP-1007</span><span>0</span><span>0</span></li>
+                        <li class="odd"><span>5</span><span>FP-0906</span><span>0</span><span>0</span></li>
+                        <li class="even"><span>6</span><span>FP-1107</span><span>0</span><span>0</span></li>
+                        <li class="odd"><span>7</span><span>FP-DC13G</span><span>0</span><span>0</span></li>
+                        <li class="even"><span>8</span><span>FP-DC14G</span><span>0</span><span>0</span></li>
+                        <li class="odd"><span>9</span><span>FP-HCP0805</span><span>0</span><span>0</span></li>
+                        <li class="even"><span>10</span><span>FP-HCP0704</span><span>0</span><span>0</span></li>
+                        <li class="odd"><span>11</span><span>FP-008</span><span>0</span><span>0</span></li>
+                        <li class="even"><span>12</span><span>FP-666</span><span>0</span><span>0</span></li>*@
+                                <li class="odd"><span>1</span><span>3A</span><span>29868</span><span>0</span></li>
+                                <li class="even"><span>2</span><span>4A</span><span>20566</span><span>156</span></li>
+                                <li class="odd"><span>3</span><span>5A</span><span>10685</span><span>100</span></li>
+                                <li class="even"><span>4</span><span>0.5A</span><span>9800</span><span>20</span></li>
+                                <li class="odd"><span>5</span><span>1A</span><span>9760</span><span>250</span></li>
+                                <li class="even"><span>6</span><span>1.5A</span><span>8860</span><span>123</span></li>
+                                <li class="odd"><span>7</span><span>2A</span><span>8540</span><span>101</span></li>
+                                <li class="even"><span>8</span><span>3.5A</span><span>8210</span><span>289</span></li>
+                                <li class="odd"><span>9</span><span>4.5A</span><span>7990</span><span>165</span></li>
+                                <li class="even"><span>10</span><span>5.5A</span><span>7890</span><span>42</span></li>
+                                <li class="odd"><span>11</span><span>6A</span><span>7530</span><span>31</span></li>
+                                <li class="even"><span>12</span><span>7A</span><span>6660</span><span>88</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- 保修服务分布 -->
+                <div class="col-sm-3">
+                    <div class="distributeByServer my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">保修服务分布</span>
+                        </p>
+                        <div id="distributeByServerChart"></div>
+                    </div>
+                </div>
+
+                </div>
+
+            <div class="right">
+
+
+
+
+                
+
+
+
+
+                
+                
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/BigScreen2/jquery-2.1.0.js"></script>
+    <script src="~/Scripts/BigScreen2/echarts.min.js"></script>
+    <script src="~/Scripts/BigScreen2/china.js"></script>
+    <script src="~/Scripts/BigScreen2/utils.js"></script>
+    <script src="~/Scripts/BigScreen2/equipApply.js"></script>
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

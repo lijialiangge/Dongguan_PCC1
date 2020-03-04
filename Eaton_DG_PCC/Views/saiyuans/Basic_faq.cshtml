@@ -1,0 +1,332 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.datang>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+
+</head>
+
+<body class="gray-bg">
+    
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>All FAQ</h5>
+                                <div class="ibox-tools">
+                                    <a href="projects.html" class="btn btn-primary btn-xs">Add FAQ</a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row m-b-sm m-t-sm">
+                                    <div class="col-md-1">
+                                        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Please enter the query content" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button type="button" class="btn btn-sm btn-primary">Search</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq1" class="faq-question">The robot can't start</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i>Add time： 2017-11-15 15:34</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner</span>
+                            <br />Stefan
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq1" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、Whether the emergency stop button is screwed up everywhere；
+                                    <br>2、Check whether all safety door switches are normal.；
+                                    <br>3、The mode switch on the control box is manual, and the emergency stop switch on the indicator is pressed；
+                                    <br>4、Check for pallets；
+                                    <br>5、Whether the robot alarm。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq2" class="faq-question">The robot stops running during its operation.</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-10-11 10:16</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Andy
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq2" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、 whether the emergency stop button is pressed everywhere：
+                                    <br>2、 Grasp the position of photoelectricity is normal；
+                                    <br>3、 Whether someone or object entered the protective area illegally, the security door alarm。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq3" class="faq-question">There's some material in the holding area but the robot doesn't grab it？</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-08-09 09:45</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Bsob
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq3" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、 Check if the photoelectric switch is in place；
+                                    <br />2、 Check if stacking is completed；
+                                    <br /> 3、Touch the safety light door during working。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq4" class="faq-question">The tray conveyor does not fit the tray？</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-07-02 17:29</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Julia
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq4" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、Check the tray machine for automatic status；
+                                    <br />2、Whether the system is started；
+                                    <br />3、Whether the pallet lifting mechanism is located in the lower position；
+                                    <br />4、The photoelectricity of the lower part of the tray library and the chain line is normal；
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq5" class="faq-question">The chain line tray department transports or does not stop？</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-05-26 18:46</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Stefan
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq5" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、Check whether the photoelectricity of the chain line is normal；
+                                    <br />2、Whether the system is started or not；
+                                    <br />3、Check the motor for tripping。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq6" class="faq-question">The grip does not open or close？</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-03-23 16:46</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Tom
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq6" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、No air；
+                                    <br />2、Electromagnetic valve anomaly；
+                                    <br />3、Control line break。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq7" class="faq-question"> Grab or shake</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-02-26 11:21</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Jason
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq7" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、Verify that the air source pressure is within the required range；
+                                    <br />2、Whether there is air leakage in the air pipeline；
+                                    <br />3、Check whether the solenoid valve control line is well connected；
+                                    <br />4、Check whether the tensioning sleeve is loose and tighten it again。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq8" class="faq-question">Gear to take off the chain？</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i> Add time： 2017-02-25 10:05</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Shirley
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq8" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    The chain lengthens, removes the growing part, reconnects and blends。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#faq9" class="faq-question">The conveyor belt is slipping？</a>
+                            <small><strong>Model：SM09887    </strong><br /> <i class="fa fa-clock-o"></i>  Add time： 2017-02-22 08:21</small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <span class="small font-bold">Add owner </span>
+                            <br />Andy
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="faq9" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    1、If the belt is too loose, adjust the tightening device of belt wheel to make the belt elastic；
+                                    <br />2、The wheel connection key comes off and the connection key is reassembled。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/bootstrap.min.js?v=3.3.6"></script>
+    <script>
+        $(document).ready(function(){$("#loading-example-btn").click(function(){btn=$(this);simpleLoad(btn,true);simpleLoad(btn,false)})});function simpleLoad(btn,state){if(state){btn.children().addClass("fa-spin");btn.contents().last().replaceWith(" Loading")}else{setTimeout(function(){btn.children().removeClass("fa-spin");btn.contents().last().replaceWith(" Refresh")},2000)}};
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,332 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.AllStatus>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link rel="stylesheet" href="~/Css/BigScreen2/common.css">
+    <link rel="stylesheet" href="~/Css/BigScreen2/equipApply.css">
+    <link rel="stylesheet" href="~/Css/BigScreen/main.css">
+    <link rel="stylesheet" href="~/Css/BigScreen2/teaching.css">
+</head>
+<body>
+
+  
+    <div id="title">
+        <header>
+            <div class="date">
+                <div class="currentTime"></div>
+                <div class="cDate">
+                    <div class="currentDate"></div>
+                    <div class="currentWeek"></div>
+                </div>
+            </div>
+        </header>
+        </div>
+    <div>
+        <div class="main">
+            <div class="left">
+                <!-- Monthly Output & NG -->
+                <div class="serviceTime my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Monthly Output & NG</span>
+                    </p>
+                    <div id="serviceTimeChart"></div>
+                </div>
+                <!-- Top 5 Type Ratio -->
+                <div class="gradeRate my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Top 5 Type Ratio</span>
+                    </p>
+                    <div id="gradeRateChart"></div>
+                </div>
+                <!-- Ranking List -->
+                <div class="faultCondition my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Ranking List</span>
+                    </p>
+                    <div class="slide-title my-colors">
+                        <span>NO.</span>
+                        <span>Model</span>
+                        <span>Output</span>
+                        <span>NG</span>
+                    </div>
+                    <div class="slide-container">
+                        <ul class="slide-list js-slide-list">
+                            <li class="odd"><span>1</span><span>3A</span><span>29868</span><span>0</span></li>
+                            <li class="even"><span>2</span><span>4A</span><span>20566</span><span>156</span></li>
+                            <li class="odd"><span>3</span><span>5A</span><span>10685</span><span>100</span></li>
+                            <li class="even"><span>4</span><span>0.5A</span><span>9800</span><span>20</span></li>
+                            <li class="odd"><span>5</span><span>1A</span><span>9760</span><span>250</span></li>
+                            <li class="even"><span>6</span><span>1.5A</span><span>8860</span><span>123</span></li>
+                            <li class="odd"><span>7</span><span>2A</span><span>8540</span><span>101</span></li>
+                            <li class="even"><span>8</span><span>3.5A</span><span>8210</span><span>289</span></li>
+                            <li class="odd"><span>9</span><span>4.5A</span><span>7990</span><span>165</span></li>
+                            <li class="even"><span>10</span><span>5.5A</span><span>7890</span><span>42</span></li>
+                            <li class="odd"><span>11</span><span>6A</span><span>7530</span><span>31</span></li>
+                            <li class="even"><span>12</span><span>7A</span><span>6660</span><span>88</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="middle">
+                <!-- Real Time Data -->
+                <div class="map my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Real Time Data</span>
+                    </p>
+                    <div class="statistics2">
+                        <div>
+                            <p class="type">Output</p>
+                        </div>
+                        <div>
+                            <p class="type">Model</p>
+                        </div>
+                        <div>
+                            <p class="type">NG</p>
+                        </div>
+                    </div>
+
+                    <!-- 总数 -->
+                    <div id="zs">
+
+
+                        <!-- 设备总数 -->
+                        <div>
+                            <span>&nbsp;</span>
+                            <span>6845</span>
+                        </div>
+                        <!-- 物理机总数 -->
+                        <div>
+                            <span>&nbsp;</span>
+                            <span>2.5A</span>
+                        </div>
+                        <!-- 虚拟机总数 -->
+                        <div>
+                            <span>&nbsp;</span>
+                            <span>156</span>
+                        </div>
+                    </div>
+
+
+                    <div class="statistics">
+                        <div>
+                            <p class="count">2214</p>
+                            <p class="type">Total alarms times</p>
+                        </div>
+                        <div>
+                            <p class="count">349</p>
+                            <p class="type">Total running day</p>
+                        </div>
+                        <div>
+                            <p class="count">75</p>
+                            <p class="type">Total alarm time</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Everyday Output & NG -->
+                <div class="situationAnalysis my-bb1">
+                    <p class="module">
+                        <span class="iconfont">&#xe73e;</span>
+                        <span class="title">Everyday Output & NG</span>
+                    </p>
+                    <div id="situationAnalysisChart"></div>
+                </div>
+
+
+                <!-- Monthly Order Progress -->
+
+
+                        
+
+
+                            <div class="faultCondition my-bb1">
+                                <p class="module">
+                                    <span class="iconfont">&#xe73e;</span>
+                                    <span class="title">Monthly Order Progress</span>
+                                </p>
+                                <div class="slide-title my-colors">
+                                    <span>NO.</span>
+                                    <span>Order NO.</span>
+                                    <span>Model</span>
+                                    <span>Output</span>
+                                    <span>NG</span>
+                                    <span>Progress</span>
+
+                                    <span>Used hours</span>
+                                </div>
+                                <div class="slide-container-order">
+                                    <ul class="slide-list js-slide-list-order">
+                                        <li class="odd"><span>1</span><span>YD989865415645</span><span>1A</span><span>169885</span><span>1568</span><span>Complete</span><span>206</span></li>
+                                        <li class="even"><span>2</span><span>YD989865415645</span><span>3A</span><span>23985</span><span>101</span><span>In progress</span><span>156</span></li>
+                                        <li class="odd"><span>3</span><span>YD989865415645</span><span>5A</span><span>16585</span><span>234</span><span>Complete</span><span>100</span></li>
+                                        <li class="even"><span>4</span><span>0YD9898654156455A</span><span>0.5A</span><span>17685</span><span>42</span><span>In progress</span><span>20</span></li>
+                                        <li class="odd"><span>5</span><span>YD989865415645</span><span>2.5A</span><span>28985</span><span>68</span><span>interrupt</span><span>250</span></li>
+                                        <li class="even"><span>6</span><span>1.YD989865415645</span><span>4A</span><span>16745</span><span>87</span><span>Complete</span><span>123</span></li>
+                                        <li class="odd"><span>7</span><span>YD989865415645</span><span>6A</span><span>13476</span><span>34</span><span>Complete</span><span>101</span></li>
+                                        <li class="even"><span>8</span><span>3YD9898654156455A</span><span>7A</span><span>10964</span><span>56</span><span>interrupt</span><span>289</span></li>
+                                        <li class="odd"><span>9</span><span>4YD9898654156455A</span><span>5A</span><span>14566</span><span>89</span><span>Complete</span><span>165</span></li>
+                                        <li class="even"><span>10</span><span>5.YD989865415645</span><span>4.5A</span><span>10434</span><span>24</span><span>Complete</span><span>42</span></li>
+                                        <li class="odd"><span>11</span><span>YD989865415645</span><span>0.5A</span><span>263465</span><span>123</span><span>interrupt</span><span>31</span></li>
+                                        <li class="even"><span>12</span><span>YD989865415645</span><span>1.5A</span><span>145654</span><span>443</span><span>Complete</span><span>88</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+
+                    </div>
+                    <div class="right">
+
+
+                        <!-- Device Status -->
+                        <div class="distributeByStatus my-bb1">
+                            <p class="module">
+                                <span class="iconfont">&#xe73e;</span>
+                                <span class="title">Device Status</span>
+                            </p>
+                            <div id="zjzt">
+                                <div class="yz-zx _status-item green">
+                                    <p class="font14">Device</p>
+                                    <div class="_b1-line">
+                                        <div class="_b-solid"></div>
+                                    </div>
+                                </div>
+                                @*<div class="yz-lx _status-item red">
+                    <p class="font14">Maintenance State</p>
+                    <div class="_b1-line">
+                        <div class="_b-solid"></div>
+                    </div>
+                </div>*@
+                                <div class="yz-whz _status-item bule">
+                                    <p class="font14">Maintenance</p>
+                                    <div class="_b1-line">
+                                        <div class="_b-solid"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="canvas-pic-two">
+
+                                <div class="utilization-rate">
+
+                                    <div>
+                                        <p>75%</p>
+                                        <span>Yesterday OEE</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="canvas-pic-two">
+
+                                <div class="utilization-rate2">
+                                    <div>
+                                        <p>4545</p>
+                                        <span>UPH</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Device Fault Point Distribution -->
+                        <div class="distributeByServer my-bb1">
+                            <p class="module">
+                                <span class="iconfont">&#xe73e;</span>
+                                <span class="title">Device Fault Point Distribution</span>
+                            </p>
+                            <div id="distributeByServerChart"></div>
+                        </div>
+                        <!-- 故障状态分布 -->
+                        @*<div class="distributeByStatus2 my-bb1">
+                            <p class="module">
+                                <span class="iconfont">&#xe73e;</span>
+                                <span class="title">故障状态分布</span>
+                            </p>
+                            <div id="distributeByStatusChart"></div>
+                        </div>*@
+
+                        <!-- Ranking List -->
+                        <div class="faultCondition my-bb1">
+                            <p class="module">
+                                <span class="iconfont">&#xe73e;</span>
+                                <span class="title">Maintenance Record</span>
+                            </p>
+                            <div class="slide-title2 my-colors">
+                                <span>NO.</span>
+                                <span>Date</span>
+                                <span>Content</span>
+                                <span>Operator</span>
+                                
+                            </div>
+                            <div class="slide-container-Maintenance">
+                                <ul class="slide-list2 js-slide-list-Maintenance">
+                                    <li class="odd"><span>1</span><span>2018-08-08 19:05:03</span><span>Replacement of fuses</span><span>Administrator</span></li>
+                                    <li class="even"><span>2</span><span>2018-08-18 11:15:03</span><span>Tape connection station</span><span>Andy</span></li>
+                                    <li class="odd"><span>3</span><span>2018-10-01 10:05:13</span><span>electrode</span><span>Jack</span></li>
+                                    <li class="even"><span>4</span><span>2018-10-06 13:21:03</span><span>Cutting Die for Bad Products</span><span>Administrator</span></li>
+                                    <li class="odd"><span>5</span><span>2018-10-15 10:15:11</span><span>Cleaning tank</span><span>Jack</span></li>
+                                    <li class="even"><span>6</span><span>2018-10-28 09:19:17</span><span>electrode</span><span>CM</span></li>
+                                    <li class="odd"><span>7</span><span>2018-11-06 10:23:22</span><span>Tape connection station</span><span>BQ</span></li>
+                                    <li class="even"><span>8</span><span>2018-11-17 17:24:28</span><span>Cutting Die for Bad Products</span><span>Andy</span></li>
+                                    <li class="odd"><span>9</span><span>2018-11-19 16:11:15</span><span>Replacement of fuses</span><span>Administrator</span></li>
+                                    <li class="even"><span>10</span><span>2018-12-05 08:35:29</span><span>electrode</span><span>Jack</span></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+
+                        
+
+
+
+
+
+
+                        </div>
+                </div>
+            </div>
+
+    <script src="~/Scripts/BigScreen2/jz_all.js"></script>
+    <script src="~/Scripts/BigScreen2/jquery-2.1.0.js"></script>
+    <script src="~/Scripts/BigScreen2/echarts.min.js"></script>
+    <script src="~/Scripts/BigScreen2/china.js"></script>
+    <script src="~/Scripts/BigScreen2/utils.js"></script>
+    <script src="~/Scripts/BigScreen2/equipApply.js"></script>
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

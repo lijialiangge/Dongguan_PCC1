@@ -1,0 +1,221 @@
+﻿@model Tuple<Eaton_DG_PCC.Model.User, List<Eaton_DG_PCC.Model.Role_Info>, List<Eaton_DG_PCC.Model.Depart_Info>>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="~/Css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+        @*<form action="@Url.Action("Edit")" method="post">*@
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Edit</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal m-t" id="signupForm" action="@Url.Action("Edit_Role")" method="post">
+                            <div class="form-group">
+                                @*<label class="col-sm-3 control-label">ID：</label>*@
+                                <div class="col-sm-8">
+                                    @*<input id="name" name="Role_manage" type="text" disabled="disabled" value="@Model.Item1.ID" />*@
+                                    <input id="name" name="Role_manage" type="hidden" value="@Model.Item1.ID" />
+                                    @*<label id="name" name="Basic_faq" type="text">@Model.ID</label>*@
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">UserName：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="Role_manage" type="text" disabled="disabled" value="@Model.Item1.UserName" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Password：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="Role_manage" type="password" value="@Model.Item1.Password" />
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                <label class="col-sm-3 control-label">Confirm Password：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="Role_manage" type="password" value="@Model.Item1.ConfirmPassword" />
+                                </div>
+                            </div>*@
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Role：</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <select name="Role_manage" class="chosen-select" style="width:250px; height:30px;" tabindex="2">
+                                            @*<option selected="selected" value="@Model.Item1.RoleNum">@Model.Item1.RoleName</option>*@
+
+                                            @for (int i = 0; i < @Model.Item2.Count; i++)
+                                            {
+                                                if (@Model.Item1.RoleNum == @Model.Item2[i].RoleNum)
+                                                {
+                                                    <option selected="selected" value=@Model.Item2[i].RoleNum hassubinfo="true">@Model.Item2[i].RoleName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value=@Model.Item2[i].RoleNum hassubinfo="true">@Model.Item2[i].RoleName</option>
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Real Name：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="Role_manage" type="text" value="@Model.Item1.RealName" />
+                                    @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Telephone：</label>
+                                <div class="col-sm-8">
+                                    <input id="name" name="Role_manage" type="text" value="@Model.Item1.Phone" />
+                                    @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Department：</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <select name="Role_manage" class="chosen-select" style="width:250px; height:30px;" tabindex="2">
+                                            @for (int i = 0; i < @Model.Item3.Count; i++)
+                                            {
+                                                if (@Model.Item1.DepartNum == @Model.Item3[i].DepartNum)
+                                                {
+                                                    <option selected="selected" value=@Model.Item3[i].DepartNum hassubinfo="true">@Model.Item3[i].DepartName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value=@Model.Item3[i].DepartNum hassubinfo="true">@Model.Item3[i].DepartName</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-8 col-sm-offset-3">
+                                    <button class="btn btn-primary saveStatus" id="saving" type="submit">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*</form>*@
+
+
+
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+                //swal({ title: "太帅了", text: "小手一抖就打开了一个框", type: "success" });
+            $(".saveStatus").click(function () {
+                if (ViewBag.saveStatus==1){
+                swal({
+                    title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                })
+                } else if (ViewBag.saveStatus == 0) {
+                    swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "no"
+                    })
+                }
+
+
+                //swal({
+                //        title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                //    })
+            });
+        });
+    </script>
+    <script>
+        //编辑信息
+        function Edit() {
+
+            url = "/PCTron/Edit_Faq";
+                    parameter = { id: 0 };
+                    $.post(url, parameter, function (data) {
+                        if (data == "success") {
+                            swal("修改成功！", "您已经修改成功了这条信息。", "success")
+                            //history.go(-1);
+                            //alert("删除成功！");
+                            //window.location = "/PCTron";
+                            setTimeout(function () {
+                                history.go(-1);
+                                window.location.href = window.location.href;
+                            }, 3000)
+
+                        }
+                    });
+
+        };
+
+        function Edit2(categoryID) {
+            swal({
+                title: "您确定要删除这条信息吗??", text: "删除后将无法恢复，请谨慎操作！", type: "warning", showCancelButton: true, confirmButtonColor: "#DD6B55", confirmButtonText: "是的，我要删除！", cancelButtonText: "让我再考虑一下…", closeOnConfirm: false, closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    //swal("删除成功！", "您已经永久删除了这条信息。", "success")
+
+                    url = "/PCTron/Delete_Faq";
+                    parameter = { id: categoryID };
+                    $.post(url, parameter, function (data) {
+                        if (data == "success") {
+                            swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            //history.go(-1);
+                            //alert("删除成功！");
+                            //window.location = "/PCTron";
+                            setTimeout(function(){
+                                window.location.href = window.location.href;
+                            },3000)
+
+                        }else{alert("删除失败！");}
+                    });
+                } else {
+                    swal("已取消", "您取消了删除操作！", "error")
+                }
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>

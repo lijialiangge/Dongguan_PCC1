@@ -1,0 +1,575 @@
+﻿@model Tuple<Eaton_DG_PCC.Models.AllStatus, List<Eaton_DG_PCC.Model.Monthly_Output_PCTron>, List<Eaton_DG_PCC.Model.Daily_Output_Model>, List<Eaton_DG_PCC.Model.Daily_NG_Model>>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f3.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../modules/layui/css/layui.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+
+    <link rel="stylesheet" href="~/Css/layui/layui.css" />
+    <link rel="stylesheet" href="~/Css/layui/admin.css" />
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content2 animated fadeInRight ">
+        @*<div   class="row">
+            <marquee direction="left" behavior="scroll" scrollamount="3" scrolldelay="100">
+                <h6 id="Alarm_Tip">报警提醒：XXXXXXXXXXXXXXXX</h6>
+                </marquee>
+        </div>*@
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="widget-head-color-box navy-bg  text-center">
+                    <div class="m-b-md">
+                        <br />
+                        <h2 id="DeviceId" class="font-bold no-margins">
+                            @Model.Item1.DeviceId
+                        </h2>
+                    </div>
+                    <img id="ImageUrl" src="~/img/@Model.Item1.ImageUrl" class="img-circle circle-border m-b-md" alt="profile">
+                    @*<div>
+                        <span id="Address"></span> |
+                        <span id="Owner"></span>
+                    </div>*@
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <strong>Machine Status：</strong>
+                        </div>
+                        <div class="col-sm-4">
+                            <img id="NetworkStatus" alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div>&nbsp;</div>
+    <div class="widget navy-bg text-center">
+        <div class="m-b-md">
+            <i class="fa fa-shield fa-4x"></i>
+            <h3 id="Day" class="m-xs"></h3>
+        </div>
+    </div>
+                <a id="Alarm_count_display"  href="@Url.Action("Alarm", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })">
+                    <div id="Alarm_count_class" class="widget2 navy-bg text-center">
+                        <div class="m-b-md">
+                            <div>
+                            </div>
+                            <i class="fa fa-bell fa-4x"></i>
+                            <h3 id="Alarm_count_text" class="m-xs"></h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+           
+            <div class="col-sm-4">
+                <div class="ibox2 float-e-margins">
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <span class="label label-success"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Actual</h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Standard</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">UPH</h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 id="UPH" class="text-navy"></h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 id="UPH_Baseline" class="stats-label"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Yesterday OEE</h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 id="OEE" class="text-navy"></h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 id="OEE_Baseline" class="stats-label"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Test Machine Maintain</h4>
+                            </div>
+                            <div id="" class="col-sm-8">
+                                <h4 id="Maintain_Status" class="text-danger">Maintenance has expired</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Today alarm Time</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Today_alarm_time" class="text-navy"></h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Today alarm Times</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Today_alarm_times" class="text-navy"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Total alarm time</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Total_alarm_stop_time" class="text-navy"></h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4 class="stats-label">Total alarm times</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Total_alarm_stop_times" class="text-navy"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-4">
+                <div class="ibox2 float-e-margins">
+                    <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <h4 class="stats-label">PO</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h4 id="PO" class="text-navy text-center"></h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="layui-btn-right">
+                                        <button onclick="window.location.href='@Url.Action(ViewBag.DeviceId, "PCTron", new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary layui-btn-this">Main</button>
+                                        <button onclick="window.location.href='@Url.Action("History", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">History</button>
+                                        <button onclick="window.location.href='@Url.Action("Alarm", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">Alarm</button>
+                                        <button onclick="window.open('@Url.Action("BigScreen", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })')" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">BigScreen</button>
+                                    </div>
+                                </div>
+                            </div> 
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <h4 class="stats-label">PN</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h5 id="Now_Model" class="text-navy text-center"></h5>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">User/Time</h4>
+                            </div>
+                            <div class="col-sm-1">
+                                <h4 id="User_time" class="text-navy text-center"></h4>
+                            </div>
+                                <div class="col-sm-1">
+                                    <h4 class="stats-label">Marking</h4>
+                                </div>
+                                <div class="col-sm-5">
+                                    <h4 id="Marking" class="text-navy text-center"></h4>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Total/Reel</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Total_Reel" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Current/Reel</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Current_Reel" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Qty/Reel</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Qty_Reel" class="text-navy text-center"></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content2">
+                        <div class="row">
+                            
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Plan/Output</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Plan_Output" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Output</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Now_Output" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="Now_NG" class="text-navy text-center"></h4>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Mark/NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="CurrentPN_MarkNG" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Impulse/NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="CurrentPN_ImpulseNG" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">Hipot/NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="CurrentPN_HipotNG" class="text-navy text-center"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content2">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">OCL/NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="CurrentPN_OCLNG" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">DCR/NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="CurrentPN_DCRNG" class="text-navy text-center"></h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="stats-label">CCD/NG</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 id="CurrentPN_CCDNG" class="text-navy text-center"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox2 float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-primary">Daily Output & NG</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="test_dailys_output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-pie-chart3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/plugins/echarts/echarts-all.js"></script>
+    <script src="~/scripts/demo/echarts-zhexian.min.js"></script>
+    <script src="~/scripts/demo/echarts-dongtaitu3.min.js"></script>
+    @*<script src="~/scripts/demo/echartstest2-demo.min.js"></script>*@
+    <script src="~/scripts/plugins/flot/jquery.flot.js"></script>
+
+    <script src="~/scripts/plugins/chartJs/Chart.min.js"></script>
+    <script src="~/scripts/plugins/peity/jquery.peity.min.js"></script>
+
+    <script>
+        $(document).ready(
+            function () {
+                var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]];
+                var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]];
+                var data1 = [{ label: "Data 1", data: d1, color: "#17a084" },
+                    { label: "Data 2", data: d2, color: "#127e68" }]; $.plot($("#flot-chart1"),
+                        data1, {
+                            xaxis: { tickDecimals: 0 },
+                            series: {
+                                lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, },
+                                points: { width: 0.1, show: false },
+                            }, grid: { show: false, borderWidth: 0 }, legend: { show: false, }
+                        });
+                var lineData = {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                    datasets: [{
+                        label: "Data", fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)", pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff", pointHighlightFill: "#fff", pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 40, 51, 36, 25, 40]
+                    }, {
+                        label: "Data", fillColor: "rgba(26,179,148,0.5)", strokeColor: "rgba(26,179,148,0.7)",
+                        pointColor: "rgba(26,179,148,1)", pointStrokeColor: "#fff", pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(26,179,148,1)", data: [48, 48, 60, 39, 56, 37, 30]
+                    }]
+                };
+                var lineOptions = {
+                    scaleShowGridLines: true, scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleGridLineWidth: 1, bezierCurve: true, bezierCurveTension: 0.4, pointDot: true,
+                    pointDotRadius: 4, pointDotStrokeWidth: 1, pointHitDetectionRadius: 20, datasetStroke: true, datasetStrokeWidth: 2,
+                    datasetFill: true, responsive: true,
+                };
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(lineData, lineOptions)
+            });
+
+
+
+
+
+
+
+
+
+        ////DRAQ75
+        //Everyday_Output();
+        //Monthly_output();
+
+
+
+
+
+
+
+
+
+
+        function myrefresh() {
+            window.location.reload();//重新加载页面
+        }
+        setTimeout('myrefresh()', 600000);//每十分钟刷新一次
+        //setTimeout('myrefresh()', 60000); //每分钟刷新一次
+    </script>
+
+
+
+    <script>
+        !function () {
+            var i = screen.width / 750;
+            document.write('<meta name="viewport"content="width=750,initial-scale=' + i + ",maximum-scale=" + i + ", minimum-scale=" + i + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+        }();
+        //plus.screen.lockOrientation("landscape");//锁定横屏 左右旋转 默认不会还原
+    </script>
+
+
+    <script>
+        function Detailed(DeviceId) {
+            $.ajax({
+                dataType: "json",
+                type: "post",
+                url: '/DRAQ127/DRAQ127_AllStatus',
+                data: { DeviceId},
+                        success: function (data) {
+                            var obj = eval(data.data);
+                            //设备名称
+                            //$("#DeviceId").text(obj.DeviceId);
+
+                            //地址
+                            //$("#Address").text("Address：" + obj.Address);
+
+                            //联系人
+                            //$("#Owner").text("Owner：" + obj.Owner);
+
+                            //ImageUrl
+                            //$("#ImageUrl").attr("src", "/img/" + obj.ImageUrl);
+
+                            //天
+                            $("#Day").text(obj.Total_run_time + " Day");
+
+                            //网络
+                            if (obj.NetworkStatus == "1") {
+                                if (obj.PLCRunStatus == "1") {
+                                    $("#NetworkStatus").attr("src", "/img/green_20X17.gif");
+                                } else if (obj.PLCRunStatus == "2") {
+                                    $("#NetworkStatus").attr("src", "/img/red_20X17.gif");
+                                }
+                                else if (obj.PLCRunStatus == "3") {
+                                    $("#NetworkStatus").attr("src", "/img/yellow_20X18.gif");
+                                }
+                            } else
+                            {
+                                $("#NetworkStatus").attr("src", "/img/red_20X17.gif");
+                            }
+
+                            //报警信息
+                                if (obj.Alarm_count >0) {
+                                    //$("#Alarm_Tip").fadeIn();
+                                    $("#Alarm_count_class").removeClass().addClass("widget2 red-bg text-center");
+                                    $("#Alarm_count_text").text(obj.Alarm_count);
+                                } 
+                                else {
+                                    //$("#Alarm_Tip").fadeOut();
+                                    $("#Alarm_count_class").removeClass().addClass("widget2 navy-bg text-center");
+                                    $("#Alarm_count_text").text(obj.Alarm_count);
+                                }
+                            //UPH  
+                                $("#UPH").text(obj.UPH);
+                            //UPH
+                                $("#UPH_Baseline").text(obj.UPH_Baseline);
+                            //OEE Total_alarm_stop_times
+                                $("#OEE").text(obj.OEE + "%");
+                            //Test_OEE_Baseline
+                                $("#OEE_Baseline").text(obj.OEE_Baseline);
+
+                            //Maintain_Status
+                                if (obj.Maintain_Status = 0) {
+                                    $("#Maintain_Status").removeClass().addClass("text-danger");
+                                    $("#Maintain_Status").text("Maintenance has expired");
+                                }
+                                else if (obj.Maintain_Status = 1) {
+                                    $("#Maintain_Status").removeClass().addClass("text-navy");
+                                    $("#Maintain_Status").text("Already maintained");
+                                } else if (obj.Maintain_Status = 2)
+                                {
+                                    $("#Maintain_Status").removeClass().addClass("text-success");
+                                    $("#Maintain_Status").text("Maintenance in advance");
+                                }
+                            //Total_alarm_stop_time
+                                $("#Total_alarm_stop_time").text(obj.Total_alarm_stop_time + "(H)");
+                                $("#Total_alarm_stop_times").text(obj.Total_alarm_stop_times);
+                                $("#PO").text(obj.PO);
+                                $("#Plan_Output").text(obj.Plan_Output);
+                                $("#Now_Output").text(obj.Now_Output);
+                                $("#Now_NG").text(obj.Now_NG);
+                                $("#Now_Model").text(obj.Now_Model);
+                                $("#User_time").text(obj.User_time +"(H)");
+                                $("#Marking").text(obj.Marking);
+
+                                $("#CurrentPN_MarkNG").text(obj.CurrentPN_MarkNG);
+                                $("#CurrentPN_ImpulseNG").text(obj.CurrentPN_ImpulseNG);
+                                $("#CurrentPN_HipotNG").text(obj.CurrentPN_HipotNG);
+                                $("#CurrentPN_OCLNG").text(obj.CurrentPN_OCLNG);
+                                $("#CurrentPN_DCRNG").text(obj.CurrentPN_DCRNG);
+                                $("#CurrentPN_CCDNG").text(obj.CurrentPN_CCDNG);
+
+                                $("#Total_Reel").text(obj.Total_Reel);
+                                $("#Current_Reel").text(obj.Current_Reel);
+                                $("#Qty_Reel").text(obj.Qty_Reel); 
+
+                                $("#Today_alarm_time").text(obj.Today_alarm_time + "(min)");
+                                $("#Today_alarm_times").text(obj.Today_alarm_times);
+                        },
+                error: function (data) {
+                    //alert("系统错误");
+                }
+            })
+        };
+
+        window.setInterval(function () {
+            var id = '@ViewBag.DeviceId';
+            Detailed(id);
+        }, 3000);
+
+
+
+
+
+    </script>
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/_Device_Info_DRAQ127.cshtml")
+</body>
+
+
+
+</html>

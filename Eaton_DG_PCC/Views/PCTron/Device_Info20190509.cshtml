@@ -1,0 +1,830 @@
+﻿@model Tuple<Eaton_DG_PCC.Models.AllStatus, List<Eaton_DG_PCC.Model.Monthly_Output_PCTron>, List<Eaton_DG_PCC.Model.Daily_Output_Model>, List<Eaton_DG_PCC.Model.Daily_OK_Model>>
+
+@*@Model.Item1 Tuple<Eaton_DG_PCC.Models.PHP_PCTron, Eaton_DG_PCC.Models.Device_List>*@
+
+@{
+    Layout = null;
+    //int Everyday_Output_BaseValues = Convert.ToInt32(ViewData["Everyday_Output_BaseValues"]);
+    //int Everyday_NG_BaseValues = Convert.ToInt32(ViewData["Everyday_NG_BaseValues"]);
+    //int Monthly_Output_BaseValues = Convert.ToInt32(ViewData["Monthly_Output_BaseValues"]);
+    //int Monthly_NG_BaseValues = Convert.ToInt32(ViewData["Monthly_NG_BaseValues"]);
+
+    //int Test_Everyday_Output_BaseValues = Convert.ToInt32(ViewData["Test_Everyday_Output_BaseValues"]);
+    //int Test_Everyday_NG_BaseValues = Convert.ToInt32(ViewData["Test_Everyday_NG_BaseValues"]);
+    //int Test_Monthly_Output_BaseValues = Convert.ToInt32(ViewData["Test_Monthly_Output_BaseValues"]);
+    //int Test_Monthly_NG_BaseValues = Convert.ToInt32(ViewData["Test_Monthly_NG_BaseValues"]);
+
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f3.css" rel="stylesheet" />
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ">
+
+
+
+
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="widget-head-color-box navy-bg  text-center">
+                    <div class="m-b-md">
+                        <br />
+                        <h2 class="font-bold no-margins">
+                            @*@Model.Item1.Item2.Name*@
+                            
+                            @Model.Item1.DeviceId
+                        </h2>
+                    </div>
+                    <img src="~/img/@Model.Item1.ImageUrl" class="img-circle circle-border m-b-md" alt="profile">
+                    <div>
+                        <span>Address：@Model.Item1.Address</span> |
+                        <span>Owner：@Model.Item1.Owner</span>  
+                        @*|<span>Telephone：@Model.Item1.Telephone</span>*@
+                        @*<span>PLC Status：@Model.Item1.PLCStatus</span>*@
+
+                    </div>
+
+
+
+                    <div class="row">
+                       
+
+
+                        @if (@Model.Item1.DeviceId.ToString() == "PCTron")
+                        {
+
+                            <div class="col-xs-4">
+                                <h5>Assembly：</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                @if (@Model.Item1.NetworkStatus.ToString() == "1")
+                                {
+                                    if (@Model.Item1.PLCRunStatus.ToString() == "1")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.PLCRunStatus.ToString() == "2")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.PLCRunStatus.ToString() == "3")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/yellow_20X18.gif">
+                                    }
+                                }
+                                else
+                                {
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                }
+                            </div>
+
+
+
+
+
+                            <div class="col-xs-4">
+                                <h5>Test Machine：</h5>
+                            </div>
+                            @*<script>alert('in');</script>*@
+                            <div class="col-xs-2">
+                                @if (@Model.Item1.NetworkStatus.ToString() == "1")
+                                {
+                                    if (@Model.Item1.Test_Machine_Status.ToString() == "1")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.Test_Machine_Status.ToString() == "2")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.Test_Machine_Status.ToString() == "3")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/yellow_20X18.gif">
+                                    }
+                                }
+                                else
+                                {
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            @*<script>alert('no in');</script>*@
+                            <div class="col-xs-8">
+                                <strong>Test Machine：</strong>
+                            </div>
+                            <div class="col-xs-4">
+                                @if (@Model.Item1.NetworkStatus.ToString() == "1")
+                                {
+                                    if (@Model.Item1.PLCRunStatus.ToString() == "1")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.PLCRunStatus.ToString() == "2")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                    }
+                                    else if (@Model.Item1.PLCRunStatus.ToString() == "3")
+                                    {
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/yellow_20X18.gif">
+                                    }
+                                }
+                                else
+                                {
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-1">
+                <div class="widget navy-bg text-center">
+                    <div class="m-b-md">
+                        <i class="fa fa-shield fa-4x"></i>
+                        <h3 class="m-xs">@Model.Item1.Total_run_time  Day</h3>
+
+
+                    </div>
+                </div>
+
+                @if (@Model.Item1.Alarm_count.ToString() == "0")
+                {
+                    <div class="widget2 navy-bg text-center">
+                        <div class="m-b-md">
+                            <i class="fa fa-bell fa-4x"></i>
+                            <h3 class="m-xs">@Model.Item1.Alarm_count</h3>
+
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    
+                    <a href="@Url.Action("Alert_info_"+@Model.Item1.DeviceId, "PCTron", new { DeviceId =@Model.Item1.DeviceId })">
+                        
+                        <div class="widget2 red-bg text-center">
+
+                            <div class="m-b-md">
+                                <div>
+
+                                </div>
+                                <i class="fa fa-bell fa-4x"></i>
+
+                                <h3 class="m-xs">@Model.Item1.Alarm_count</h3>
+
+
+                            </div>
+
+                        </div>
+                    </a>
+                }
+            </div>
+
+
+
+
+
+
+
+            
+            @if (@Model.Item1.DeviceId.ToString() == "PCTron")
+            {
+              
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <span class="label label-primary">Assembly Machine</span>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Actual</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Standard</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">UPH</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h3 class="text-navy">@Model.Item1.UPH</h3>
+                                    @*<span class="label label-primary">@Model.Item1.UPH</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">@Model.Item1.UPH_Baseline</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Yesterday OEE</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h3 class="text-navy">@Model.Item1.OEE%</h3>
+                                    @* <span class="label label-primary">@Model.Item1.OEE%</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">@Model.Item1.OEE_Baseline</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Total Alarm Times</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Total_alarm_stop_times</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Total_alarm_stop_times</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Total Alarm Time</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Total_alarm_stop_time H</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Total_alarm_stop_time H</span>*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Today Total Output</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Today_Total_output</h3>
+                                    @*  <span class="label label-primary">@Model.Item1.Today_Total_output</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Today Total NG</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Today_Total_NG</h3>
+                                    @* <span class="label label-primary">@Model.Item1.Today_Total_NG</span>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Maintain Status</h4>
+
+                                </div>
+                                <div class="col-xs-8">
+                                    @if (@Model.Item1.Maintain_Status == "0") 
+                                    {<h4 class="text-danger">Maintenance has expired</h4>}
+                                    else if (@Model.Item1.Maintain_Status == "1") {<h4 class="text-navy">Already maintained</h4>
+                                    }
+                                    else if (@Model.Item1.Maintain_Status == "2") {<h4 class="text-success">Maintenance in advance</h4> }
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <span class="label label-success">Test Machine</span>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Actual</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Standard</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">UPH</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h3 class="text-navy">@Model.Item1.Test_UPH</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Test_UPH</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">@Model.Item1.Test_UPH_Baseline</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Yesterday OEE</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h3 class="text-navy">@Model.Item1.Test_OEE%</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Test_OEE%</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">@Model.Item1.Test_OEE_Baseline</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Total Stop Times</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Test_Total_alarm_stop_times</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Test_Total_alarm_stop_times</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Total Stop Time</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Test_Total_alarm_stop_time H</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Test_Total_alarm_stop_time H</span>*@
+                                </div>
+                            </div>
+                        </div>
+                        @*content是原始，content2是缩小了间距Class*@
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Today Total output</h4>
+
+                                </div>
+
+                                @*<td class="text-center">
+                                    <span class="label label-primary">220V</span>
+                                </td>*@
+
+
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Test_Today_Total_output</h3>
+                                   @* <span class="label label-primary">@Model.Item1.Test_Today_Total_output</span>*@
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Today Total NG</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Test_Today_Total_NG</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Test_Today_Total_NG</span>*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Test Machine Maintain</h4>
+
+                                </div>
+                                <div class="col-xs-8">
+@if (@Model.Item1.Maintain_Status == "0")
+{<h4 class="text-danger">Maintenance has expired</h4>}
+else if (@Model.Item1.Maintain_Status == "1")
+{<h4 class="text-navy">Already maintained</h4>
+}
+else if (@Model.Item1.Maintain_Status == "2")
+{<h4 class="text-success">Maintenance in advance</h4> }
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+
+
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <span class="label label-success">Test machine</span>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Actual</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Standard</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">UPH</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h3 class="text-navy">@Model.Item1.UPH</h3>
+                                    @*<span class="label label-primary">@Model.Item1.UPH</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">@Model.Item1.Test_UPH_Baseline</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Yesterday OEE</h4>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <h3 class="text-navy">@Model.Item1.OEE%</h3>
+                                    @* <span class="label label-primary">@Model.Item1.OEE%</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">@Model.Item1.Test_OEE_Baseline</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Total alarm times</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Total_alarm_stop_times</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Total_alarm_stop_times</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Total alarm time</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Total_alarm_stop_time H</h3>
+                                    @*<span class="label label-primary">@Model.Item1.Total_alarm_stop_time H</span>*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Today Total output</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Today_Total_output</h3>
+                                    @*  <span class="label label-primary">@Model.Item1.Today_Total_output</span>*@
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Today Total NG</h4>
+
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3 class="text-navy">@Model.Item1.Today_Total_NG</h3>
+                                    @* <span class="label label-primary">@Model.Item1.Today_Total_NG</span>*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox-content2">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="stats-label">Test Machine Maintain</h4>
+
+                                </div>
+                                <div class="col-xs-8">
+                                    @if (@Model.Item1.Maintain_Status == "0")
+                                    {<h4 class="text-danger">Maintenance has expired</h4>}
+                                    else if (@Model.Item1.Maintain_Status == "1")
+                                    {<h4 class="text-navy">Already maintained</h4>
+                                    }
+                                    else if (@Model.Item1.Maintain_Status == "2")
+                                    {<h4 class="text-success">Maintenance in advance</h4> }
+                                    @*  <span class="label label-primary">@Model.Item1.Today_Total_output</span>*@
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-sm-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 class="label-primary">Iot System Status</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart-moving"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               
+
+
+
+            }
+
+
+
+
+
+@if (@Model.Item1.DeviceId.ToString() == "PCTron")
+{
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-primary">Assembly Daily Output</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="everyday_output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-success">Test Machine Daily Output & NG</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="test_everyday_output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-primary">Assembly Monthly Output</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-line-chart"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-success">Test Machine Monthly Output & NG</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="test_monthly_output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+}
+else
+{
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title  label-primary">
+                    <span class="label label-success">Test Machine Daily Output & NG</span>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="test_everyday_output"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title  label-primary">
+                            <span class="label label-success">Test Machine Monthly Output & NG</span>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="test_monthly_output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+}
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/plugins/echarts/echarts-all.js"></script>
+    <script src="~/scripts/demo/echarts-zhexian.min.js"></script>
+    <script src="~/scripts/demo/echarts-dongtaitu3.min.js"></script>
+    @*<script src="~/scripts/demo/echartstest2-demo.min.js"></script>*@
+    <script src="~/scripts/plugins/flot/jquery.flot.js"></script>
+
+    <script src="~/scripts/plugins/chartJs/Chart.min.js"></script>
+    <script src="~/scripts/plugins/peity/jquery.peity.min.js"></script>
+
+    <script>
+        $(document).ready(
+            function () {
+                var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]];
+                var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]];
+                var data1 = [{ label: "Data 1", data: d1, color: "#17a084" },
+                    { label: "Data 2", data: d2, color: "#127e68" }]; $.plot($("#flot-chart1"),
+                        data1, {
+                            xaxis: { tickDecimals: 0 },
+                            series: {
+                                lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, },
+                                points: { width: 0.1, show: false },
+                            }, grid: { show: false, borderWidth: 0 }, legend: { show: false, }
+                        });
+                var lineData = {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                    datasets: [{
+                        label: "Data", fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)", pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff", pointHighlightFill: "#fff", pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 40, 51, 36, 25, 40]
+                    }, {
+                        label: "Data", fillColor: "rgba(26,179,148,0.5)", strokeColor: "rgba(26,179,148,0.7)",
+                        pointColor: "rgba(26,179,148,1)", pointStrokeColor: "#fff", pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(26,179,148,1)", data: [48, 48, 60, 39, 56, 37, 30]
+                    }]
+                };
+                var lineOptions = {
+                    scaleShowGridLines: true, scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleGridLineWidth: 1, bezierCurve: true, bezierCurveTension: 0.4, pointDot: true,
+                    pointDotRadius: 4, pointDotStrokeWidth: 1, pointHitDetectionRadius: 20, datasetStroke: true, datasetStrokeWidth: 2,
+                    datasetFill: true, responsive: true,
+                };
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(lineData, lineOptions)
+            });
+
+
+
+
+
+
+       
+
+
+        
+
+
+
+
+
+
+
+
+
+  
+
+        function myrefresh() {
+            window.location.reload();//重新加载页面
+        }
+        setTimeout('myrefresh()', 600000);//每十分钟刷新一次
+        //setTimeout('myrefresh()', 60000); //每分钟刷新一次
+    </script>
+
+
+
+    <script>
+        !function () {
+            var i = screen.width / 750;
+            document.write('<meta name="viewport"content="width=750,initial-scale=' + i + ",maximum-scale=" + i + ", minimum-scale=" + i + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+        }();
+        //plus.screen.lockOrientation("landscape");//锁定横屏 左右旋转 默认不会还原
+    </script>
+
+
+    @Html.Partial("~/Views/Shared/_Device_Info.cshtml")
+
+</body>
+
+
+
+</html>

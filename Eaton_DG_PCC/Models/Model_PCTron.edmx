@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PCTronModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceId" Type="varchar(max)" />
+          <Property Name="Ts" Type="datetime2" Precision="7" />
+          <Property Name="Versions" Type="int" Nullable="false" />
+          <Property Name="SaveTs" Type="datetime" />
+          <Property Name="NetworkStatus" Type="varchar" MaxLength="50" />
+          <Property Name="PLCStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="Owner" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="UPH" Type="varchar" MaxLength="50" />
+          <Property Name="Total_alarms_times" Type="varchar" MaxLength="50" />
+          <Property Name="Total_alarm_time" Type="varchar" MaxLength="50" />
+          <Property Name="Total_running_time" Type="varchar" MaxLength="50" />
+          <Property Name="OEE" Type="varchar" MaxLength="50" />
+          <Property Name="PLCRunStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Daily_total_output" Type="varchar" MaxLength="50" />
+          <Property Name="Daily_total_NG" Type="varchar" MaxLength="50" />
+          <Property Name="Test1" Type="varchar(max)" />
+          <Property Name="Test2" Type="varchar(max)" />
+          <Property Name="Test3" Type="varchar(max)" />
+          <Property Name="Test4" Type="varchar(max)" />
+          <Property Name="Test5" Type="varchar(max)" />
+          <Property Name="Test6" Type="varchar(max)" />
+          <Property Name="Test7" Type="varchar(max)" />
+          <Property Name="Test8" Type="varchar(max)" />
+          <Property Name="Test9" Type="varchar(max)" />
+          <Property Name="Test10" Type="varchar(max)" />
+          <Property Name="Test11" Type="varchar(max)" />
+          <Property Name="Test12" Type="varchar(max)" />
+          <Property Name="Test13" Type="varchar(max)" />
+          <Property Name="Test14" Type="varchar(max)" />
+          <Property Name="Test15" Type="varchar(max)" />
+          <Property Name="Test16" Type="varchar(max)" />
+          <Property Name="Test17" Type="varchar(max)" />
+          <Property Name="Test18" Type="varchar(max)" />
+          <Property Name="Test19" Type="varchar(max)" />
+          <Property Name="Test20" Type="varchar(max)" />
+          <Property Name="Test21" Type="varchar(max)" />
+          <Property Name="Test22" Type="varchar(max)" />
+          <Property Name="Test23" Type="varchar(max)" />
+          <Property Name="Test24" Type="varchar(max)" />
+          <Property Name="Test25" Type="varchar(max)" />
+          <Property Name="Test26" Type="varchar(max)" />
+          <Property Name="Test27" Type="varchar(max)" />
+          <Property Name="Test28" Type="varchar(max)" />
+          <Property Name="Test29" Type="varchar(max)" />
+          <Property Name="Test30" Type="varchar(max)" />
+          <Property Name="Test31" Type="varchar(max)" />
+          <Property Name="Test32" Type="varchar(max)" />
+          <Property Name="Test33" Type="varchar(max)" />
+          <Property Name="Test34" Type="varchar(max)" />
+          <Property Name="Test35" Type="varchar(max)" />
+          <Property Name="Test36" Type="varchar(max)" />
+          <Property Name="Test37" Type="varchar(max)" />
+          <Property Name="Test38" Type="varchar(max)" />
+          <Property Name="Test39" Type="varchar(max)" />
+          <Property Name="Test40" Type="varchar(max)" />
+          <Property Name="Test41" Type="varchar(max)" />
+          <Property Name="Test42" Type="varchar(max)" />
+          <Property Name="Test43" Type="varchar(max)" />
+          <Property Name="Test44" Type="varchar(max)" />
+          <Property Name="Test45" Type="varchar(max)" />
+          <Property Name="Test46" Type="varchar(max)" />
+          <Property Name="Test47" Type="varchar(max)" />
+          <Property Name="Test48" Type="varchar(max)" />
+          <Property Name="Test49" Type="varchar(max)" />
+          <Property Name="Test50" Type="varchar(max)" />
+          <Property Name="Test51" Type="varchar(max)" />
+          <Property Name="Test52" Type="varchar(max)" />
+          <Property Name="Test53" Type="varchar(max)" />
+          <Property Name="Test54" Type="varchar(max)" />
+          <Property Name="Test55" Type="varchar(max)" />
+          <Property Name="Test56" Type="varchar(max)" />
+          <Property Name="Test57" Type="varchar(max)" />
+          <Property Name="Test58" Type="varchar(max)" />
+          <Property Name="Test59" Type="varchar(max)" />
+          <Property Name="Test60" Type="varchar(max)" />
+          <Property Name="Test61" Type="varchar(max)" />
+          <Property Name="Test62" Type="varchar(max)" />
+          <Property Name="Test63" Type="varchar(max)" />
+          <Property Name="Test64" Type="varchar(max)" />
+          <Property Name="Test65" Type="varchar(max)" />
+          <Property Name="Test66" Type="varchar(max)" />
+          <Property Name="Test67" Type="varchar(max)" />
+          <Property Name="Test68" Type="varchar(max)" />
+          <Property Name="Test69" Type="varchar(max)" />
+          <Property Name="Test70" Type="varchar(max)" />
+          <Property Name="Test71" Type="varchar(max)" />
+          <Property Name="Test72" Type="varchar(max)" />
+          <Property Name="Test73" Type="varchar(max)" />
+          <Property Name="Test74" Type="varchar(max)" />
+          <Property Name="Test75" Type="varchar(max)" />
+          <Property Name="Test76" Type="varchar(max)" />
+          <Property Name="Test77" Type="varchar(max)" />
+          <Property Name="Test78" Type="varchar(max)" />
+          <Property Name="Test79" Type="varchar(max)" />
+          <Property Name="Test80" Type="varchar(max)" />
+          <Property Name="Test81" Type="varchar(max)" />
+          <Property Name="Test82" Type="varchar(max)" />
+          <Property Name="Test83" Type="varchar(max)" />
+          <Property Name="Test84" Type="varchar(max)" />
+          <Property Name="Test85" Type="varchar(max)" />
+          <Property Name="Test86" Type="varchar(max)" />
+          <Property Name="Test87" Type="varchar(max)" />
+          <Property Name="Test88" Type="varchar(max)" />
+          <Property Name="Test89" Type="varchar(max)" />
+          <Property Name="Test90" Type="varchar(max)" />
+          <Property Name="Test91" Type="varchar(max)" />
+          <Property Name="Test92" Type="varchar(max)" />
+          <Property Name="Test93" Type="varchar(max)" />
+          <Property Name="Test94" Type="varchar(max)" />
+          <Property Name="Test95" Type="varchar(max)" />
+          <Property Name="Test96" Type="varchar(max)" />
+          <Property Name="Test97" Type="varchar(max)" />
+          <Property Name="Test98" Type="varchar(max)" />
+          <Property Name="Test99" Type="varchar(max)" />
+          <Property Name="Test100" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Device_List">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="Owner" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PHP_PCTron">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceId" Type="varchar(max)" />
+          <Property Name="Ts" Type="datetime" />
+          <Property Name="Versions" Type="int" Nullable="false" />
+          <Property Name="PLCStatus" Type="varchar(max)" />
+          <Property Name="Test1" Type="varchar(max)" />
+          <Property Name="Test2" Type="varchar(max)" />
+          <Property Name="Test3" Type="varchar(max)" />
+          <Property Name="Test4" Type="varchar(max)" />
+          <Property Name="Test5" Type="varchar(max)" />
+          <Property Name="Test6" Type="varchar(max)" />
+          <Property Name="Test7" Type="varchar(max)" />
+          <Property Name="Test8" Type="varchar(max)" />
+          <Property Name="Test9" Type="varchar(max)" />
+          <Property Name="Test10" Type="varchar(max)" />
+          <Property Name="Test11" Type="varchar(max)" />
+          <Property Name="Test12" Type="varchar(max)" />
+          <Property Name="Test13" Type="varchar(max)" />
+          <Property Name="Test14" Type="varchar(max)" />
+          <Property Name="Test15" Type="varchar(max)" />
+          <Property Name="Test16" Type="varchar(max)" />
+          <Property Name="Test17" Type="varchar(max)" />
+          <Property Name="Test18" Type="varchar(max)" />
+          <Property Name="Test19" Type="varchar(max)" />
+          <Property Name="Test20" Type="varchar(max)" />
+          <Property Name="Test21" Type="varchar(max)" />
+          <Property Name="Test22" Type="varchar(max)" />
+          <Property Name="Test23" Type="varchar(max)" />
+          <Property Name="Test24" Type="varchar(max)" />
+          <Property Name="Test25" Type="varchar(max)" />
+          <Property Name="Test26" Type="varchar(max)" />
+          <Property Name="Test27" Type="varchar(max)" />
+          <Property Name="Test28" Type="varchar(max)" />
+          <Property Name="Test29" Type="varchar(max)" />
+          <Property Name="Test30" Type="varchar(max)" />
+          <Property Name="Test31" Type="varchar(max)" />
+          <Property Name="Test32" Type="varchar(max)" />
+          <Property Name="Test33" Type="varchar(max)" />
+          <Property Name="Test34" Type="varchar(max)" />
+          <Property Name="Test35" Type="varchar(max)" />
+          <Property Name="Test36" Type="varchar(max)" />
+          <Property Name="Test37" Type="varchar(max)" />
+          <Property Name="Test38" Type="varchar(max)" />
+          <Property Name="Test39" Type="varchar(max)" />
+          <Property Name="Test40" Type="varchar(max)" />
+          <Property Name="Test41" Type="varchar(max)" />
+          <Property Name="Test42" Type="varchar(max)" />
+          <Property Name="Test43" Type="varchar(max)" />
+          <Property Name="Test44" Type="varchar(max)" />
+          <Property Name="Test45" Type="varchar(max)" />
+          <Property Name="Test46" Type="varchar(max)" />
+          <Property Name="Test47" Type="varchar(max)" />
+          <Property Name="Test48" Type="varchar(max)" />
+          <Property Name="Test49" Type="varchar(max)" />
+          <Property Name="Test50" Type="varchar(max)" />
+          <Property Name="Test51" Type="varchar(max)" />
+          <Property Name="Test52" Type="varchar(max)" />
+          <Property Name="Test53" Type="varchar(max)" />
+          <Property Name="Test54" Type="varchar(max)" />
+          <Property Name="Test55" Type="varchar(max)" />
+          <Property Name="Test56" Type="varchar(max)" />
+          <Property Name="Test57" Type="varchar(max)" />
+          <Property Name="Test58" Type="varchar(max)" />
+          <Property Name="Test59" Type="varchar(max)" />
+          <Property Name="Test60" Type="varchar(max)" />
+          <Property Name="Test61" Type="varchar(max)" />
+          <Property Name="Test62" Type="varchar(max)" />
+          <Property Name="Test63" Type="varchar(max)" />
+          <Property Name="Test64" Type="varchar(max)" />
+          <Property Name="Test65" Type="varchar(max)" />
+          <Property Name="Test66" Type="varchar(max)" />
+          <Property Name="Test67" Type="varchar(max)" />
+          <Property Name="Test68" Type="varchar(max)" />
+          <Property Name="Test69" Type="varchar(max)" />
+          <Property Name="Test70" Type="varchar(max)" />
+          <Property Name="Test71" Type="varchar(max)" />
+          <Property Name="Test72" Type="varchar(max)" />
+          <Property Name="Test73" Type="varchar(max)" />
+          <Property Name="Test74" Type="varchar(max)" />
+          <Property Name="Test75" Type="varchar(max)" />
+          <Property Name="Test76" Type="varchar(max)" />
+          <Property Name="Test77" Type="varchar(max)" />
+          <Property Name="Test78" Type="varchar(max)" />
+          <Property Name="Test79" Type="varchar(max)" />
+          <Property Name="Test80" Type="varchar(max)" />
+          <Property Name="Test81" Type="varchar(max)" />
+          <Property Name="Test82" Type="varchar(max)" />
+          <Property Name="Test83" Type="varchar(max)" />
+          <Property Name="Test84" Type="varchar(max)" />
+          <Property Name="Test85" Type="varchar(max)" />
+          <Property Name="Test86" Type="varchar(max)" />
+          <Property Name="Test87" Type="varchar(max)" />
+          <Property Name="Test88" Type="varchar(max)" />
+          <Property Name="Test89" Type="varchar(max)" />
+          <Property Name="Test90" Type="varchar(max)" />
+          <Property Name="Test91" Type="varchar(max)" />
+          <Property Name="Test92" Type="varchar(max)" />
+          <Property Name="Test93" Type="varchar(max)" />
+          <Property Name="Test94" Type="varchar(max)" />
+          <Property Name="Test95" Type="varchar(max)" />
+          <Property Name="Test96" Type="varchar(max)" />
+          <Property Name="Test97" Type="varchar(max)" />
+          <Property Name="Test98" Type="varchar(max)" />
+          <Property Name="Test99" Type="varchar(max)" />
+          <Property Name="Test100" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="PCTronModelStoreContainer">
+          <EntitySet Name="AllStatus" EntityType="Self.AllStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device_List" EntityType="Self.Device_List" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHP_PCTron" EntityType="Self.PHP_PCTron" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PCTronModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PCTronEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Device_List" EntityType="PCTronModel.Device_List" />
+          <EntitySet Name="PHP_PCTron" EntityType="PCTronModel.PHP_PCTron" />
+          <EntitySet Name="AllStatus" EntityType="PCTronModel.AllStatus" />
+          </EntityContainer>
+        <EntityType Name="Device_List">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PHP_PCTron">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ts" Type="DateTime" Precision="3" />
+          <Property Name="Versions" Type="Int32" Nullable="false" />
+          <Property Name="PLCStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test11" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test12" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test13" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test14" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test15" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test16" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test17" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test18" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test19" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test20" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test21" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test22" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test23" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test24" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test25" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test26" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test27" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test28" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test29" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test30" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test31" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test32" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test33" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test34" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test35" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test36" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test37" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test38" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test39" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test40" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test41" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test42" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test43" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test44" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test45" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test46" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test47" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test48" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test49" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test50" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test51" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test52" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test53" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test54" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test55" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test56" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test57" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test58" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test59" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test60" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test61" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test62" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test63" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test65" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test66" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test67" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test68" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test69" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test70" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test71" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test72" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test73" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test74" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test75" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test76" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test77" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test78" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test79" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test80" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test81" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test82" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test83" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test84" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test85" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test86" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test87" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test88" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test89" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test90" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test91" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test92" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test93" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test94" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test95" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test96" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test97" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test98" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test99" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test100" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AllStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ts" Type="DateTime" Precision="7" />
+          <Property Name="Versions" Type="Int32" Nullable="false" />
+          <Property Name="SaveTs" Type="DateTime" Precision="3" />
+          <Property Name="NetworkStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLCStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_alarms_times" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_alarm_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_running_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OEE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLCRunStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Daily_total_output" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Daily_total_NG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Test1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test11" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test12" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test13" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test14" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test15" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test16" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test17" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test18" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test19" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test20" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test21" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test22" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test23" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test24" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test25" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test26" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test27" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test28" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test29" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test30" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test31" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test32" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test33" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test34" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test35" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test36" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test37" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test38" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test39" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test40" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test41" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test42" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test43" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test44" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test45" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test46" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test47" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test48" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test49" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test50" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test51" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test52" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test53" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test54" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test55" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test56" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test57" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test58" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test59" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test60" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test61" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test62" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test63" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test65" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test66" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test67" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test68" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test69" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test70" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test71" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test72" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test73" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test74" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test75" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test76" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test77" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test78" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test79" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test80" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test81" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test82" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test83" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test84" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test85" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test86" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test87" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test88" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test89" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test90" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test91" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test92" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test93" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test94" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test95" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test96" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test97" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test98" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test99" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Test100" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PCTronModelStoreContainer" CdmEntityContainer="PCTronEntities">
+          <EntitySetMapping Name="Device_List">
+            <EntityTypeMapping TypeName="PCTronModel.Device_List">
+              <MappingFragment StoreEntitySet="Device_List">
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHP_PCTron">
+            <EntityTypeMapping TypeName="PCTronModel.PHP_PCTron">
+              <MappingFragment StoreEntitySet="PHP_PCTron">
+                <ScalarProperty Name="Test100" ColumnName="Test100" />
+                <ScalarProperty Name="Test99" ColumnName="Test99" />
+                <ScalarProperty Name="Test98" ColumnName="Test98" />
+                <ScalarProperty Name="Test97" ColumnName="Test97" />
+                <ScalarProperty Name="Test96" ColumnName="Test96" />
+                <ScalarProperty Name="Test95" ColumnName="Test95" />
+                <ScalarProperty Name="Test94" ColumnName="Test94" />
+                <ScalarProperty Name="Test93" ColumnName="Test93" />
+                <ScalarProperty Name="Test92" ColumnName="Test92" />
+                <ScalarProperty Name="Test91" ColumnName="Test91" />
+                <ScalarProperty Name="Test90" ColumnName="Test90" />
+                <ScalarProperty Name="Test89" ColumnName="Test89" />
+                <ScalarProperty Name="Test88" ColumnName="Test88" />
+                <ScalarProperty Name="Test87" ColumnName="Test87" />
+                <ScalarProperty Name="Test86" ColumnName="Test86" />
+                <ScalarProperty Name="Test85" ColumnName="Test85" />
+                <ScalarProperty Name="Test84" ColumnName="Test84" />
+                <ScalarProperty Name="Test83" ColumnName="Test83" />
+                <ScalarProperty Name="Test82" ColumnName="Test82" />
+                <ScalarProperty Name="Test81" ColumnName="Test81" />
+                <ScalarProperty Name="Test80" ColumnName="Test80" />
+                <ScalarProperty Name="Test79" ColumnName="Test79" />
+                <ScalarProperty Name="Test78" ColumnName="Test78" />
+                <ScalarProperty Name="Test77" ColumnName="Test77" />
+                <ScalarProperty Name="Test76" ColumnName="Test76" />
+                <ScalarProperty Name="Test75" ColumnName="Test75" />
+                <ScalarProperty Name="Test74" ColumnName="Test74" />
+                <ScalarProperty Name="Test73" ColumnName="Test73" />
+                <ScalarProperty Name="Test72" ColumnName="Test72" />
+                <ScalarProperty Name="Test71" ColumnName="Test71" />
+                <ScalarProperty Name="Test70" ColumnName="Test70" />
+                <ScalarProperty Name="Test69" ColumnName="Test69" />
+                <ScalarProperty Name="Test68" ColumnName="Test68" />
+                <ScalarProperty Name="Test67" ColumnName="Test67" />
+                <ScalarProperty Name="Test66" ColumnName="Test66" />
+                <ScalarProperty Name="Test65" ColumnName="Test65" />
+                <ScalarProperty Name="Test64" ColumnName="Test64" />
+                <ScalarProperty Name="Test63" ColumnName="Test63" />
+                <ScalarProperty Name="Test62" ColumnName="Test62" />
+                <ScalarProperty Name="Test61" ColumnName="Test61" />
+                <ScalarProperty Name="Test60" ColumnName="Test60" />
+                <ScalarProperty Name="Test59" ColumnName="Test59" />
+                <ScalarProperty Name="Test58" ColumnName="Test58" />
+                <ScalarProperty Name="Test57" ColumnName="Test57" />
+                <ScalarProperty Name="Test56" ColumnName="Test56" />
+                <ScalarProperty Name="Test55" ColumnName="Test55" />
+                <ScalarProperty Name="Test54" ColumnName="Test54" />
+                <ScalarProperty Name="Test53" ColumnName="Test53" />
+                <ScalarProperty Name="Test52" ColumnName="Test52" />
+                <ScalarProperty Name="Test51" ColumnName="Test51" />
+                <ScalarProperty Name="Test50" ColumnName="Test50" />
+                <ScalarProperty Name="Test49" ColumnName="Test49" />
+                <ScalarProperty Name="Test48" ColumnName="Test48" />
+                <ScalarProperty Name="Test47" ColumnName="Test47" />
+                <ScalarProperty Name="Test46" ColumnName="Test46" />
+                <ScalarProperty Name="Test45" ColumnName="Test45" />
+                <ScalarProperty Name="Test44" ColumnName="Test44" />
+                <ScalarProperty Name="Test43" ColumnName="Test43" />
+                <ScalarProperty Name="Test42" ColumnName="Test42" />
+                <ScalarProperty Name="Test41" ColumnName="Test41" />
+                <ScalarProperty Name="Test40" ColumnName="Test40" />
+                <ScalarProperty Name="Test39" ColumnName="Test39" />
+                <ScalarProperty Name="Test38" ColumnName="Test38" />
+                <ScalarProperty Name="Test37" ColumnName="Test37" />
+                <ScalarProperty Name="Test36" ColumnName="Test36" />
+                <ScalarProperty Name="Test35" ColumnName="Test35" />
+                <ScalarProperty Name="Test34" ColumnName="Test34" />
+                <ScalarProperty Name="Test33" ColumnName="Test33" />
+                <ScalarProperty Name="Test32" ColumnName="Test32" />
+                <ScalarProperty Name="Test31" ColumnName="Test31" />
+                <ScalarProperty Name="Test30" ColumnName="Test30" />
+                <ScalarProperty Name="Test29" ColumnName="Test29" />
+                <ScalarProperty Name="Test28" ColumnName="Test28" />
+                <ScalarProperty Name="Test27" ColumnName="Test27" />
+                <ScalarProperty Name="Test26" ColumnName="Test26" />
+                <ScalarProperty Name="Test25" ColumnName="Test25" />
+                <ScalarProperty Name="Test24" ColumnName="Test24" />
+                <ScalarProperty Name="Test23" ColumnName="Test23" />
+                <ScalarProperty Name="Test22" ColumnName="Test22" />
+                <ScalarProperty Name="Test21" ColumnName="Test21" />
+                <ScalarProperty Name="Test20" ColumnName="Test20" />
+                <ScalarProperty Name="Test19" ColumnName="Test19" />
+                <ScalarProperty Name="Test18" ColumnName="Test18" />
+                <ScalarProperty Name="Test17" ColumnName="Test17" />
+                <ScalarProperty Name="Test16" ColumnName="Test16" />
+                <ScalarProperty Name="Test15" ColumnName="Test15" />
+                <ScalarProperty Name="Test14" ColumnName="Test14" />
+                <ScalarProperty Name="Test13" ColumnName="Test13" />
+                <ScalarProperty Name="Test12" ColumnName="Test12" />
+                <ScalarProperty Name="Test11" ColumnName="Test11" />
+                <ScalarProperty Name="Test10" ColumnName="Test10" />
+                <ScalarProperty Name="Test9" ColumnName="Test9" />
+                <ScalarProperty Name="Test8" ColumnName="Test8" />
+                <ScalarProperty Name="Test7" ColumnName="Test7" />
+                <ScalarProperty Name="Test6" ColumnName="Test6" />
+                <ScalarProperty Name="Test5" ColumnName="Test5" />
+                <ScalarProperty Name="Test4" ColumnName="Test4" />
+                <ScalarProperty Name="Test3" ColumnName="Test3" />
+                <ScalarProperty Name="Test2" ColumnName="Test2" />
+                <ScalarProperty Name="Test1" ColumnName="Test1" />
+                <ScalarProperty Name="PLCStatus" ColumnName="PLCStatus" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+                <ScalarProperty Name="Ts" ColumnName="Ts" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllStatus">
+            <EntityTypeMapping TypeName="PCTronModel.AllStatus">
+              <MappingFragment StoreEntitySet="AllStatus">
+                <ScalarProperty Name="Test100" ColumnName="Test100" />
+                <ScalarProperty Name="Test99" ColumnName="Test99" />
+                <ScalarProperty Name="Test98" ColumnName="Test98" />
+                <ScalarProperty Name="Test97" ColumnName="Test97" />
+                <ScalarProperty Name="Test96" ColumnName="Test96" />
+                <ScalarProperty Name="Test95" ColumnName="Test95" />
+                <ScalarProperty Name="Test94" ColumnName="Test94" />
+                <ScalarProperty Name="Test93" ColumnName="Test93" />
+                <ScalarProperty Name="Test92" ColumnName="Test92" />
+                <ScalarProperty Name="Test91" ColumnName="Test91" />
+                <ScalarProperty Name="Test90" ColumnName="Test90" />
+                <ScalarProperty Name="Test89" ColumnName="Test89" />
+                <ScalarProperty Name="Test88" ColumnName="Test88" />
+                <ScalarProperty Name="Test87" ColumnName="Test87" />
+                <ScalarProperty Name="Test86" ColumnName="Test86" />
+                <ScalarProperty Name="Test85" ColumnName="Test85" />
+                <ScalarProperty Name="Test84" ColumnName="Test84" />
+                <ScalarProperty Name="Test83" ColumnName="Test83" />
+                <ScalarProperty Name="Test82" ColumnName="Test82" />
+                <ScalarProperty Name="Test81" ColumnName="Test81" />
+                <ScalarProperty Name="Test80" ColumnName="Test80" />
+                <ScalarProperty Name="Test79" ColumnName="Test79" />
+                <ScalarProperty Name="Test78" ColumnName="Test78" />
+                <ScalarProperty Name="Test77" ColumnName="Test77" />
+                <ScalarProperty Name="Test76" ColumnName="Test76" />
+                <ScalarProperty Name="Test75" ColumnName="Test75" />
+                <ScalarProperty Name="Test74" ColumnName="Test74" />
+                <ScalarProperty Name="Test73" ColumnName="Test73" />
+                <ScalarProperty Name="Test72" ColumnName="Test72" />
+                <ScalarProperty Name="Test71" ColumnName="Test71" />
+                <ScalarProperty Name="Test70" ColumnName="Test70" />
+                <ScalarProperty Name="Test69" ColumnName="Test69" />
+                <ScalarProperty Name="Test68" ColumnName="Test68" />
+                <ScalarProperty Name="Test67" ColumnName="Test67" />
+                <ScalarProperty Name="Test66" ColumnName="Test66" />
+                <ScalarProperty Name="Test65" ColumnName="Test65" />
+                <ScalarProperty Name="Test64" ColumnName="Test64" />
+                <ScalarProperty Name="Test63" ColumnName="Test63" />
+                <ScalarProperty Name="Test62" ColumnName="Test62" />
+                <ScalarProperty Name="Test61" ColumnName="Test61" />
+                <ScalarProperty Name="Test60" ColumnName="Test60" />
+                <ScalarProperty Name="Test59" ColumnName="Test59" />
+                <ScalarProperty Name="Test58" ColumnName="Test58" />
+                <ScalarProperty Name="Test57" ColumnName="Test57" />
+                <ScalarProperty Name="Test56" ColumnName="Test56" />
+                <ScalarProperty Name="Test55" ColumnName="Test55" />
+                <ScalarProperty Name="Test54" ColumnName="Test54" />
+                <ScalarProperty Name="Test53" ColumnName="Test53" />
+                <ScalarProperty Name="Test52" ColumnName="Test52" />
+                <ScalarProperty Name="Test51" ColumnName="Test51" />
+                <ScalarProperty Name="Test50" ColumnName="Test50" />
+                <ScalarProperty Name="Test49" ColumnName="Test49" />
+                <ScalarProperty Name="Test48" ColumnName="Test48" />
+                <ScalarProperty Name="Test47" ColumnName="Test47" />
+                <ScalarProperty Name="Test46" ColumnName="Test46" />
+                <ScalarProperty Name="Test45" ColumnName="Test45" />
+                <ScalarProperty Name="Test44" ColumnName="Test44" />
+                <ScalarProperty Name="Test43" ColumnName="Test43" />
+                <ScalarProperty Name="Test42" ColumnName="Test42" />
+                <ScalarProperty Name="Test41" ColumnName="Test41" />
+                <ScalarProperty Name="Test40" ColumnName="Test40" />
+                <ScalarProperty Name="Test39" ColumnName="Test39" />
+                <ScalarProperty Name="Test38" ColumnName="Test38" />
+                <ScalarProperty Name="Test37" ColumnName="Test37" />
+                <ScalarProperty Name="Test36" ColumnName="Test36" />
+                <ScalarProperty Name="Test35" ColumnName="Test35" />
+                <ScalarProperty Name="Test34" ColumnName="Test34" />
+                <ScalarProperty Name="Test33" ColumnName="Test33" />
+                <ScalarProperty Name="Test32" ColumnName="Test32" />
+                <ScalarProperty Name="Test31" ColumnName="Test31" />
+                <ScalarProperty Name="Test30" ColumnName="Test30" />
+                <ScalarProperty Name="Test29" ColumnName="Test29" />
+                <ScalarProperty Name="Test28" ColumnName="Test28" />
+                <ScalarProperty Name="Test27" ColumnName="Test27" />
+                <ScalarProperty Name="Test26" ColumnName="Test26" />
+                <ScalarProperty Name="Test25" ColumnName="Test25" />
+                <ScalarProperty Name="Test24" ColumnName="Test24" />
+                <ScalarProperty Name="Test23" ColumnName="Test23" />
+                <ScalarProperty Name="Test22" ColumnName="Test22" />
+                <ScalarProperty Name="Test21" ColumnName="Test21" />
+                <ScalarProperty Name="Test20" ColumnName="Test20" />
+                <ScalarProperty Name="Test19" ColumnName="Test19" />
+                <ScalarProperty Name="Test18" ColumnName="Test18" />
+                <ScalarProperty Name="Test17" ColumnName="Test17" />
+                <ScalarProperty Name="Test16" ColumnName="Test16" />
+                <ScalarProperty Name="Test15" ColumnName="Test15" />
+                <ScalarProperty Name="Test14" ColumnName="Test14" />
+                <ScalarProperty Name="Test13" ColumnName="Test13" />
+                <ScalarProperty Name="Test12" ColumnName="Test12" />
+                <ScalarProperty Name="Test11" ColumnName="Test11" />
+                <ScalarProperty Name="Test10" ColumnName="Test10" />
+                <ScalarProperty Name="Test9" ColumnName="Test9" />
+                <ScalarProperty Name="Test8" ColumnName="Test8" />
+                <ScalarProperty Name="Test7" ColumnName="Test7" />
+                <ScalarProperty Name="Test6" ColumnName="Test6" />
+                <ScalarProperty Name="Test5" ColumnName="Test5" />
+                <ScalarProperty Name="Test4" ColumnName="Test4" />
+                <ScalarProperty Name="Test3" ColumnName="Test3" />
+                <ScalarProperty Name="Test2" ColumnName="Test2" />
+                <ScalarProperty Name="Test1" ColumnName="Test1" />
+                <ScalarProperty Name="Daily_total_NG" ColumnName="Daily_total_NG" />
+                <ScalarProperty Name="Daily_total_output" ColumnName="Daily_total_output" />
+                <ScalarProperty Name="PLCRunStatus" ColumnName="PLCRunStatus" />
+                <ScalarProperty Name="OEE" ColumnName="OEE" />
+                <ScalarProperty Name="Total_running_time" ColumnName="Total_running_time" />
+                <ScalarProperty Name="Total_alarm_time" ColumnName="Total_alarm_time" />
+                <ScalarProperty Name="Total_alarms_times" ColumnName="Total_alarms_times" />
+                <ScalarProperty Name="UPH" ColumnName="UPH" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PLCStatus" ColumnName="PLCStatus" />
+                <ScalarProperty Name="NetworkStatus" ColumnName="NetworkStatus" />
+                <ScalarProperty Name="SaveTs" ColumnName="SaveTs" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+                <ScalarProperty Name="Ts" ColumnName="Ts" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

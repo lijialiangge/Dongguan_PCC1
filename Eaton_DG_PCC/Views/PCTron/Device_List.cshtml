@@ -1,0 +1,215 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Model.PCC.RealTimePlantData>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+    <link href="~/Css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+</head>
+
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+            @foreach (Eaton_DG_PCC.Model.PCC.RealTimePlantData item in Model)
+            {
+                
+                <div class="col-sm-4">
+                    <div class="contact-box">
+                        @*<a class="J_menuItem"  target="_blank" href="@Url.Action("Device_Info", "PCTron", new { DeviceId =@item.DeviceId })">*@
+                            <a ; href="@Url.Action("Line", "PCTron", new { DeviceId =@item.LineID })">
+                                <div class="col-sm-4">
+                                    <div class="text-center">
+                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/PCCLine.png">
+                                        <div class="m-t-xs font-bold">
+                                           PCC Line： @item.LineID
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </a>
+                        @*@Html.Partial("~/Views/Shared/_PartialNetworkStatus.cshtml")*@
+                       
+                        <div class="col-sm-8">
+
+
+
+
+                            <address>
+                                
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <strong>Deivce Status：</strong>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        @if (item.DevStatus.ToString() == "1")
+                                        {
+                                            if (item.DevStatus.ToString() == "1")
+                                            {
+                                                <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+                                            }
+                                            else if (item.DevStatus.ToString() == "2")
+                                            {
+                                                <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                            }
+                                            else if (item.DevStatus.ToString() == "3")
+                                            {
+                                                <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/yellow_20X18.gif">
+                                            }
+                                            else { }
+                                        }
+                                        else
+                                        {
+                                            <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+                                        }
+                                    </div>
+                                </div>
+                                <strong>Batch NO.@item.ProductID</strong>
+                                <br>
+                                <strong>Current Model：@item.DutMode</strong>
+                                <br>
+                                <strong>Plan Output：@item.DutTotalNum</strong>
+                                <br>
+                                <strong>Output：@item.DutPassNum</strong>
+                                <br>
+                                <strong>NG：@item.DutFailNum</strong>
+                                <br>
+                                <strong>FTQ：@item.DutFailRate%</strong>
+                                <br>
+
+                            </address>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+
+            }
+
+
+
+
+
+        </div>
+    </div>
+
+    
+
+
+
+    <script src="~/scripts/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () { $(".contact-box").each(function () { animationHover(this, "pulse") }) });
+        function myrefresh() {
+            window.location.reload();//重新加载页面
+        }
+        //setTimeout('myrefresh()', 60000); //每分钟刷新一次
+        setTimeout('myrefresh()', 600000);//每十分钟刷新一次
+
+        //!(function (doc, win) {
+        //    var docEle = doc.documentElement,
+        //        evt = "onorientationchange" in window ? "orientationchange" : "resize",
+        //        fn = function () {
+        //            var width = docEle.clientWidth > 750 ? 750 : docEle.clientWidth;
+        //            width && (docEle.style.fontSize = 20 * (width / 375) + "px");
+        //        };
+
+        //    win.addEventListener(evt, fn, false);
+        //    doc.addEventListener("DOMContentLoaded", fn, false);
+
+        //}(document, window));
+
+    </script>
+    <script>
+       !function(){
+           var i=screen.width/750;
+           document.write('<meta name="viewport"content="width=750,initial-scale='+i+",maximum-scale="+i+", minimum-scale="+i+',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+       }();
+       //plus.screen.lockOrientation("landscape");//锁定横屏 左右旋转 默认不会还原
+    </script>
+
+
+
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/content.min.js"></script>
+
+    <script>
+
+     
+
+     
+        function addMenuTab(dataUrl, menuName, dataIndex) {
+            alert('in');
+            // 获取标识数据
+            var flag = true;
+            if (dataUrl == undefined || $.trim(dataUrl).length == 0) return false;
+
+            // 选项卡菜单已存在
+            $('.J_menuTab').each(function () {
+                if ($(this).data('id') == dataUrl) {
+                    if (!$(this).hasClass('active')) {
+                        $(this).addClass('active').siblings('.J_menuTab').removeClass('active');
+                        scrollToTab(this);
+                        // 显示tab对应的内容区
+                        $('.J_mainContent .J_iframe').each(function () {
+                            if ($(this).data('id') == dataUrl) {
+                                $(this).show().siblings('.J_iframe').hide();
+                                return false;
+                            }
+                        });
+                    }
+                    flag = false;
+                    return false;
+                }
+            });
+
+            // 选项卡菜单不存在
+            if (flag) {
+                var str = '<a href="javascript:;" class="active J_menuTab" data-id="' + dataUrl + '">' + menuName + ' <i class="fa fa-times-circle"></i></a>';
+                $('.J_menuTab').removeClass('active');
+
+                // 添加选项卡对应的iframe
+                var str1 = '<iframe class="J_iframe" name="iframe' + dataIndex + '" width="100%" height="100%" src="' + dataUrl + '" frameborder="0" data-id="' + dataUrl + '" seamless></iframe>';
+                $('.J_mainContent').find('iframe.J_iframe').hide().parents('.J_mainContent').append(str1);
+
+                // 添加选项卡
+                $('.J_menuTabs .page-tabs-content').append(str);
+                scrollToTab($('.J_menuTab.active'));
+            }
+            return false;
+        };
+
+
+    </script>
+    
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.AllStatus>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+
+</head>
+<body class="gray-bg">
+        <div class="row">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="wrapper wrapper-content animated fadeInRight">
+
+                            <div class="ibox-content forum-container">
+
+
+
+
+@foreach (Eaton_DG_PCC.Models.AllStatus item in Model)
+{
+
+                                <div class="forum-item active">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+
+                                            <div class="forum-icon">
+                                                <!--<i class="fa fa-shield"></i>-->
+                                                <table>
+                                                    <tr>
+                                                        <td class="client-avatar">
+                                                                <a href="@Url.Action("Basic_faq","PCTron", new { DeviceId =@item.DeviceId })">
+                                                                        <img alt="image" src="~/img/@item.ImageUrl">
+                                                                    </a>
+</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <a href="@Url.Action("Basic_faq","PCTron", new { DeviceId =@item.DeviceId })" class="forum-item-title">@item.DeviceId</a>
+                                            @*<div class="forum-sub-title">The maximum speed of the spindle is 3000rpm. Automatic tension control: when the wire is twisted, the tension of the wire receiving from the bottom of the disk should be increased continuously. Make the tension of the whole winding line uniform, and adjust the tension without stopping the machine.</div>*@
+                                        </div>
+                                        <div class="col-sm-3 forum-info">
+                                            @*<span class="views-number">
+                                                @item.Address
+                                            </span>*@
+                                            <span class="text-navy">@item.Address</span>
+                                            <div>
+                                                <small>Address</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 forum-info">
+                                            <span class="text-navy">
+                                                @item.Owner
+                                            </span>
+                                            <div>
+                                                <small>Owner</small>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+
+}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    @*@section Scripts {     @Scripts.Render("~/bundles/jqueryval") }*@
+
+   
+
+    </body>
+
+
+
+</html>

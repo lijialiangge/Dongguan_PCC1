@@ -1,0 +1,128 @@
+﻿@model Eaton_DG_PCC.Model.Basic_Faq
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Faq</title>
+    <link href="~/Css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="~/Css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+        @*<form action="@Url.Action("Edit")" method="post">*@
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Add Faq</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <form  class="form-horizontal m-t" id="signupForm" action="@Url.Action("Add_Faq")"  method="post">
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Device Model：</label>
+                                    <div class="col-sm-8">
+                                        <input id="name" name="Basic_faq" disabled="disabled"  value="@ViewBag.DeviceId" />
+                                        <input id="name" name="Basic_faq" type="hidden"  value="@ViewBag.DeviceId" />
+                                    </div>
+                                </div>
+                               
+                                
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Problem：</label>
+                                    <div class="col-sm-8">
+                                        <textarea cols="111" name="Basic_faq" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Answer：</label>
+                                    <div class="col-sm-8">
+                                        @*@Html.TextAreaFor(model => model.Answer, new { @class = "whatever-class", @cols = 111, @rows = 10 })*@
+                                        <textarea cols="111" name="Basic_faq"  rows="10"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Owner：</label>
+                                    <div class="col-sm-8">
+                                        <input id="name"  name="Basic_faq"  type="text" value=""  />
+                                        @*<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>*@
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-3">
+                                        <button class="btn btn-primary saveStatus" id="saving" type="submit">Save</button>
+                                        @*<button class="btn btn-white" type="submit">重置</button>*@
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        @*</form>*@
+
+
+
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/plugins/sweetalert/sweetalert.min.js"></script>
+   
+    <script>
+        $(document).ready(function () {
+
+                //swal({ title: "太帅了", text: "小手一抖就打开了一个框", type: "success" });
+            $(".saveStatus").click(function () {
+                if (ViewBag.saveStatus==1){
+                swal({
+                    title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                })
+                } else if (ViewBag.saveStatus == 0) {
+                    swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "no"
+                    })
+                }
+
+
+                //swal({
+                //        title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                //    })
+            });
+        });
+    </script>
+
+    <script>
+            function success() {
+
+
+
+                swal({
+                        title: "太帅了", text: "小手一抖就打开了一个框", type: "success"
+                    })
+            };
+        
+
+    </script>
+
+</body>
+
+</html>

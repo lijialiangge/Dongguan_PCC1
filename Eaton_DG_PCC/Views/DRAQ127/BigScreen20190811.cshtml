@@ -1,0 +1,664 @@
+﻿@model Tuple<List<Eaton_DG_PCC.Model.Monthly_OutputAndNG>, List<Eaton_DG_PCC.Model.KeyValue>, List<Eaton_DG_PCC.Model.EveryDay_OutputAndNG>,List<Eaton_DG_PCC.Models.Monthly_Order_Info>>
+
+
+    @{
+        Layout = null;
+        
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+
+
+        
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Remote data acquisition system</title>
+        <meta name="keywords" content="远程通讯系统keywords">
+        <meta name="description" content="远程通讯系统description">
+
+        <link rel="stylesheet" href="~/Css/BigScreen2/common.css">
+        <link rel="stylesheet" href="~/Css/BigScreen2/equipApply.css">
+        <link rel="stylesheet" href="~/Css/BigScreen/main.css">
+        <link rel="stylesheet" href="~/Css/BigScreen2/teaching.css">
+
+
+
+    </head>
+    <body>
+        
+
+        <div id="title">
+            <header>
+                <div class="date">
+                    <div class="currentTime"></div>
+                    <div class="cDate">
+                        <div class="currentDate"></div>
+                        <div class="currentWeek"></div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div>
+            <div class="main">
+                <div class="left">
+                    <!-- Monthly Output & NG -->
+                    <div class="serviceTime my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Latest Monthly Output&NG Top 5</span>
+                        </p>
+                        <div id="serviceTimeChart"></div>
+                    </div>
+                    <!-- Top 5 Output Model Ratio Now Month -->
+                    <div class="gradeRate my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Top 5 Output Model Ratio Now Month</span>
+                        </p>
+                        <div id="gradeRateChart"></div>
+                    </div>
+                    <!-- Ranking List -->
+                    <div class="faultCondition my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Top 10 Output Now Month Ranking List</span>
+                        </p>
+                        <div class="slide-title my-colors">
+                            <span>NO.</span>
+                            <span>Model</span>
+                            <span>Output</span>
+                            <span>NG</span>
+                        </div>
+                        <div class="slide-container">
+                            <ul class="slide-list js-slide-list">
+                                <li class="odd"><span>1</span><span>@Model.Item2[0].Name.ToString()</span><span>@Model.Item2[0].Output.ToString()</span><span>@Model.Item2[0].NG.ToString()</span></li>
+                                <li class="even"><span>2</span><span>@Model.Item2[1].Name.ToString()</span><span>@Model.Item2[1].Output.ToString()</span><span>@Model.Item2[1].NG.ToString()</span></li>
+                                <li class="odd"><span>3</span><span>@Model.Item2[2].Name.ToString()</span><span>@Model.Item2[2].Output.ToString()</span><span>@Model.Item2[2].NG.ToString()</span></li>
+                                <li class="even"><span>4</span><span>@Model.Item2[3].Name.ToString()</span><span>@Model.Item2[3].Output.ToString()</span><span>@Model.Item2[3].NG.ToString()</span></li>
+                                <li class="odd"><span>5</span><span>@Model.Item2[4].Name.ToString()</span><span>@Model.Item2[4].Output.ToString()</span><span>@Model.Item2[4].NG.ToString()</span></li>
+                                <li class="even"><span>6</span><span>@Model.Item2[5].Name.ToString()</span><span>@Model.Item2[5].Output.ToString()</span><span>@Model.Item2[5].NG.ToString()</span></li>
+                                <li class="odd"><span>7</span><span>@Model.Item2[6].Name.ToString()</span><span>@Model.Item2[6].Output.ToString()</span><span>@Model.Item2[6].NG.ToString()</span></li>
+                                <li class="even"><span>8</span><span>@Model.Item2[7].Name.ToString()</span><span>@Model.Item2[7].Output.ToString()</span><span>@Model.Item2[7].NG.ToString()</span></li>
+                                <li class="odd"><span>9</span><span>@Model.Item2[8].Name.ToString()</span><span>@Model.Item2[8].Output.ToString()</span><span>@Model.Item2[8].NG.ToString()</span></li>
+                                <li class="even"><span>10</span><span>@Model.Item2[9].Name.ToString()</span><span>@Model.Item2[9].Output.ToString()</span><span>@Model.Item2[9].NG.ToString()</span></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle">
+                    <!-- Real Time Data -->
+                    <div class="map my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span id="PO" class="title"></span>
+                        </p>
+                        <div class="statistics2">
+                            <div>
+                                <p class="type">Output</p>
+                            </div>
+                            <div>
+                                <p class="type">Plan Output</p>
+                            </div>
+                            <div>
+                                <p class="type">NG</p>
+                            </div>
+                        </div>
+
+                        <!-- 总数 -->
+                        <div id="zs">
+
+
+                            <!-- Output -->
+                            <div>
+                                <span>&nbsp;</span>
+                                <span id="Now_Output"></span>
+                            </div>
+                            <!-- Model -->
+                            <div>
+                                <span>&nbsp;</span>
+                                <span id="Plan_Output"></span>
+                            </div>
+                            <!-- NG -->
+                            <div>
+                                <span>&nbsp;</span>
+                                <span id="Now_NG"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="statistics">
+                            <div>
+                                <p id="Current_Reel" class="count"></p>
+                                <p class="type">Current Reel</p>
+                            </div>
+                            <div>
+                                <p id="Now_Model" class="count"></p>
+                                <p class="type">Model</p>
+                            </div>
+                            <div>
+                                <p id="User_time" class="count"></p>
+                                <p class="type">User Time</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Everyday Output & NG -->
+                    <div class="situationAnalysis my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Latest Daily Output&NG Top 5</span>
+                        </p>
+                        <div id="situationAnalysisChart"></div>
+                    </div>
+
+
+                    <!-- Monthly Order Progress -->
+
+
+
+
+
+                    <div class="faultCondition my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Order Progress This Week</span>
+                        </p>
+                        <div class="slide-title my-colors">
+                            <span>NO.</span>
+                            <span>Order NO.</span>
+                            <span>Model</span>
+                            <span>Output</span>
+                            <span>NG</span>
+                            <span>Done Ratio</span>
+
+                            <span>Used hours</span>
+                        </div>
+                        <div class="slide-container-order">
+                            <ul class="slide-list js-slide-list-order">
+
+                                @for (int i = 1; i <= Model.Item4.Count; i++)
+                                {
+                                    if (((i % 2 == 1) ? 1 : 0) == 1)
+                                    {
+                                        <li class="odd"><span>@i</span><span>@Model.Item4[i - 1].Orders</span><span>@Model.Item4[i - 1].Model</span><span>@Model.Item4[i - 1].Output</span><span>@Model.Item4[i - 1].NG</span><span>@Model.Item4[i - 1].Done_Ratio%</span><span>@Model.Item4[i - 1].Days</span></li>
+
+                                    }
+                                    if (((i % 2 == 1) ? 1 : 0) == 0)
+                                    {
+                                        <li class="even"><span>@i</span><span>@Model.Item4[i - 1].Orders</span><span>@Model.Item4[i - 1].Model</span><span>@Model.Item4[i - 1].Output</span><span>@Model.Item4[i - 1].NG</span><span>@Model.Item4[i - 1].Done_Ratio%</span><span>@Model.Item4[i - 1].Days</span></li>
+
+                                    }
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="right">
+
+
+                    <!-- Device Status -->
+                    <div class="distributeByStatus my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Device Status</span>
+                        </p>
+                        <div id="zjzt">
+                            
+
+                            <div id="PLCRunStatus_class" class="yz-zx _status-item yellow">
+                                <p id="PLCRunStatus_text" class="font14">Ready</p>
+                                <div class="_b1-line">
+                                    <div class="_b-solid"></div>
+                                </div>
+                            </div>
+                            
+                                <div id="Maintain_Status_class" class="yz-whz _status-item red2">
+                                    <p id="Maintain_Status_text" class="font14">Maintenance has expired</p>
+                                    <div class="_b1-line">
+                                        <div class="_b-solid"></div>
+                                    </div>
+                                </div>
+                           
+
+                        </div>
+
+                        <div class="canvas-pic-two">
+
+                            <div class="utilization-rate">
+
+                                <div>
+                                    <p id="OEE"></p>
+                                    <span>Yesterday OEE</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="canvas-pic-two">
+
+                            <div class="utilization-rate2">
+                                <div>
+                                    <p id="UPH"></p>
+                                    <span>UPH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Device Fault Point Distribution -->
+                    <div class="distributeByServer my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Device Fault Point Distribution Now Month</span>
+                        </p>
+                        <div id="distributeByServerChart"></div>
+                    </div>
+                    <!-- 故障状态分布 -->
+
+
+                    <!-- Ranking List -->
+                    <div class="faultCondition my-bb1">
+                        <p class="module">
+                            <span class="iconfont">&#xe73e;</span>
+                            <span class="title">Latest Maintenance Records</span>
+                        </p>
+                        <div class="slide-title2 my-colors">
+                            <span>NO.</span>
+                            <span>Date</span>
+                            <span>Content</span>
+                            <span>Operator</span>
+
+                        </div>
+                        <div class="slide-container-Maintenance">
+                            <ul class="slide-list2 js-slide-list-Maintenance">
+
+                                @for (int i = 1; i <= ViewBag.Record_of_Spare_Parts.Count; i++)
+                                {
+                                    if (((i % 2 == 1) ? 1 : 0) == 1)
+                                    {
+                                        <li class="odd"><span>@i</span><span>@ViewBag.Record_of_Spare_Parts[i - 1].Replace_Date</span><span>@ViewBag.Record_of_Spare_Parts[i - 1].Replace_content</span><span>@ViewBag.Record_of_Spare_Parts[i - 1].Operator</span></li>
+                                    }
+                                    if (((i % 2 == 1) ? 1 : 0) == 0)
+                                    {
+                                        <li class="even"><span>@i</span><span>@ViewBag.Record_of_Spare_Parts[i - 1].Replace_Date</span><span>@ViewBag.Record_of_Spare_Parts[i - 1].Replace_content</span><span>@ViewBag.Record_of_Spare_Parts[i - 1].Operator</span></li>
+                                    }
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="~/Scripts/BigScreen2/jz_all.js"></script>
+        <script src="~/Scripts/BigScreen2/jquery-2.1.0.js"></script>
+        <script src="~/Scripts/BigScreen2/echarts.min.js"></script>
+        <script src="~/Scripts/BigScreen2/china.js"></script>
+        <script src="~/Scripts/BigScreen2/utils.js"></script>
+        @*<script src="~/Scripts/BigScreen2/equipApply.js"></script>*@
+
+        <script>
+
+            function test(DeviceId) {
+                $.ajax({
+                    dataType: "json",
+                    type: "post",
+                    url: '/DRAQ127/test',
+                    data: { DeviceId },
+                    success: function (data) {
+                        if (data.msg == "success") {
+                            var Model = [];
+                            var Output_Monthly01 = [];
+                            var Output_Monthly02 = [];
+                            var Output_Monthly03 = [];
+                            var Output_Monthly04 = [];
+                            var Output_Monthly05 = [];
+                            var Output_Monthly06 = [];
+                            var Output_Monthly07 = [];
+                            var Output_Monthly08 = [];
+                            var Output_Monthly09 = [];
+                            var Output_Monthly10 = [];
+                            var Output_Monthly11 = [];
+                            var Output_Monthly12 = [];
+                            for (var index in data.data) {
+                                var item = data.data[index];
+                                Model.push(item.Model);
+                                Output_Monthly01.push(item.Output_Monthly01);
+                                Output_Monthly02.push(item.Output_Monthly02);
+                                Output_Monthly03.push(item.Output_Monthly03);
+                                Output_Monthly04.push(item.Output_Monthly04);
+                                Output_Monthly05.push(item.Output_Monthly05);
+                                Output_Monthly06.push(item.Output_Monthly06);
+                                Output_Monthly07.push(item.Output_Monthly07);
+                                Output_Monthly08.push(item.Output_Monthly08);
+                                Output_Monthly09.push(item.Output_Monthly09);
+                                Output_Monthly10.push(item.Output_Monthly10);
+                                Output_Monthly11.push(item.Output_Monthly11);
+                                Output_Monthly12.push(item.Output_Monthly12);
+                            }
+                            //alert(Output_Monthly01);
+                        }
+
+
+                let option = {
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "cross",
+                            crossStyle: {
+                                color: "white"
+                            }
+                        }
+                    },
+                    textStyle: {
+                        color: "#a0a8b9"
+                    },
+                    grid: {
+                        left: "10%",
+                        bottom: "15%",
+                        right: '8%',
+                        top: '25%'
+                    },
+                    legend: {
+                        data: Model,
+                        selected: {
+                            '@Model.Item1[1].Model': false,
+                            '@Model.Item1[2].Model': false,
+                            '@Model.Item1[3].Model': false,
+                            '@ViewBag.Now_Model': true
+                        },
+                        textStyle: {
+                            color: "#929aad"
+                        },
+                        right: "2%",
+                        top: "0%"
+                    },
+                    xAxis: [
+                      {
+                          type: "category",
+                          name: "",
+                          data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                          axisPointer: {
+                              type: "shadow"
+                          },
+                          axisLabel: {
+                              formatter: "{value}"
+                          }
+                      }
+                    ],
+                    yAxis: [
+                      {
+                          type: "value",
+                          name: "Output",
+                          min: 0,
+                          //max: @ViewBag.Monthly_OutputAndNG_MaxData,
+                          interval: 50,
+                          axisLabel: {
+                              formatter: "{value} K"
+                          },
+                          splitLine: {
+                              //lineStyle: {
+                              // color: '#242847'
+                              //}
+                              show:false
+                          }
+                      },
+                    {
+                        type: "value",
+                        name: "NG",
+                        splitLine: {
+                            show:false
+                        },
+                        axisLabel: {
+                            //formatter: "{value} %"
+                            formatter: "{value}"
+                            , textStyle: {
+                                //fontSize: 10, // 让字体变大
+                                color: '#CC0033'
+                            }
+                        }
+                    }
+                    ],
+                    series: [
+                      {
+                          name: Model,
+                          type: "bar",
+                          //stack:'堆叠',//堆叠柱状图在此设置成统一名称即可s
+                          //barGap: '-100%',//添加此配置项即为重叠效果
+                          itemStyle: {
+                              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                {
+                                    offset: 0,
+                                    color: "#0182e8"
+                                },
+                                {
+                                    offset: 1,
+                                    color: "#021b4d"
+                                }
+                              ]),
+                              barBorderRadius: 5
+                          },
+                          barWidth: "10px",
+                          data: [Output_Monthly01,Output_Monthly02,Output_Monthly03,Output_Monthly04,Output_Monthly05, Output_Monthly06, Output_Monthly07,Output_Monthly08, Output_Monthly09, Output_Monthly10,Output_Monthly11,Output_Monthly12],
+                          markPoint: {
+                              itemStyle:{
+                                  normal:{
+                                      label:{ 
+                                          show: true,  
+                                          color: '#FFFFFF',//气泡中字体颜色
+                                      }
+                                  }
+                              },
+                              data: [{
+                                  type: "max",
+                                  name: "Output",
+                              }
+                              ]
+                          },
+                      },
+                      {
+                          name: Model,
+                          type: "bar",
+                          //stack:'堆叠',//堆叠柱状图在此设置成统一名称即可
+                          yAxisIndex: 1,
+                          itemStyle: {
+                              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                {
+                                    offset: 0,
+                                    color: "#CC0033"
+                                },
+                                {
+                                    offset: 1,
+                                    color: "#CC0033"
+                                }
+                              ]),
+                              barBorderRadius: 5
+                          },
+                          barWidth: "10px",
+                          data: [@Model.Item1[0].NG_Monthly01, @Model.Item1[0].NG_Monthly02, @Model.Item1[0].NG_Monthly03, @Model.Item1[0].NG_Monthly04, @Model.Item1[0].NG_Monthly05, @Model.Item1[0].NG_Monthly06, @Model.Item1[0].NG_Monthly07, @Model.Item1[0].NG_Monthly08, @Model.Item1[0].NG_Monthly09, @Model.Item1[0].NG_Monthly10, @Model.Item1[0].NG_Monthly11, @Model.Item1[0].NG_Monthly12],
+                          markPoint: {
+                              itemStyle:{
+                                  normal:{
+                                      label:{ 
+                                          show: true,  
+                                          color: '#FFFFFF',//气泡中字体颜色
+                                      }
+                                  }
+                              },
+                              data: [{
+                                  type: "max",
+                                  name: "NG",
+                              }
+                              ]
+                          },
+                      },
+                      {
+                          name: "@Model.Item1[1].Model",
+                          type: "line",
+                          yAxisIndex: 1,
+                          itemStyle: {
+                              normal: {
+                                  color: "#CC0033",
+                                  lineStyle: {
+                                      color: "#CC0033"
+                                  }
+                              }
+                          },
+                          symbol: 'circle',     //设定为实心点
+                          symbolSize: 3,   //设定实心点的大小
+                          data: [@Model.Item1[1].NG_Monthly01, @Model.Item1[1].NG_Monthly02, @Model.Item1[1].NG_Monthly03, @Model.Item1[1].NG_Monthly04, @Model.Item1[1].NG_Monthly05, @Model.Item1[1].NG_Monthly06, @Model.Item1[1].NG_Monthly07, @Model.Item1[1].NG_Monthly08, @Model.Item1[1].NG_Monthly09, @Model.Item1[1].NG_Monthly10, @Model.Item1[1].NG_Monthly11, @Model.Item1[1].NG_Monthly12],
+                          markPoint: {
+                              itemStyle:{
+                                  normal:{
+                                      label:{ 
+                                          show: true,  
+                                          color: '#FFFFFF',//气泡中字体颜色
+                                      }
+                                  }
+                              },
+                              data: [{
+                                  type: "max",
+                                  name: "NG",
+
+                              }
+
+                              ]
+                          },
+                      }
+                    ]
+                };
+                myChart1.setOption(option);
+            },
+                error: function (data) {
+                    alert("系统错误");
+                }
+            })
+            };
+            const myChart1 = echarts.init(document.getElementById("serviceTimeChart"));
+            //serviceTimeChart();
+        </script>
+
+
+        <script>
+            function BigScreen(DeviceId) {
+            $.ajax({
+                dataType: "json",
+                type: "post",
+                url: '/DRAQ127/DRAQ127_AllStatus',
+                data: { DeviceId },
+                        success: function (data) {
+                            var obj = eval(data.data);
+
+
+                            
+                            //PO
+                            $("#PO").text("PO:    " + obj.PO);
+                            $("#Now_Output").text(obj.Now_Output);
+                            $("#Plan_Output").text(obj.Plan_Output);
+                            $("#Now_NG").text(obj.Now_NG);
+                            $("#Current_Reel").text(obj.Current_Reel+"/"+obj.Total_Reel);
+                            $("#Now_Model").text(obj.Now_Model);
+                            $("#User_time").text(obj.User_time+" H");
+                            $("#OEE").text(obj.OEE+"%");
+                            $("#UPH").text(obj.UPH);
+                            
+
+
+
+                            //设备运行状态
+                            if (obj.PLCRunStatus == 0) {
+                                //$("#Alarm_Tip").fadeIn();
+                                $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item gray");
+                                $("#PLCRunStatus_text").text("Off");
+                            }
+                            else if (obj.PLCRunStatus == 1) {
+                                //$("#Alarm_Tip").fadeOut();
+                                $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item green");
+                                $("#PLCRunStatus_text").text("Run");
+                            }
+                            else if (obj.PLCRunStatus == 2) {
+                                //$("#Alarm_Tip").fadeOut();
+                                $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item red");
+                                $("#PLCRunStatus_text").text("Stop");
+                            }
+                            else if (obj.PLCRunStatus == 3) {
+                                //$("#Alarm_Tip").fadeOut();
+                                $("#PLCRunStatus_class").removeClass().addClass("yz-zx _status-item yellow");
+                                $("#PLCRunStatus_text").text("Ready");
+                            } Maintain_Status_class
+
+
+                            //设备保养状态
+                            if (obj.Maintain_Status == 0) {
+                                //$("#Alarm_Tip").fadeIn();
+                                $("#Maintain_Status_class").removeClass().addClass("yz-whz _status-item red2");
+                                $("#Maintain_Status_text").text("Maintenance has expired");
+                            }
+                            else if (obj.Maintain_Status == 1) {
+                                //$("#Alarm_Tip").fadeOut();
+                                $("#Maintain_Status_class").removeClass().addClass("yz-whz _status-item green2");
+                                $("#Maintain_Status_text").text("Already maintained");
+                            }
+                            else if (obj.Maintain_Status == 2) {
+                                //$("#Alarm_Tip").fadeOut();
+                                $("#Maintain_Status_class").removeClass().addClass("yz-whz _status-item bule");
+                                $("#Maintain_Status_text").text("Maintenance in advance");
+                            }
+                           
+                           
+
+                           
+                        },
+                error: function (data) {
+                    //alert("系统错误");
+                }
+            })
+        };
+
+        window.setInterval(function () {
+            var DeviceId = '@ViewBag.DeviceId';
+            BigScreen(DeviceId);
+            test(DeviceId);
+        }, 3000);
+
+
+
+            function myrefresh() {
+                window.location.reload();//重新加载页面
+            }
+            setTimeout('myrefresh()', 3600000);//每小时刷新一次
+        </script>
+
+
+
+    </body>
+
+
+
+</html>

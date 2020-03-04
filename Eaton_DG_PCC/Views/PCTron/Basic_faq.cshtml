@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Model.Basic_Faq>
+
+@{
+    Layout = null;
+    string ids = "-1";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/animate.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>All FAQ</h5>
+                                <div class="ibox-tools">
+                                    <a href="@Url.Action("Add_Faq","PCTron", new {DeviceId =@ViewBag.DeviceId})" class="btn btn-primary btn-xs ">Add FAQ</a>
+                                </div>
+                            </div>
+
+
+                            @*<div class="ibox-content">
+                                <div class="row m-b-sm m-t-sm">
+                                    <div class="col-md-1">
+                                        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Please enter the query content" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button type="button" class="btn btn-sm btn-primary">Search</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>*@
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+@foreach (Eaton_DG_PCC.Model.Basic_Faq item in Model)
+{
+                <div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a data-toggle="collapse" href="faq.html#@item.ID" class="faq-question">@item.Problem</a>
+                            <small><strong>Model：@item.DeviceId    </strong><br /> <i class="fa fa-clock-o"></i>Edit time： @item.Ts</small>
+                        </div>
+                        @*<div class="col-md-2">
+                            <span class="small font-bold">dong guan branch</span>
+                            <div class="tag-list">
+                                <span class="tag-item">2# Automatic production line</span>
+                            </div>
+                        </div>*@
+                        <div class="col-md-3 text-left">
+                            <span class="small font-bold">Owner</span>
+                            <br />@item.Owner
+                        </div>
+                        <div class="col-md-2">
+                            <a href="@Url.Action("Edit_Faq","PCTron", new { ID=@item.ID ,DeviceId =@item.DeviceId })" class="btn btn-white btn-sm">
+                                <i class="fa fa-pencil"></i> Edit </a>
+                            
+                            
+                                <a  onclick="Delete(@item.ID)" class="btn btn-white btn-sm ">
+                                @*<a href="@Url.Action("Delete_Faq","PCTron", new { ID=@item.ID})" class="btn btn-white btn-sm">*@
+                                <i class="fa fa-trash-o "></i> Delete
+                            </a>
+</div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="@item.ID" class="panel-collapse collapse faq-answer">
+                                <p>
+                                    @item.Answer
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    </div>
+}
+            </div>
+        </div>
+    </div>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/bootstrap.min.js?v=3.3.6"></script>
+    <script src="~/scripts/plugins/sweetalert/sweetalert.min.js"></script>
+    @*<script>
+        $(document).ready(function(){$("#loading-example-btn").click(function(){btn=$(this);simpleLoad(btn,true);simpleLoad(btn,false)})});function simpleLoad(btn,state){if(state){btn.children().addClass("fa-spin");btn.contents().last().replaceWith(" Loading")}else{setTimeout(function(){btn.children().removeClass("fa-spin");btn.contents().last().replaceWith(" Refresh")},2000)}};
+    </script>*@
+
+    <script>
+        //删除信息
+       
+        
+        function Delete(categoryID) {
+            swal({
+                title: "Sure you want to delete it?", text: "Delete post will not be able recovery,please exercise caution！", type: "warning", showCancelButton: true, confirmButtonColor: "#DD6B55", confirmButtonText: "Yes，I want delete！", cancelButtonText: "I then consider…", closeOnConfirm: false, closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    //swal("删除成功！", "您已经永久删除了这条信息。", "success")
+
+                    url = "/PCTron/Delete_Faq";
+                    parameter = { id: categoryID };
+                    $.post(url, parameter, function (data) {
+                        if (data == "success") {
+                            swal("Delete successfully！", "You permanently delete the information。", "success")
+                            //history.go(-1); 
+                            //alert("删除成功！");
+                            //window.location = "/PCTron";
+                            setTimeout(function(){
+                                window.location.href = window.location.href;
+                            },3000)
+                            
+                        }else{alert("Delete failure！");}
+                    });
+                } else {
+                    swal("Cancel", "You cancel the operation！", "error")
+                }
+            })
+        }
+        
+    </script>
+</body>
+
+
+</html>

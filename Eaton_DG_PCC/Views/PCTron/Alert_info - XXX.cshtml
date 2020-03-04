@@ -1,0 +1,910 @@
+﻿@*@model IEnumerable<Eaton_DG_PCC.Models.PHP_PCTron>*@
+@model  Eaton_DG_PCC.Models.AllStatus
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+    <link href="~/Css/style.min862f.css" rel="stylesheet" />
+    <link href="~/Css/bootstrap.min14ed.css" rel="stylesheet" />
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+</head>
+
+
+<body class="">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget red-bg p-lg text-center">
+                <div class="m-b-md">
+                    <i class="fa fa-bell fa-4x"></i>
+                    <h1 class="m-xs">@Model.DeviceId Alarm messages</h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+
+            <div class="ibox float-e-margins">
+
+
+                <div class="ibox-content">
+                    <div class="feed-activity-list">
+
+
+                        @*@foreach (Eaton_DG_PCC.Models.PHP_PCTron item in Model)
+                            {
+                                <div class="feed-element">
+                                    <div>
+                                        <strong>Model： @item.DeviceId</strong>
+                                        <div class="font-bold text-danger">Content： @item.PLCStatus</div>
+                                        <small class="text-muted">@item.Ts</small>
+                                    </div>
+                                </div>
+
+                            }*@
+
+
+
+
+                        @*<small class="text-muted">@Model.Test1</small>
+        <div class="font-bold text-danger">@Model.Test2</div>*@
+                        @*1-10*@
+
+                        @if (Model.Test1.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX1</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test2.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test3.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test4.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test5.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test6.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test7.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test8.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test9.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test10.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @*11-20*@
+                        @if (Model.Test11.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test12.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test13.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test14.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test15.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test16.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test17.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test18.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test19.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test20.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @*21-30*@
+                        @if (Model.Test21.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX1</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test22.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test23.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test24.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test25.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test26.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test27.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test28.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test29.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test30.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @*31-40*@
+                        @if (Model.Test31.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX1</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test32.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test33.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test34.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test35.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test36.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test37.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test38.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test39.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test40.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @*41-50*@
+                        
+                        @if (Model.Test41.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test42.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test43.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test44.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test45.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test46.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test47.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test48.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test49.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test50.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+
+
+                        @*51-60*@
+                        @if (Model.Test51.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test52.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test53.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test54.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test55.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test56.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test57.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test58.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test59.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test60.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+
+                        @*61-70*@
+                        @if (Model.Test61.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test62.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test63.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test64.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test65.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test66.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test67.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test68.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test69.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">SXXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test70.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+
+
+                        @*71-80*@
+                        @if (Model.Test71.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test72.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test73.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX73</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test74.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test75.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test76.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test77.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test78.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test79.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test80.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+
+
+
+                        @*81-90*@
+                        @if (Model.Test81.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test82.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test83.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test84.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test85.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test86.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test87.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test88.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test89.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test90.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+
+
+                        @*91-100*@
+                        @if (Model.Test91.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test92.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test93.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test94.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+
+                        @if (Model.Test95.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test96.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                        @if (Model.Test97.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test98.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test99.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+                        @if (Model.Test100.ToString() == "True")
+                        {
+                            <div class="feed-element">
+                                <small class="text-muted">XXXXXXX</small>
+                            </div>
+                        }
+                        else { }
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+
+</html>

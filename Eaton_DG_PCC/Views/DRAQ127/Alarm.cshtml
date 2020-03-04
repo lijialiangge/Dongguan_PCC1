@@ -1,0 +1,184 @@
+﻿
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+
+
+
+    <link rel="stylesheet" href="~/Css/layui/modules/layui/css/layui.css" />
+    <link rel="stylesheet" href="~/Css/layui/css/admin.css" />
+    <script src="~/Css/layui/js/jquery-1.12.4.min.js"></script>
+
+
+    @*<link href="~/scripts/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="~/Css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="~/Css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="~/Css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="~/Css/plugins/chosen/chosen.css" rel="stylesheet">*@
+
+
+</head>
+
+<body>
+
+    <div class="iframe-main">
+        <div class="content-index-block">
+            <!--报警相关数据-->
+            <div class="layui-content-nav layui-block">
+                <div class="layui-row layui-content-nav-flush">
+                    <div class="layui-col-sm12 layui-content-nav-tab">
+                        <div class="layui-tab layui-tab-brief">
+                            <ul class="layui-tab-title layui-tab-nav">
+                                <li class="layui-this">Read Time Alarm</li>
+                                <li>History Alarm</li>
+                            </ul>
+                            <div class="layui-tab-content">
+
+                                @*<div class="layui-tab-item content-history-warning content-table layui-show">
+                                        <div class="layui-form layui-table-form-list" lay-filter="warning-input-limit">
+                                            <input type="text" class="layui-input layui-dateTime DeviceId" value="@ViewBag.DeviceId" id="DeviceId2" name="DeviceId2" style="display:none">
+                                            <label class="layui-form-label">显示行数</label>
+                                            <div class="layui-input-inline">
+                                                <select name="limit" id="warning-input-limit2" lay-filter="warning-input-limit">
+                                                    <option value="1">1</option>
+                                                    <option value="9">9</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20" selected="">20</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <table class="layui-table" id="current-warning"></table>
+                                    </div>*@
+                                <div class="layui-tab-item content-current-warning content-table layui-show">
+                                    <input type="text" class="layui-input layui-dateTime DeviceId" value="@ViewBag.DeviceId" id="DeviceId2" name="DeviceId2" style="display:none">
+                                    
+                                    @*<label class="layui-form-label">显示行数</label>
+                                        <div class="layui-input-inline">
+                                            <select name="limit" id="warning-input-limit2" lay-filter="warning-input-limit2">
+                                                <option value="1">1</option>
+                                                <option value="9">9</option>
+                                                <option value="15">15</option>
+                                                <option value="20" selected="">20</option>
+                                            </select>
+                                        </div>*@
+
+                                    <table class="layui-table" id="current-warning"></table>
+                                </div>
+
+
+                                <div class="layui-tab-item content-current-warning content-table">
+                                        <div class="layui-form layui-table-form-list">
+                                            <form class="layui-form">
+                                                <label class="layui-form-label">Line/Page</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="limit" id="warning-input-limit">
+                                                        <option value="10" selected="">10</option>
+                                                        <option value="20">20</option>
+                                                        <option value="30">30</option>
+                                                        <option value="50">50</option>
+                                                    </select>
+                                                </div>
+                                                <div class="layui-inline">
+                                                    <input type="text" class="layui-input layui-dateTime start_time" id="dateTime7" name="start_time">
+                                                    <input type="text" class="layui-input layui-dateTime DeviceId" value="@ViewBag.DeviceId" id="DeviceId" name="DeviceId" style="display:none">
+                                                </div>
+                                                <label>To</label>
+                                                <div class="layui-inline">
+                                                    <input type="text" class="layui-input layui-dateTime end_time" id="dateTime8" name="end_time">
+                                                </div>
+                                                <button type="button" class="layui-btn layui-btn-radius layui-btn-sm" lay-submit="" lay-filter="search-history-warning">Search</button>
+                                            </form>
+                                        </div>
+                                        <table class="layui-table" id="history-warning"></table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-content-nav-right">
+                        <div class="layui-btn-right" style="width:346px;">
+                            <button onclick="window.location.href='@Url.Action(ViewBag.DeviceId, "PCTron", new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">Main</button>
+                            <button onclick="window.location.href='@Url.Action("History", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">History</button>
+                            <button onclick="window.location.href='@Url.Action("Alarm", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })'" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary layui-btn-this">Alarm</button>
+                            <button onclick="window.open('@Url.Action("BigScreen", ViewBag.DeviceId, new { DeviceId = ViewBag.DeviceId })')" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary">BigScreen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--报警相关结束-->
+    </div>
+
+
+
+
+    <script src="~/Css/layui/modules/layui/layui.all.js"></script>
+    <script src="~/Scripts/layui/globs.js"></script>
+
+
+    @*<script src="~/scripts/plugins/peity/jquery.peity.min.js"></script>
+    <script src="~/scripts/content.min.js"></script>
+    <script src="~/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/scripts/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <script src="~/scripts/plugins/chosen/chosen.jquery.js"></script>
+    <script src="~/scripts/demo/form-advanced-demo.min.js"></script>
+    <script src="~/scripts/jquery.min.js?v=2.1.4"></script>
+    <script src="~/scripts/bootstrap.min.js?v=3.3.6"></script>
+    <script src="~/scripts/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/scripts/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/scripts/plugins/dataTables/dataTables.bootstrap.js"></script>*@
+
+    <script>
+        function Delete() {
+            //alert(DeviceId);
+            swal({
+                title: "您确定要将所有报警信息初始化吗??", text: "初始化后将无法恢复，请谨慎操作！", type: "warning", showCancelButton: true, confirmButtonColor: "#DD6B55", confirmButtonText: "是的，我要初始化！", cancelButtonText: "让我再考虑一下…", closeOnConfirm: false, closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    //swal("删除成功！", "您已经永久删除了这条信息。", "success")
+
+                    url = "/PCTron/Delete_Alarm_All";
+                    parameter = {};
+                    $.post(url, parameter, function (data) {
+                        if (data == "success") {
+                            swal("初始化成功！", "您已经初始化了所有报警信息。", "success")
+                            //history.go(-1);
+                            //alert("删除成功！");
+                            //window.location = "/PCTron";
+                            setTimeout(function () {
+                                window.location.href = window.location.href;
+                            }, 3000)
+
+                        } else { alert("初始化失败！"); }
+                    });
+                } else {
+                    swal("已取消", "您取消了初始化操作！", "error")
+                }
+            })
+        }
+    </script>
+
+</body>
+
+
+
+</html>

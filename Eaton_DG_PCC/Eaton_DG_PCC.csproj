@@ -1,0 +1,1271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B301CF7B-933A-4841-B2F9-A54C254C7522}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eaton_DG_PCC</RootNamespace>
+    <AssemblyName>Eaton_DG_PCC</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqToExcel, Version=2.0.0.2, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>D:\EF工程\VS2015\2019-4-4\packages\LinqToExcel.2.0.0-PRERELEASE-2\lib\net451\LinqToExcel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MQTTnet, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MQTTnet.2.4.0\lib\net45\MQTTnet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MQTTnet.Core, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MQTTnet.2.4.0\lib\net45\MQTTnet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.8.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.8.8\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=2.1.4113.149, Culture=neutral, PublicKeyToken=1f722ed313f51831, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorJS.0.4.3\lib\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorJS, Version=0.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorJS.0.4.3\lib\RazorJS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>D:\EF工程\VS2015\2019-4-4\packages\Remotion.Linq.2.1.2\lib\net45\Remotion.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Css\animate.min.css" />
+    <Content Include="Css\BigScreen2\common.css" />
+    <Content Include="Css\BigScreen2\equipApply.css" />
+    <Content Include="Css\BigScreen2\equipServer.css" />
+    <Content Include="Css\BigScreen2\reset.css" />
+    <Content Include="Css\BigScreen2\teaching.css" />
+    <Content Include="Css\BigScreen2\warrantyService.css" />
+    <Content Include="Css\BigScreen\alarm.css" />
+    <Content Include="Css\BigScreen\bigdata.css" />
+    <Content Include="Css\BigScreen\fifth.css" />
+    <Content Include="Css\BigScreen\main.css" />
+    <Content Include="Css\BigScreen\normalize.css" />
+    <Content Include="Css\BigScreen\second.css" />
+    <Content Include="Css\BigScreen\swiper.min.css" />
+    <Content Include="Css\BigScreen\third.css" />
+    <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Css\bootstrap.min14ed.css" />
+    <Content Include="Css\demo\webuploader-demo.min.css" />
+    <Content Include="Css\font-awesome.min93e3.css" />
+    <Content Include="Css\icon\iconfont.css" />
+    <Content Include="Css\icon\iconfont.js" />
+    <Content Include="Css\icon\iconfont.svg" />
+    <Content Include="Css\imgs\arrow-down.png" />
+    <Content Include="Css\imgs\bg.jpg" />
+    <Content Include="Css\imgs\center-data.jpg" />
+    <Content Include="Css\imgs\equipApplyBg.jpg" />
+    <Content Include="Css\imgs\equipServerBg.jpg" />
+    <Content Include="Css\imgs\interact.png" />
+    <Content Include="Css\imgs\selcetBG.png" />
+    <Content Include="Css\imgs\six-border.jpg" />
+    <Content Include="Css\imgs\teach-cornor.png" />
+    <Content Include="Css\imgs\titleImg.png" />
+    <Content Include="Css\imgs\warrantyService.png" />
+    <Content Include="Css\img\0.png" />
+    <Content Include="Css\img\0s.png" />
+    <Content Include="Css\img\1 %282%29.png" />
+    <Content Include="Css\img\1.png" />
+    <Content Include="Css\img\1s.png" />
+    <Content Include="Css\img\2 %282%29.png" />
+    <Content Include="Css\img\2.png" />
+    <Content Include="Css\img\2s.png" />
+    <Content Include="Css\img\3 %282%29.png" />
+    <Content Include="Css\img\3.png" />
+    <Content Include="Css\img\3s.png" />
+    <Content Include="Css\img\4 %282%29.png" />
+    <Content Include="Css\img\4.png" />
+    <Content Include="Css\img\4s.png" />
+    <Content Include="Css\img\5 %282%29.png" />
+    <Content Include="Css\img\5.png" />
+    <Content Include="Css\img\5s.png" />
+    <Content Include="Css\img\6.png" />
+    <Content Include="Css\img\aaa.png" />
+    <Content Include="Css\img\b1.png" />
+    <Content Include="Css\img\b2.png" />
+    <Content Include="Css\img\b3.png" />
+    <Content Include="Css\img\b4.png" />
+    <Content Include="Css\img\ball.png" />
+    <Content Include="Css\img\bar.png" />
+    <Content Include="Css\img\bb1.png" />
+    <Content Include="Css\img\bj.jpg" />
+    <Content Include="Css\img\bj3.jpg" />
+    <Content Include="Css\img\bk-old.png" />
+    <Content Include="Css\img\bk-old1.png" />
+    <Content Include="Css\img\bk.png" />
+    <Content Include="Css\img\box-3.png" />
+    <Content Include="Css\img\box2.png" />
+    <Content Include="Css\img\box3.png" />
+    <Content Include="Css\img\c1.png" />
+    <Content Include="Css\img\c2.png" />
+    <Content Include="Css\img\c3.png" />
+    <Content Include="Css\img\c4.png" />
+    <Content Include="Css\img\c5.png" />
+    <Content Include="Css\img\c6.png" />
+    <Content Include="Css\img\c7.png" />
+    <Content Include="Css\img\c8.png" />
+    <Content Include="Css\img\center.png" />
+    <Content Include="Css\img\circle.png" />
+    <Content Include="Css\img\circle_2.png" />
+    <Content Include="Css\img\con1.png" />
+    <Content Include="Css\img\con2.png" />
+    <Content Include="Css\img\con3.png" />
+    <Content Include="Css\img\faguang.png" />
+    <Content Include="Css\img\fifth1 %285%29.png" />
+    <Content Include="Css\img\fifth1.png" />
+    <Content Include="Css\img\fifth10.png" />
+    <Content Include="Css\img\fifth11.png" />
+    <Content Include="Css\img\fifth12.png" />
+    <Content Include="Css\img\fifth13.png" />
+    <Content Include="Css\img\fifth2.png" />
+    <Content Include="Css\img\fifth3.png" />
+    <Content Include="Css\img\fifth4.png" />
+    <Content Include="Css\img\fifth6.png" />
+    <Content Include="Css\img\fifth7.png" />
+    <Content Include="Css\img\fifth8.png" />
+    <Content Include="Css\img\fifth9.png" />
+    <Content Include="Css\img\img2.png" />
+    <Content Include="Css\img\jiantou.png" />
+    <Content Include="Css\img\l2.png" />
+    <Content Include="Css\img\left-h.png" />
+    <Content Include="Css\img\left1.png" />
+    <Content Include="Css\img\left2.png" />
+    <Content Include="Css\img\left3.png" />
+    <Content Include="Css\img\line-group.png" />
+    <Content Include="Css\img\link1.png" />
+    <Content Include="Css\img\link2.png" />
+    <Content Include="Css\img\link3.png" />
+    <Content Include="Css\img\right1.png" />
+    <Content Include="Css\img\right2.png" />
+    <Content Include="Css\img\right3.png" />
+    <Content Include="Css\img\second2.png" />
+    <Content Include="Css\img\security.gif" />
+    <Content Include="Css\img\t2.png" />
+    <Content Include="Css\img\third.png" />
+    <Content Include="Css\img\third1.png" />
+    <Content Include="Css\img\third2.png" />
+    <Content Include="Css\img\third3.png" />
+    <Content Include="Css\img\third4.png" />
+    <Content Include="Css\img\third5.png" />
+    <Content Include="Css\img\third6.png" />
+    <Content Include="Css\img\third7.png" />
+    <Content Include="Css\img\timer.png" />
+    <Content Include="Css\img\title.png" />
+    <Content Include="Css\img\title_1.png" />
+    <Content Include="Css\img\title_2.png" />
+    <Content Include="Css\img\wave.png" />
+    <Content Include="Css\img\wave2.png" />
+    <Content Include="Css\img\wave3.png" />
+    <Content Include="Css\img\zjzt.png" />
+    <Content Include="Css\jquery.gritter.css" />
+    <Content Include="Css\layui\admin.css" />
+    <Content Include="Css\layui\css\admin.css" />
+    <Content Include="Css\layui\css\device.css" />
+    <Content Include="Css\layui\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Css\layui\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Css\layui\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Css\layui\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Css\layui\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Css\layui\imgs\icons.png" />
+    <Content Include="Css\layui\imgs\icon_baojing.png" />
+    <Content Include="Css\layui\imgs\icon_baojingduibi%402x.png" />
+    <Content Include="Css\layui\imgs\icon_baojingduibi.png" />
+    <Content Include="Css\layui\imgs\icon_baoyangxinxi%402x.png" />
+    <Content Include="Css\layui\imgs\icon_baoyangxinxi.png" />
+    <Content Include="Css\layui\imgs\icon_beijianxinxi%402x.png" />
+    <Content Include="Css\layui\imgs\icon_beijianxinxi.png" />
+    <Content Include="Css\layui\imgs\icon_close%402x.png" />
+    <Content Include="Css\layui\imgs\icon_close.png" />
+    <Content Include="Css\layui\imgs\icon_danzhandaping%402x.png" />
+    <Content Include="Css\layui\imgs\icon_danzhandaping.png" />
+    <Content Include="Css\layui\imgs\icon_dingdan%402x.png" />
+    <Content Include="Css\layui\imgs\icon_dingdan.png" />
+    <Content Include="Css\layui\imgs\icon_lishishuju%402x.png" />
+    <Content Include="Css\layui\imgs\icon_lishishuju.png" />
+    <Content Include="Css\layui\imgs\icon_moreyear%402x.png" />
+    <Content Include="Css\layui\imgs\icon_moreyear.png" />
+    <Content Include="Css\layui\imgs\icon_next%402x.png" />
+    <Content Include="Css\layui\imgs\icon_next.png" />
+    <Content Include="Css\layui\imgs\icon_quanjudaping%402x.png" />
+    <Content Include="Css\layui\imgs\icon_quanjudaping.png" />
+    <Content Include="Css\layui\imgs\icon_quanxianguanli%402x.png" />
+    <Content Include="Css\layui\imgs\icon_quanxianguanli.png" />
+    <Content Include="Css\layui\imgs\icon_shebeishiyonglv%402x.png" />
+    <Content Include="Css\layui\imgs\icon_shebeishiyonglv.png" />
+    <Content Include="Css\layui\imgs\icon_shebeizonglan%402x.png" />
+    <Content Include="Css\layui\imgs\icon_shebeizonglan.png" />
+    <Content Include="Css\layui\imgs\icon_shut down%402x.png" />
+    <Content Include="Css\layui\imgs\icon_shut down.png" />
+    <Content Include="Css\layui\imgs\icon_zhishiku%402x.png" />
+    <Content Include="Css\layui\imgs\icon_zhishiku.png" />
+    <Content Include="Css\layui\imgs\light_gray%402x.png" />
+    <Content Include="Css\layui\imgs\light_gray.png" />
+    <Content Include="Css\layui\imgs\light_green%402x.png" />
+    <Content Include="Css\layui\imgs\light_green.png" />
+    <Content Include="Css\layui\imgs\light_red%402x.png" />
+    <Content Include="Css\layui\imgs\light_red.png" />
+    <Content Include="Css\layui\imgs\light_yellow%402x.png" />
+    <Content Include="Css\layui\imgs\light_yellow.png" />
+    <Content Include="Css\layui\imgs\logo%402x.png" />
+    <Content Include="Css\layui\imgs\logo.png" />
+    <Content Include="Css\layui\js\exceptionhanding.js" />
+    <Content Include="Css\layui\js\globs.js" />
+    <Content Include="Css\layui\js\highcharts.js" />
+    <Content Include="Css\layui\js\jquery-1.12.4.min.js" />
+    <Content Include="Css\layui\js\jquery.min.js" />
+    <Content Include="Css\layui\js\knowledge.js" />
+    <Content Include="Css\layui\js\overviewstationequipment.js" />
+    <Content Include="Css\layui\js\singleequipmentinfo.js" />
+    <Content Include="Css\layui\layui.css" />
+    <Content Include="Css\layui\modules\hightcharts\highcharts-zh_CN.js" />
+    <Content Include="Css\layui\modules\hightcharts\highcharts.js" />
+    <Content Include="Css\layui\modules\hightcharts\module\exporting.js" />
+    <Content Include="Css\layui\modules\layui\css\layui.css" />
+    <Content Include="Css\layui\modules\layui\css\layui.mobile.css" />
+    <Content Include="Css\layui\modules\layui\css\modules\code.css" />
+    <Content Include="Css\layui\modules\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="Css\layui\modules\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="Css\layui\modules\layui\css\modules\layer\default\icon.png" />
+    <Content Include="Css\layui\modules\layui\css\modules\layer\default\layer.css" />
+    <Content Include="Css\layui\modules\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="Css\layui\modules\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="Css\layui\modules\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="Css\layui\modules\layui\font\iconfont.eot" />
+    <Content Include="Css\layui\modules\layui\font\iconfont.svg" />
+    <Content Include="Css\layui\modules\layui\font\iconfont.ttf" />
+    <Content Include="Css\layui\modules\layui\font\iconfont.woff" />
+    <Content Include="Css\layui\modules\layui\font\iconfont.woff2" />
+    <Content Include="Css\layui\modules\layui\images\face\0.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\1.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\10.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\11.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\12.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\13.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\14.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\15.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\16.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\17.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\18.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\19.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\2.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\20.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\21.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\22.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\23.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\24.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\25.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\26.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\27.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\28.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\29.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\3.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\30.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\31.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\32.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\33.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\34.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\35.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\36.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\37.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\38.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\39.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\4.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\40.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\41.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\42.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\43.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\44.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\45.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\46.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\47.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\48.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\49.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\5.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\50.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\51.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\52.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\53.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\54.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\55.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\56.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\57.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\58.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\59.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\6.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\60.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\61.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\62.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\63.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\64.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\65.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\66.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\67.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\68.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\69.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\7.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\70.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\71.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\8.gif" />
+    <Content Include="Css\layui\modules\layui\images\face\9.gif" />
+    <Content Include="Css\layui\modules\layui\layui.all.js" />
+    <Content Include="Css\layui\modules\layui\layui.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\carousel.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\code.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\colorpicker.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\element.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\flow.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\form.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\jquery.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\laydate.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\layedit.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\layer.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\laypage.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\laytpl.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\mobile.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\rate.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\slider.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\table.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\transfer.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\tree.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\upload.js" />
+    <Content Include="Css\layui\modules\layui\lay\modules\util.js" />
+    <Content Include="Css\login.min.css" />
+    <Content Include="Css\patterns\header-profile-skin-1.png" />
+    <Content Include="Css\patterns\header-profile-skin-3.png" />
+    <Content Include="Css\patterns\header-profile.png" />
+    <Content Include="Css\patterns\shattered.png" />
+    <Content Include="Css\plugins\awesome-bootstrap-checkbox\awesome-bootstrap-checkbox.css" />
+    <Content Include="Css\plugins\blueimp\css\blueimp-gallery.min.css" />
+    <Content Include="Css\plugins\blueimp\img\error.png" />
+    <Content Include="Css\plugins\blueimp\img\error.svg" />
+    <Content Include="Css\plugins\blueimp\img\loading.gif" />
+    <Content Include="Css\plugins\blueimp\img\play-pause.png" />
+    <Content Include="Css\plugins\blueimp\img\play-pause.svg" />
+    <Content Include="Css\plugins\blueimp\img\video-play.png" />
+    <Content Include="Css\plugins\blueimp\img\video-play.svg" />
+    <Content Include="Css\plugins\bootstrap-table\bootstrap-table.min.css" />
+    <Content Include="Css\plugins\chosen\chosen-sprite%402x.png" />
+    <Content Include="Css\plugins\chosen\chosen-sprite.png" />
+    <Content Include="Css\plugins\chosen\chosen.css" />
+    <Content Include="Css\plugins\clockpicker\clockpicker.css" />
+    <Content Include="Css\plugins\codemirror\ambiance.css" />
+    <Content Include="Css\plugins\codemirror\codemirror.css" />
+    <Content Include="Css\plugins\colorpicker\css\bootstrap-colorpicker.min.css" />
+    <Content Include="Css\plugins\colorpicker\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Css\plugins\colorpicker\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Css\plugins\colorpicker\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Css\plugins\colorpicker\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="Css\plugins\colorpicker\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Css\plugins\cropper\cropper.min.css" />
+    <Content Include="Css\plugins\datapicker\datepicker3.css" />
+    <Content Include="Css\plugins\dataTables\dataTables.bootstrap.css" />
+    <Content Include="Css\plugins\dropzone\basic.css" />
+    <Content Include="Css\plugins\dropzone\dropzone.css" />
+    <Content Include="Css\plugins\footable\fonts\footable.svg" />
+    <Content Include="Css\plugins\footable\footable.core.css" />
+    <Content Include="Css\plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="Css\plugins\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Css\plugins\iCheck\custom.css" />
+    <Content Include="Css\plugins\iCheck\green%402x.png" />
+    <Content Include="Css\plugins\iCheck\green.png" />
+    <Content Include="Css\plugins\images\sort_asc.png" />
+    <Content Include="Css\plugins\images\sort_desc.png" />
+    <Content Include="Css\plugins\images\sprite-skin-flat.png" />
+    <Content Include="Css\plugins\images\spritemap%402x.png" />
+    <Content Include="Css\plugins\images\spritemap.png" />
+    <Content Include="Css\plugins\ionRangeSlider\ion.rangeSlider.css" />
+    <Content Include="Css\plugins\ionRangeSlider\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Css\plugins\jasny\jasny-bootstrap.min.css" />
+    <Content Include="Css\plugins\jqgrid\ui.jqgridffe4.css" />
+    <Content Include="Css\plugins\jsTree\style.min.css" />
+    <Content Include="Css\plugins\markdown\bootstrap-markdown.min.css" />
+    <Content Include="Css\plugins\morris\morris-0.4.3.min.css" />
+    <Content Include="Css\plugins\nouslider\jquery.nouislider.css" />
+    <Content Include="Css\plugins\plyr\plyr.css" />
+    <Content Include="Css\plugins\plyr\sprite.svg" />
+    <Content Include="Css\plugins\simditor\simditor.css" />
+    <Content Include="Css\plugins\steps\jquery.steps.css" />
+    <Content Include="Css\plugins\summernote\summernote-bs3.css" />
+    <Content Include="Css\plugins\summernote\summernote.css" />
+    <Content Include="Css\plugins\sweetalert\sweetalert.css" />
+    <Content Include="Css\plugins\switchery\switchery.css" />
+    <Content Include="Css\plugins\toastr\toastr.min.css" />
+    <Content Include="Css\plugins\treeview\bootstrap-treeview.css" />
+    <Content Include="Css\plugins\webuploader\webuploader.css" />
+    <Content Include="Css\style.min.css" />
+    <Content Include="Css\style.min862f2.css" />
+    <Content Include="Css\style.min862f3.css" />
+    <Content Include="Css\style.min862f.css" />
+    <Content Include="fonts\fontawesome-webfont93e3.eot" />
+    <Content Include="fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="fonts\fontawesome-webfont93e3.ttf" />
+    <Content Include="fonts\fontawesome-webfont93e3.woff" />
+    <Content Include="fonts\fontawesome-webfont93e3.woff2" />
+    <Content Include="fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Global.asax" />
+    <Content Include="img\a.png" />
+    <Content Include="img\a1.jpg" />
+    <Content Include="img\a2.jpg" />
+    <Content Include="img\a3.jpg" />
+    <Content Include="img\a4.jpg" />
+    <Content Include="img\a5.jpg" />
+    <Content Include="img\a6.jpg" />
+    <Content Include="img\a7.jpg" />
+    <Content Include="img\a8.jpg" />
+    <Content Include="img\a9.jpg" />
+    <Content Include="img\b.png" />
+    <Content Include="img\bg.png" />
+    <Content Include="img\c.png" />
+    <Content Include="img\d.png" />
+    <Content Include="img\DRAQ75_100X100.png" />
+    <Content Include="img\DRAQ75_133X133.png" />
+    <Content Include="img\DRAQ75_150X150.png" />
+    <Content Include="img\DRAQ75_200X200.png" />
+    <Content Include="img\e.png" />
+    <Content Include="img\Eaton.gif" />
+    <Content Include="img\f.png" />
+    <Content Include="img\g.png" />
+    <Content Include="img\green_20X17.gif" />
+    <Content Include="img\green_35X30.gif" />
+    <Content Include="img\green_40X34.gif" />
+    <Content Include="img\iconfont-logo.png" />
+    <Content Include="img\icons.png" />
+    <Content Include="img\index.jpg" />
+    <Content Include="img\index_4.jpg" />
+    <Content Include="img\loading-upload.gif" />
+    <Content Include="img\locked.png" />
+    <Content Include="img\login-background.jpg" />
+    <Content Include="img\p1.jpg" />
+    <Content Include="img\p2.jpg" />
+    <Content Include="img\p3.jpg" />
+    <Content Include="img\pay.png" />
+    <Content Include="img\PCCLine.png" />
+    <Content Include="img\PCTron_200X200.png" />
+    <Content Include="img\profile.jpg" />
+    <Content Include="img\profile_big.jpg" />
+    <Content Include="img\profile_small.jpg" />
+    <Content Include="img\progress.png" />
+    <Content Include="img\p_big1.jpg" />
+    <Content Include="img\p_big2.jpg" />
+    <Content Include="img\p_big3.jpg" />
+    <Content Include="img\qr_code.png" />
+    <Content Include="img\red_20x17.gif" />
+    <Content Include="img\red_35X30.gif" />
+    <Content Include="img\red_60x60.gif" />
+    <Content Include="img\security.gif" />
+    <Content Include="img\success.png" />
+    <Content Include="img\test.png" />
+    <Content Include="img\user.png" />
+    <Content Include="img\wenku_logo.png" />
+    <Content Include="img\yellow_20X18.gif" />
+    <Content Include="laydate\laydate.js" />
+    <Content Include="Models\DRAQ127.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DRAQ127.edmx</DependentUpon>
+      <LastGenOutput>DRAQ127.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DRAQ127.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DRAQ127.edmx</DependentUpon>
+      <LastGenOutput>DRAQ1271.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\Model2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model2.edmx.diagram">
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Content>
+    <Content Include="Configs\Cache\cache.config" />
+    <Content Include="Configs\Cookie\cookie.config" />
+    <Content Include="Configs\Data\Database.config" />
+    <None Include="Configs\Data\Database.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Configs\Data\Database.xsx">
+      <DependentUpon>Database.xsd</DependentUpon>
+    </Content>
+    <None Include="Configs\Data\DataOperations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Configs\Data\DataOperations.xsx">
+      <DependentUpon>DataOperations.xsd</DependentUpon>
+    </Content>
+    <Content Include="Configs\Data\DbCommandFiles.config" />
+    <None Include="Configs\Data\DbCommandFiles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Configs\Data\DbCommandFiles.xsx">
+      <DependentUpon>DbCommandFiles.xsd</DependentUpon>
+    </Content>
+    <Content Include="Configs\Data\DbCommonCommand.config" />
+    <Content Include="Configs\Data\DbReportCommand.config" />
+    <Content Include="Configs\FileGroup\FileGroup.config" />
+    <Content Include="Configs\FileValidate\FileVaild.config" />
+    <Content Include="Configs\File\File.config" />
+    <Content Include="Configs\Message\Message.config" />
+    <Content Include="Configs\Pages\Bad-PagesManage.config" />
+    <Content Include="Configs\Pages\Check-PagesManage.config" />
+    <Content Include="Configs\Pages\Client-PagesManage.config" />
+    <Content Include="Configs\Pages\InStorage-PagesManage.config" />
+    <Content Include="Configs\Pages\Move-PagesManage.config" />
+    <Content Include="Configs\Pages\OutStorage-PagesManage.config" />
+    <Content Include="Configs\Pages\PagesManage.config" />
+    <Content Include="Configs\Pages\Product-PagesManage.config" />
+    <Content Include="Configs\Pages\Report-PagesManage.config" />
+    <Content Include="Configs\Pages\Return-PagesManage.config" />
+    <Content Include="Configs\Pages\Store-PagesManage.config" />
+    <Content Include="Configs\SEO\SEO.config" />
+    <Content Include="Configs\Setting\setting.config" />
+    <Content Include="Css\plugins\footable\fonts\footable.eot" />
+    <Content Include="Css\plugins\footable\fonts\footable.ttf" />
+    <Content Include="Css\plugins\footable\fonts\footable.woff" />
+    <Content Include="Css\plugins\footable\fonts\footabled41d.eot" />
+    <Content Include="Models\Model_PCTron.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model_PCTron.edmx</DependentUpon>
+      <LastGenOutput>Model_PCTron.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model_PCTron.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model_PCTron.edmx</DependentUpon>
+      <LastGenOutput>Model_PCTron.cs</LastGenOutput>
+    </Content>
+    <Content Include="plugins\fullavatareditor\scripts\fullAvatarEditor.js" />
+    <Content Include="plugins\fullavatareditor\scripts\jQuery.Cookie.js" />
+    <Content Include="plugins\fullavatareditor\scripts\swfobject.js" />
+    <Content Include="plugins\fullavatareditor\scripts\test.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\BigScreen2\areaMap.js" />
+    <Content Include="Scripts\BigScreen2\china.js" />
+    <Content Include="Scripts\BigScreen2\echarts.min.js" />
+    <Content Include="Scripts\BigScreen2\equipApply2.js" />
+    <Content Include="Scripts\BigScreen2\equipApply.js" />
+    <Content Include="Scripts\BigScreen2\equipServer.js" />
+    <Content Include="Scripts\BigScreen2\jquery-2.1.0.js" />
+    <Content Include="Scripts\BigScreen2\jz_all2.js" />
+    <Content Include="Scripts\BigScreen2\jz_all.js" />
+    <Content Include="Scripts\BigScreen2\utils.js" />
+    <Content Include="Scripts\BigScreen2\warrantService.js" />
+    <Content Include="Scripts\BigScreen\alarm.js" />
+    <Content Include="Scripts\BigScreen\dark.js" />
+    <Content Include="Scripts\BigScreen\echarts.min.js" />
+    <Content Include="Scripts\BigScreen\fifth.js" />
+    <Content Include="Scripts\BigScreen\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\BigScreen\jz_all_1.js" />
+    <Content Include="Scripts\BigScreen\jz_all.js" />
+    <Content Include="Scripts\BigScreen\swiper.min.js" />
+    <Content Include="Scripts\BigScreen\third.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\contabs.min - 复制.js" />
+    <Content Include="Scripts\contabs.min.js" />
+    <Content Include="Scripts\content.min.js" />
+    <Content Include="Scripts\demo\bootstrap-table-demo.min.js" />
+    <Content Include="Scripts\demo\echarts-dongtaitu2.min.js" />
+    <Content Include="Scripts\demo\echarts-dongtaitu3.min.js" />
+    <Content Include="Scripts\demo\echarts-dongtaitu.min.js" />
+    <Content Include="Scripts\demo\echarts-zhexian.min.js" />
+    <Content Include="Scripts\demo\echartstest2-demo.min.js" />
+    <Content Include="Scripts\demo\echartstest-demo.min.js" />
+    <Content Include="Scripts\demo\echarts-demo.min.js" />
+    <Content Include="Scripts\demo\flot-demo.min.js" />
+    <Content Include="Scripts\demo\flottest-demo.min.js" />
+    <Content Include="Scripts\demo\form-advanced-demo.min.js" />
+    <Content Include="Scripts\demo\form-validate-demo.min.js" />
+    <Content Include="Scripts\demo\layer-demo.min.js" />
+    <Content Include="Scripts\demo\morris-demo.min.js" />
+    <Content Include="Scripts\demo\peity-demo.min.js" />
+    <Content Include="Scripts\demo\rickshaw-demo.min.js" />
+    <Content Include="Scripts\demo\sparkline-demo.min.js" />
+    <Content Include="Scripts\demo\treeview-demo.min.js" />
+    <Content Include="Scripts\demo\webuploader-demo.min.js" />
+    <Content Include="Scripts\echarts.js" />
+    <Content Include="Scripts\hplus.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\layui\globs.js" />
+    <Content Include="Scripts\layui\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\layui\layui.all.js" />
+    <Content Include="Scripts\plugins\beautifyhtml\beautifyhtml.js" />
+    <Content Include="Scripts\plugins\blueimp\jquery.blueimp-gallery.min.js" />
+    <Content Include="Scripts\plugins\bootstrap-table\bootstrap-table-mobile.min.js" />
+    <Content Include="Scripts\plugins\bootstrap-table\bootstrap-table.min.js" />
+    <Content Include="Scripts\plugins\bootstrap-table\locale\bootstrap-table-zh-CN.min.js" />
+    <Content Include="Scripts\plugins\chartJs\Chart.min.js" />
+    <Content Include="Scripts\plugins\chosen\chosen.jquery.js" />
+    <Content Include="Scripts\plugins\clockpicker\clockpicker.js" />
+    <Content Include="Scripts\plugins\codemirror\codemirror.js" />
+    <Content Include="Scripts\plugins\codemirror\mode\javascript\javascript.js" />
+    <Content Include="Scripts\plugins\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Scripts\plugins\cropper\cropper.min.js" />
+    <Content Include="Scripts\plugins\datapicker\bootstrap-datepicker.js" />
+    <Content Include="Scripts\plugins\dataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\plugins\dataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\plugins\diff_match_patch\diff_match_patch.js" />
+    <Content Include="Scripts\plugins\dropzone\dropzone.js" />
+    <Content Include="Scripts\plugins\easypiechart\jquery.easypiechart.js" />
+    <Content Include="Scripts\plugins\echarts\echarts-all.js" />
+    <Content Include="Scripts\plugins\fancybox\blank.gif" />
+    <Content Include="Scripts\plugins\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Scripts\plugins\fancybox\fancybox_loading.gif" />
+    <Content Include="Scripts\plugins\fancybox\fancybox_overlay.png" />
+    <Content Include="Scripts\plugins\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Scripts\plugins\fancybox\fancybox_sprite.png" />
+    <Content Include="Scripts\plugins\fancybox\jquery.fancybox.css" />
+    <Content Include="Scripts\plugins\fancybox\jquery.fancybox.js" />
+    <Content Include="Scripts\plugins\flot\curvedLines.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.spline.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.symbol.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\plugins\footable\footable.all.min.js" />
+    <Content Include="Scripts\plugins\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\plugins\gritter\images\gritter-light.png" />
+    <Content Include="Scripts\plugins\gritter\images\gritter.png" />
+    <Content Include="Scripts\plugins\gritter\images\ie-spacer.gif" />
+    <Content Include="Scripts\plugins\gritter\jquery.gritter.css" />
+    <Content Include="Scripts\plugins\gritter\jquery.gritter.min.js" />
+    <Content Include="Scripts\plugins\iCheck\icheck.min.js" />
+    <Content Include="Scripts\plugins\ionRangeSlider\ion.rangeSlider.min.js" />
+    <Content Include="Scripts\plugins\jasny\jasny-bootstrap.min.js" />
+    <Content Include="Scripts\plugins\jeditable\jquery.jeditable.js" />
+    <Content Include="Scripts\plugins\jqgrid\i18n\grid.locale-cnffe4.js" />
+    <Content Include="Scripts\plugins\jqgrid\jquery.jqGrid.minffe4.js" />
+    <Content Include="Scripts\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Scripts\plugins\jsKnob\jquery.knob.js" />
+    <Content Include="Scripts\plugins\jsTree\jstree.min.js" />
+    <Content Include="Scripts\plugins\jvectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Scripts\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Scripts\plugins\layer\extend\layer.ext.js" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\demo.html" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\laydate.js" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\need\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\skins\dahong\icon.png" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\skins\dahong\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\skins\default\icon.png" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\skins\default\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\skins\molv\icon.png" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\laydate\skins\molv\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\更新日志.txt" />
+    <Content Include="Scripts\plugins\layer\laydate\laydate.js" />
+    <Content Include="Scripts\plugins\layer\laydate\need\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate\skins\dahong\icon.png" />
+    <Content Include="Scripts\plugins\layer\laydate\skins\dahong\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate\skins\default\icon.png" />
+    <Content Include="Scripts\plugins\layer\laydate\skins\default\laydate.css" />
+    <Content Include="Scripts\plugins\layer\laydate\skins\molv\icon.png" />
+    <Content Include="Scripts\plugins\layer\laydate\skins\molv\laydate.css" />
+    <Content Include="Scripts\plugins\layer\layer.min.js" />
+    <Content Include="Scripts\plugins\layer\layim\layim.css" />
+    <Content Include="Scripts\plugins\layer\layim\layim.js" />
+    <Content Include="Scripts\plugins\layer\layim\loading.gif" />
+    <Content Include="Scripts\plugins\layer\skin\layer.css" />
+    <Content Include="Scripts\plugins\layer\skin\layer.ext.css" />
+    <Content Include="Scripts\plugins\layer\skin\moon\style.css" />
+    <Content Include="Scripts\plugins\markdown\bootstrap-markdown.js" />
+    <Content Include="Scripts\plugins\markdown\bootstrap-markdown.zh.js" />
+    <Content Include="Scripts\plugins\markdown\markdown.js" />
+    <Content Include="Scripts\plugins\markdown\to-markdown.js" />
+    <Content Include="Scripts\plugins\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Scripts\plugins\morris\morris.js" />
+    <Content Include="Scripts\plugins\morris\raphael-2.1.0.min.js" />
+    <Content Include="Scripts\plugins\nestable\jquery.nestable.js" />
+    <Content Include="Scripts\plugins\nouslider\jquery.nouislider.min.js" />
+    <Content Include="Scripts\plugins\pace\pace.min.js" />
+    <Content Include="Scripts\plugins\peity\jquery.peity.min.js" />
+    <Content Include="Scripts\plugins\plyr\plyr.js" />
+    <Content Include="Scripts\plugins\preetyTextDiff\jquery.pretty-text-diff.min.js" />
+    <Content Include="Scripts\plugins\prettyfile\bootstrap-prettyfile.js" />
+    <Content Include="Scripts\plugins\rickshaw\rickshaw.min.js" />
+    <Content Include="Scripts\plugins\rickshaw\vendor\d3.v3.js" />
+    <Content Include="Scripts\plugins\simditor\hotkeys.js" />
+    <Content Include="Scripts\plugins\simditor\module.js" />
+    <Content Include="Scripts\plugins\simditor\simditor.js" />
+    <Content Include="Scripts\plugins\simditor\uploader.js" />
+    <Content Include="Scripts\plugins\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Scripts\plugins\staps\jquery.steps.min.js" />
+    <Content Include="Scripts\plugins\suggest\bootstrap-suggest.min.js" />
+    <Content Include="Scripts\plugins\summernote\summernote-zh-CN.js" />
+    <Content Include="Scripts\plugins\summernote\summernote.min.js" />
+    <Content Include="Scripts\plugins\sweetalert\sweetalert.min.js" />
+    <Content Include="Scripts\plugins\switchery\switchery.js" />
+    <Content Include="Scripts\plugins\toastr\toastr.min.js" />
+    <Content Include="Scripts\plugins\treeview\bootstrap-treeview.js" />
+    <Content Include="Scripts\plugins\validate\jquery.validate.min.js" />
+    <Content Include="Scripts\plugins\validate\messages_zh.min.js" />
+    <Content Include="Scripts\plugins\webuploader\index.html" />
+    <Content Include="Scripts\plugins\webuploader\webuploader.min.js" />
+    <Content Include="Scripts\welcome.min.js" />
+    <Content Include="Scripts\world.js" />
+    <Content Include="Views\PCTron\test.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\saiyuans\Create.cshtml" />
+    <Content Include="Views\saiyuans\Delete.cshtml" />
+    <Content Include="Views\saiyuans\Details.cshtml" />
+    <Content Include="Views\saiyuans\Edit.cshtml" />
+    <Content Include="Views\saiyuans\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BigScreen\Select_Device_Information_Last_Month.cs" />
+    <Compile Include="BigScreen\Select_Real_Time_Progress.cs" />
+    <Compile Include="BigScreen\Select_Top10_Last_Month_Output_NG.cs" />
+    <Compile Include="BigScreen\Select_Top10_Last_Month_Run_Alarm.cs" />
+    <Compile Include="BigScreen\Select_Top5_NG.cs" />
+    <Compile Include="BigScreen\Select_Top5_Alarm_times.cs" />
+    <Compile Include="BigScreen\Select_Statistical_data.cs" />
+    <Compile Include="Controllers\datangsController.cs" />
+    <Compile Include="Controllers\DRAQ127Controller.cs" />
+    <Compile Include="Controllers\PCTronController.cs" />
+    <Compile Include="Controllers\saiyuansController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alarm_Info_History.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alarm_real_time.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllStatus.cs">
+      <DependentUpon>Model_PCTron.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Daily_Output_Model.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\datang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Device_List.cs">
+      <DependentUpon>Model_PCTron.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DRAQ127.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DRAQ127.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DRAQ127.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DRAQ127.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DRAQ127.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DRAQ1271.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fault_Point_Distribution.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hourly_Output_Model.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_PCTron.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_PCTron.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_PCTron.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_PCTron.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_PCTron.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_PCTron.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monthly_Order_Info.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monthly_Output_Model.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PHP_PCTron.cs">
+      <DependentUpon>Model_PCTron.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Record_of_Spare_Parts.cs">
+      <DependentUpon>DRAQ127.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan1.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan10.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan2.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan3.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan4.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan5.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan6.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan7.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan8.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan9.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saiyuan99.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AddList_Monthly_Output_Model.cs" />
+    <Compile Include="Model\DRAQ127\Monthly_Output.cs" />
+    <Compile Include="Model\PCC\ESR.cs" />
+    <Compile Include="Model\PCC\Voltage.cs" />
+    <Compile Include="Model\PCC\Cap.cs" />
+    <Compile Include="Model\PCC\DayInfoHistory.cs" />
+    <Compile Include="Model\PCC\RealTimePlantData.cs" />
+    <Compile Include="Model\test.cs" />
+    <Compile Include="Model\Daily_NG_Model.cs" />
+    <Compile Include="Model\Daily_Output_Model.cs" />
+    <Compile Include="Model\DRAQ127\Alarm_List.cs" />
+    <Compile Include="Model\DRAQ127\Alarm_Messages.cs" />
+    <Compile Include="Model\DRAQ127\DB_DRAQ127.cs" />
+    <Compile Include="Model\DRAQ127\Daily_Output.cs" />
+    <Compile Include="Model\DRAQ127\PO.cs" />
+    <Compile Include="Model\Monthly_NG_PCTron.cs" />
+    <Compile Include="Model\Monthly_Output_PCTron.cs" />
+    <Compile Include="Model\NetworkStatus.cs" />
+    <Compile Include="Model\NowModelTop5OFormat.cs" />
+    <Compile Include="Model\NowModelTop5Output.cs" />
+    <Compile Include="Model\NowModelTop5.cs" />
+    <Compile Include="Model\OEE.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Alarm_Info.cs" />
+    <Compile Include="Model\Spare_Parts_Info.cs" />
+    <Compile Include="Model\Role_Info.cs" />
+    <Compile Include="Model\Depart_Info.cs" />
+    <Compile Include="Model\Basic_Faq.cs" />
+    <Compile Include="Model\Dbs.cs" />
+    <Compile Include="Model\DB_Overall_Situation.cs" />
+    <Compile Include="Model\DB_Single_station.cs" />
+    <Compile Include="Model\Device_List_Info.cs" />
+    <Compile Include="Model\EveryDay_OutputAndNG.cs" />
+    <Compile Include="Model\KeyValue.cs" />
+    <Compile Include="Model\Maintain_Status.cs" />
+    <Compile Include="Model\Monthly_Order_Info.cs" />
+    <Compile Include="Model\Monthly_OutputAndNG.cs" />
+    <Compile Include="Model\Monthly_Output_Model.cs" />
+    <Compile Include="Model\Record_of_Spare_Parts.cs" />
+    <Compile Include="Model\Info.cs" />
+    <Compile Include="Model\Select_Real_Time_Data.cs" />
+    <Compile Include="Model\SQLHelper.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\datangs\Create.cshtml" />
+    <Content Include="Views\datangs\Delete.cshtml" />
+    <Content Include="Views\datangs\Details.cshtml" />
+    <Content Include="Views\datangs\Edit.cshtml" />
+    <Content Include="Views\datangs\Index.cshtml" />
+    <Content Include="Views\datangs\Login.cshtml" />
+    <EntityDeploy Include="Models\Model_PCTron.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_PCTron.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model_PCTron.edmx.diagram">
+      <DependentUpon>Model_PCTron.edmx</DependentUpon>
+    </Content>
+    <Content Include="Css\BigScreen\alarm.css.map" />
+    <Content Include="Css\BigScreen\alarm.scss" />
+    <Content Include="Css\BigScreen\bigdata.css.map" />
+    <Content Include="Css\BigScreen\bigdata.scss" />
+    <Content Include="Css\font\Fette-Engschrift.ttf" />
+    <EntityDeploy Include="Models\DRAQ127.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DRAQ127.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DRAQ127.edmx.diagram">
+      <DependentUpon>DRAQ127.edmx</DependentUpon>
+    </Content>
+    <Content Include="Css\icon\iconfont.eot" />
+    <Content Include="Css\icon\iconfont.ttf" />
+    <Content Include="Css\icon\iconfont.woff" />
+    <None Include="Properties\PublishProfiles\WebServer20190125.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1.zip" />
+    <Content Include="Scripts\plugins\layer\laydate-v1.1\layDate官网.url" />
+    <Content Include="Views\saiyuans\Main.cshtml" />
+    <Content Include="Views\saiyuans\test.cshtml" />
+    <Content Include="Views\saiyuans\Indexs.cshtml" />
+    <Content Include="Views\saiyuans\Device_List.cshtml" />
+    <Content Include="Views\saiyuans\Production_schedule.cshtml" />
+    <Content Include="Views\saiyuans\Basic_faq.cshtml" />
+    <Content Include="Views\saiyuans\Complete_order.cshtml" />
+    <Content Include="Views\saiyuans\Machine_Data.cshtml" />
+    <Content Include="Views\saiyuans\Fix_Manager.cshtml" />
+    <Content Include="Views\saiyuans\Fix_Info.cshtml" />
+    <Content Include="Views\saiyuans\Device_Info.cshtml" />
+    <Content Include="Views\saiyuans\test - 复制%289%29.cshtml" />
+    <Content Include="Views\saiyuans\Device_Data.cshtml" />
+    <Content Include="Views\saiyuans\Alert_info.cshtml" />
+    <Content Include="Views\saiyuans\Device_Info3.cshtml" />
+    <Content Include="Views\saiyuans\Device_Info2.cshtml" />
+    <Content Include="Views\saiyuans\Device_Info4.cshtml" />
+    <Content Include="Views\PCTron\Alert_info_PCTron.cshtml" />
+    <Content Include="Views\PCTron\Basic_faq.cshtml" />
+    <Content Include="Views\PCTron\Complete_order.cshtml" />
+    <Content Include="Views\PCTron\Create.cshtml" />
+    <Content Include="Views\PCTron\Delete.cshtml" />
+    <Content Include="Views\PCTron\Details.cshtml" />
+    <Content Include="Views\PCTron\PCTron.cshtml" />
+    <Content Include="Views\PCTron\Device_List.cshtml" />
+    <Content Include="Views\PCTron\Edit_Faq.cshtml" />
+    <Content Include="Views\PCTron\Fix_Info.cshtml" />
+    <Content Include="Views\PCTron\Maintenance_info.cshtml" />
+    <Content Include="Views\PCTron\Indexs.cshtml" />
+    <Content Include="Views\PCTron\Machine_Data.cshtml" />
+    <Content Include="Views\PCTron\Main.cshtml" />
+    <Content Include="Views\PCTron\Production_schedule.cshtml" />
+    <Content Include="Views\PCTron\Complete_order - 复制.cshtml" />
+    <Content Include="Views\PCTron\Complete_order2.cshtml" />
+    <Content Include="Views\Shared\_PartialNetworkStatus.cshtml" />
+    <Content Include="Views\Shared\_PartiaUpdateData.cshtml" />
+    <Content Include="Views\Shared\_PartialNetworkStatus - 复制.cshtml" />
+    <Content Include="Views\PCTron\Alert_info - XXX.cshtml" />
+    <Content Include="Views\PCTron\Alert_info_DRAQ75.cshtml" />
+    <Content Include="Views\PCTron\Maintenance_info - 复制.cshtml" />
+    <Content Include="Views\PCTron\Indexs - 复制.cshtml" />
+    <Content Include="Views\PCTron\FAQ.cshtml" />
+    <Content Include="Views\PCTron\BigScreen.cshtml" />
+    <Content Include="Views\PCTron\BigScreen2.cshtml" />
+    <Content Include="Views\PCTron\BigScreen31.cshtml" />
+    <Content Include="Views\PCTron\BigScreen5.cshtml" />
+    <Content Include="Views\PCTron\BigScreen4.cshtml" />
+    <Content Include="Views\PCTron\BigScreen3.cshtml" />
+    <Content Include="Views\PCTron\BigScreen300.cshtml" />
+    <Content Include="Views\PCTron\BigScreen2 - 复制.cshtml" />
+    <Content Include="Views\PCTron\BigScreen4 - 地图中文.cshtml" />
+    <Content Include="Views\Shared\_BigScreen3JS.cshtml" />
+    <Content Include="Views\Shared\_BigScreen4JS.cshtml" />
+    <Content Include="Views\PCTron\Device_Info2019423.cshtml" />
+    <Content Include="Views\PCTron\Basic_faq2.cshtml" />
+    <Content Include="Views\PCTron\Add_Faq.cshtml" />
+    <Content Include="Views\PCTron\HttpError.cshtml" />
+    <Content Include="Views\PCTron\Login.cshtml" />
+    <Content Include="Views\PCTron\Register.cshtml" />
+    <Content Include="Views\PCTron\aaaaaa.cshtml" />
+    <Content Include="Views\PCTron\Add_Users.cshtml" />
+    <Content Include="Views\PCTron\Edit_Role.cshtml" />
+    <Content Include="Views\PCTron\Role_Manage.cshtml" />
+    <Content Include="Views\PCTron\test.cshtml" />
+    <Content Include="Views\PCTron\Indexs20190509.cshtml" />
+    <Content Include="Views\PCTron\test2.cshtml" />
+    <Content Include="Views\Shared\_Device_Info.cshtml" />
+    <Content Include="Views\Shared\_test2 - 复制.cshtml" />
+    <Content Include="Views\PCTron\Device_Info20190509.cshtml" />
+    <Content Include="Views\Shared\_Device_Info_DRAQ75.cshtml" />
+    <Content Include="Views\DRAQ127\BigScreen20190811.cshtml" />
+    <Content Include="Views\PCTron\Device_Info20190723.cshtml" />
+    <Content Include="Views\PCTron\DRAQ75.cshtml" />
+    <Content Include="Views\PCTron\DRAQ127.cshtml" />
+    <Content Include="Views\Shared\_Device_Info_DRAQ127.cshtml" />
+    <Content Include="Views\DRAQ127\OEE.cshtml" />
+    <Content Include="Views\DRAQ127\Order.cshtml" />
+    <Content Include="Views\DRAQ127\Alarm.cshtml" />
+    <Content Include="Views\DRAQ127\Daily_Output.cshtml" />
+    <Content Include="Views\DRAQ127\Monthly_Output.cshtml" />
+    <Content Include="Views\DRAQ127\History.cshtml" />
+    <Content Include="Views\PCTron\DRAQ127-20190725.cshtml" />
+    <Content Include="Views\Shared\_BigScreen3JS-20190809.cshtml" />
+    <Content Include="Views\DRAQ127\BigScreen.cshtml" />
+    <Content Include="Views\DRAQ127\BigScreen20190819.cshtml" />
+    <Content Include="Views\PCTron\Spare_Parts_List.cshtml" />
+    <Content Include="Views\PCTron\Spare_Parts_Detailed.cshtml" />
+    <Content Include="Views\PCTron\Edit_Spare_Parts.cshtml" />
+    <Content Include="Views\PCTron\Add_Spare_Parts.cshtml" />
+    <Content Include="Views\DRAQ127\BigScreen2019-0902.cshtml" />
+    <Content Include="Views\PCTron\CI.cshtml" />
+    <Content Include="Views\PCTron\test_LinqToExcel.cshtml" />
+    <Content Include="Views\PCTron\BigScreen4-2019-10-15.cshtml" />
+    <Content Include="Views\PCTron\test3.cshtml" />
+    <Content Include="Views\PCTron\Line.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52892</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52898</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

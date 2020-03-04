@@ -1,0 +1,327 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.datang>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remote data acquisition system</title>
+    <meta name="keywords" content="远程通讯系统keywords">
+    <meta name="description" content="远程通讯系统description">
+    <link href="~/Css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Css/animate.min.css" rel="stylesheet">
+    <link href="~/Css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+    <link href="~/Css/font-awesome.min93e3.css" rel="stylesheet" />
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                    
+
+                    <div class="widget navy-bg no-padding">
+                        <div class="p-m">
+                            <h1 class="m-xs">Have income： &yen; 316,540</h1>
+                            <h3 class="font-bold no-margins">
+                                Order quantity completed 2 PCS
+                            </h3>
+                        </div>
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-chart1"></div>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="widget lazur-bg no-padding">
+                    <div class="p-m" >
+                        <h1 class="m-xs">Prepare the income： &yen; 2,110,660</h1>
+                        <h3 class="font-bold no-margins">
+                            In production 9 PCS
+                        </h3>
+                    </div>
+                    <div class="flot-chart">
+                        <div class="flot-chart-content" id="flot-chart2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ibox-content">
+
+        <div class="project-list">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM07807 15000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 48%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 48%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/a.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM09888 18000 Pcs </a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 28%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 28%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/b.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-default">Has been completed</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM09807 10000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 100%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 100%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/c.png"></a>
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM07807 15000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 83%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 83%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/d.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM09607 8000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 97%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 97%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/e.png"></a>
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">QT09807 20000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 48%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 48%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/f.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">QT09807 10000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 28%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 28%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/g.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-default">Has been completed</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM07807 25000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 100%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 100%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/b.png"></a>
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM09888 18000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 83%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 83%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/c.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM07807 20000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 97%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 97%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/d.png"></a>
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="project-status">
+                            <span class="label label-primary">In production</span>
+                        </td>
+                        <td class="project-title">
+                            <a a href="">SM09887 20000 Pcs</a>
+                            <br />
+                            <small>Start time： 2014.08.15</small>
+                        </td>
+                        <td class="project-completion">
+                            <small>The current progress： 28%</small>
+                            <div class="progress progress-mini">
+                                <div style="width: 28%;" class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="project-people">
+                            <a href=""><img alt="image" class="img-circle" src="~/img/f.png"></a>
+
+                        </td>
+                        <td class="project-actions">
+                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/plugins/flot/jquery.flot.js"></script>
+    <script>
+        $(document).ready(function () { var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]]; var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]]; var data1 = [{ label: "Data 1", data: d1, color: "#17a084" }, { label: "Data 2", data: d2, color: "#127e68" }]; $.plot($("#flot-chart1"), data1, { xaxis: { tickDecimals: 0 }, series: { lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, }, points: { width: 0.1, show: false }, }, grid: { show: false, borderWidth: 0 }, legend: { show: false, } }); var data2 = [{ label: "Data 1", data: d1, color: "#19a0a1" }]; $.plot($("#flot-chart2"), data2, { xaxis: { tickDecimals: 0 }, series: { lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, }, points: { width: 0.1, show: false }, }, grid: { show: false, borderWidth: 0 }, legend: { show: false, } }); var data3 = [{ label: "Data 1", data: d1, color: "#fbbe7b" }, { label: "Data 2", data: d2, color: "#f8ac59" }]; $.plot($("#flot-chart3"), data3, { xaxis: { tickDecimals: 0 }, series: { lines: { show: true, fill: true, fillColor: { colors: [{ opacity: 1 }, { opacity: 1 }] }, }, points: { width: 0.1, show: false }, }, grid: { show: false, borderWidth: 0 }, legend: { show: false, } }); $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", }); $(".todo-list").sortable({ placeholder: "sort-highlight", handle: ".handle", forcePlaceholderSize: true, zIndex: 999999 }).disableSelection(); var mapData = { "US": 498, "SA": 200, "CA": 1300, "DE": 220, "FR": 540, "CN": 120, "AU": 760, "BR": 550, "IN": 200, "GB": 120, "RU": 2000 }; $("#world-map").vectorMap({ map: "world_mill_en", backgroundColor: "transparent", regionStyle: { initial: { fill: "#e4e4e4", "fill-opacity": 1, stroke: "none", "stroke-width": 0, "stroke-opacity": 0 } }, series: { regions: [{ values: mapData, scale: ["#1ab394", "#22d6b1"], normalizeFunction: "polynomial" }] }, }) });
+    </script>
+
+</body>
+
+
+</html>

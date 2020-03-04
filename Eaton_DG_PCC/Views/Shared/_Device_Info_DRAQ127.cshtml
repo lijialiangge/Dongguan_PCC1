@@ -1,0 +1,247 @@
+﻿
+@model Tuple<Eaton_DG_PCC.Models.AllStatus, List<Eaton_DG_PCC.Model.Monthly_Output_PCTron>, List<Eaton_DG_PCC.Model.Daily_Output_Model>, List<Eaton_DG_PCC.Model.Daily_NG_Model>>
+<script>
+    //<--------------------DRAQ127-------Daily_output----Start----------->
+    function Everyday_Output() {
+        var d1 = echarts.init(document.getElementById("test_dailys_output")), a = {
+            title: {
+                text: ""
+            },
+            tooltip: {
+                trigger: "axis"
+            },
+            legend: {
+                data: ["Daily Output", "Daily NG"]
+            },
+            grid: {
+                x: 80,
+                x2: 100,
+                y2: 20
+
+            },
+            calculable: !0,
+            xAxis: [{
+                type: "category",
+                boundaryGap: !1,
+                data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
+            }],
+            yAxis: [
+                {
+                    type: "value",
+                    axisLabel: {
+                        //formatter: "{value} %"
+                        formatter: "{value}"
+                        , textStyle: {
+                            //fontSize: 10, // 让字体变大
+                            color: '#2c9c0e'
+                        }
+                    }
+                },
+            {
+                type: "value",
+                axisLabel: {
+                    //formatter: "{value} %"
+                    formatter: "{value}"
+                    , textStyle: {
+                        //fontSize: 10, // 让字体变大
+                        color: '#CC0033'
+                    }
+                }
+            }
+            ],
+            series: [
+            {
+                name: "Daily Output",
+                type: "line",
+                itemStyle: {
+                    normal: {
+                        color: "#2c9c0e",//绿色
+                        lineStyle: {
+                            color: "#2c9c0e"
+                        }
+                    }
+                },
+                symbol: 'circle',     //设定为实心点
+                symbolSize: 3,   //设定实心点的大小
+                data: [@Model.Item1.Everyday_Test_Output01, @Model.Item1.Everyday_Test_Output02, @Model.Item1.Everyday_Test_Output03, @Model.Item1.Everyday_Test_Output04, @Model.Item1.Everyday_Test_Output05, @Model.Item1.Everyday_Test_Output06, @Model.Item1.Everyday_Test_Output07, @Model.Item1.Everyday_Test_Output08, @Model.Item1.Everyday_Test_Output09, @Model.Item1.Everyday_Test_Output10, @Model.Item1.Everyday_Test_Output11, @Model.Item1.Everyday_Test_Output12, @Model.Item1.Everyday_Test_Output13, @Model.Item1.Everyday_Test_Output14, @Model.Item1.Everyday_Test_Output15, @Model.Item1.Everyday_Test_Output16, @Model.Item1.Everyday_Test_Output17, @Model.Item1.Everyday_Test_Output18, @Model.Item1.Everyday_Test_Output19, @Model.Item1.Everyday_Test_Output20, @Model.Item1.Everyday_Test_Output21, @Model.Item1.Everyday_Test_Output22, @Model.Item1.Everyday_Test_Output23, @Model.Item1.Everyday_Test_Output24, @Model.Item1.Everyday_Test_Output25, @Model.Item1.Everyday_Test_Output26, @Model.Item1.Everyday_Test_Output27, @Model.Item1.Everyday_Test_Output28, @Model.Item1.Everyday_Test_Output29, @Model.Item1.Everyday_Test_Output30, @Model.Item1.Everyday_Test_Output31],
+                markPoint: {
+                    data: [{
+                        type: "max",
+                        name: "Output",
+                    }
+                    ]
+                },
+            },
+            {
+                name: "Daily NG",
+                type: "line",
+                yAxisIndex: 1,
+                itemStyle: {
+                    normal: {
+                        //color: "#ff00ff",
+                        color: "#CC0033",//红色
+                        lineStyle: {
+                            //color: "#ff00ff",
+                            color: "#CC0033"
+                        }
+                    }
+                },
+                symbol: 'circle',     //设定为实心点
+                symbolSize: 3,   //设定实心点的大小
+                data: [@Model.Item1.Everyday_Test_NG01, @Model.Item1.Everyday_Test_NG02, @Model.Item1.Everyday_Test_NG03, @Model.Item1.Everyday_Test_NG04, @Model.Item1.Everyday_Test_NG05, @Model.Item1.Everyday_Test_NG06, @Model.Item1.Everyday_Test_NG07, @Model.Item1.Everyday_Test_NG08, @Model.Item1.Everyday_Test_NG09, @Model.Item1.Everyday_Test_NG10, @Model.Item1.Everyday_Test_NG11, @Model.Item1.Everyday_Test_NG12, @Model.Item1.Everyday_Test_NG13, @Model.Item1.Everyday_Test_NG14, @Model.Item1.Everyday_Test_NG15, @Model.Item1.Everyday_Test_NG16, @Model.Item1.Everyday_Test_NG17, @Model.Item1.Everyday_Test_NG18, @Model.Item1.Everyday_Test_NG19, @Model.Item1.Everyday_Test_NG20, @Model.Item1.Everyday_Test_NG21, @Model.Item1.Everyday_Test_NG22, @Model.Item1.Everyday_Test_NG23, @Model.Item1.Everyday_Test_NG24, @Model.Item1.Everyday_Test_NG25, @Model.Item1.Everyday_Test_NG26, @Model.Item1.Everyday_Test_NG27, @Model.Item1.Everyday_Test_NG28, @Model.Item1.Everyday_Test_NG29, @Model.Item1.Everyday_Test_NG30, @Model.Item1.Everyday_Test_NG31],
+                markPoint: {
+                    data: [{
+                        type: "max",
+                        name: "NG",
+                    }
+                    ]
+                },
+            }
+            ]
+        };
+        d1.setOption(a), $(window).resize(d1.resize);
+
+
+        var l1 = echarts.init(document.getElementById("echarts-pie-chart1")),
+            u = {
+                title: {
+                    //设置title字体大小和颜色
+                    //text: "Today Output&NG", "textStyle": {
+                    //    "fontSize": 12,
+                    //    "color": "#005eb2",
+                    //    "fontFamily": "Microsoft YaHei"
+                    //}, x: "center"
+                    text: "Current PN Total Output&NG", x: "center"
+                },
+                tooltip: { trigger: "item", formatter: "{a} <br/>{b} : {c} ({d}%)" },
+                legend: {
+                    orient: "vertical", x: "left",
+                    data: ["Output", "NG"]
+                },
+                calculable: !0, series: [{
+                    name: "", type: "pie",
+                    radius: "50%",
+                    center: ["50%", "50%"],
+
+                    data: [
+                        { value: @Model.Item1.Current_PN_Total_Output, name: "Output" },
+                        { value: @Model.Item1.Current_PN_Total_NG, name: "NG" }
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        normal: {
+                            color: function (params) {
+                                //自定义颜色
+                                var colorList = [
+                                        '#00FF00', '#FF0000', '#FFFF00', '#FF8C00', '#FF0000', '#00FFFF',
+                                ];
+                                return colorList[params.dataIndex]
+                            }
+                        }
+                    }
+                }]
+            }; l1.setOption(u), $(window).resize(l1.resize);
+
+        var l2 = echarts.init(document.getElementById("echarts-pie-chart2")),
+            u = {
+                title: {
+                    text: "Today Output&NG",x: "center"
+                },
+                tooltip: { trigger: "item", formatter: "{a} <br/>{b} : {c} ({d}%)" },
+                legend: {
+                    orient: "vertical", x: "left",
+                    data: ["Output", "NG"]
+                },
+                calculable: !0, series: [{
+                    name: "", type: "pie",
+                    radius: "50%",
+                    center: ["50%", "50%"],
+                    data: [
+                        { value: @Model.Item1.Today_Total_output, name: "Output" },
+                        { value: @Model.Item1.Today_Total_NG, name: "NG" }
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        normal: {
+                            color: function (params) {
+                                //自定义颜色
+                                var colorList = [
+                                        '#00FF00', '#FF0000', '#FFFF00', '#FF8C00', '#FF0000', '#00FFFF',
+                                ];
+                                return colorList[params.dataIndex]
+                            }
+                        }
+                    }
+                }]
+            }; l2.setOption(u), $(window).resize(l2.resize);
+        var l3 = echarts.init(document.getElementById("echarts-pie-chart3")),
+            u = {
+                title: { text: "Today Current PN Output&NG", x: "center" },
+                tooltip: { trigger: "item", formatter: "{a} <br/>{b} : {c} ({d}%)" },
+                legend: {
+                    orient: "vertical", x: "left",
+                    data: ["Output", "NG"]
+                },
+                calculable: !0, series: [{
+                    name: "", type: "pie",
+                    radius: "50%",
+                    center: ["50%", "50%"],
+                    data: [
+                        { value: @Model.Item1.Current_PN_Today_Output, name: "Output" },
+                        { value: @Model.Item1.Current_PN_Today_NG, name: "NG" }
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        normal: {
+                            color: function (params) {
+                                //自定义颜色
+                                var colorList = [
+                                        '#00FF00', '#FF0000', '#FFFF00', '#FF8C00', '#FF0000', '#00FFFF',
+                                ];
+                                return colorList[params.dataIndex]
+                            }
+                        }
+                    }
+                }]
+            }; l3.setOption(u), $(window).resize(l3.resize);
+
+    }
+
+
+    //<--------------------DRAQ127-------Daily_output-----End------------>
+
+
+
+
+
+
+
+
+    //<--------------------XXXXX-----------Start----------->
+
+
+
+    //<--------------------XXXXX----------End------------>
+    //var interval;
+    ////先执行一次，然后再设置60秒执行一次
+
+    //DRAQ75
+    Everyday_Output();
+    function myrefresh() {
+        window.location.reload();//重新加载页面
+    }
+    setTimeout('myrefresh()', 600000);//每十分钟刷新一次
+    //setTimeout('myrefresh()', 60000); //每分钟刷新一次
+</script>

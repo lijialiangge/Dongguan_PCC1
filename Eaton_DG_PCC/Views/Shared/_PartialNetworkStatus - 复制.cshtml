@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Eaton_DG_PCC.Models.PHP_PCTron>
+
+@foreach (Eaton_DG_PCC.Models.PHP_PCTron item in Model)
+{
+<div class="row">
+    <div class="col-xs-8">
+        <strong>PLC Status：</strong>
+        <input id="name" type="text" name="name" value="nam" />
+    </div>
+    <div class="col-xs-4">
+        @if (item.NetworkStatus.ToString() == "1")
+        {
+            if (item.PLCStatus.ToString() == "1")
+            {
+                <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/green_20X17.gif">
+            }
+            else
+            {
+                <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+            }
+        }
+        else
+        {
+            <img alt="image" class="img-circle m-t-xs img-responsive" src="~/img/red_20X17.gif">
+        }
+    </div>
+</div>
+}
+
+<script type="text/javascript">
+
+    function GetDate() {
+        //alert("0n");
+        $.ajax({
+
+                type: "post",
+                //url: '/PCTron/Device_List1',
+                url: "@Url.Content("~/PCTron/UpdateData1")",//提交的方式
+                Date: "text",
+            
+                //data: JSON.stringify(lstmodel),
+                contentType: 'application/json;charset=utf-8', //上传后直接是List，不需要反序列化
+                async: false,
+                datatype: 'json',
+                cache:false,
+                success: function (mess) {
+                    if (mess != null) {
+                        //alert(mess);
+                        $("#name").val(mess);
+                    }
+                 }
+
+            })
+           // alert("ok");
+    };
+    setInterval(GetDate, 2000);
+   //setTimeout('myrefresh()', 5000); //每分钟刷新一次
+</script>  
+@*<script>
+        function myrefresh() {
+            window.location.reload();//重新加载页面
+        }
+        
+</script>*@
